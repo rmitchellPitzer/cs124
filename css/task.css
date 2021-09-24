@@ -1,6 +1,7 @@
 .task-text {
     outline: none;
     border: none;
+    background: transparent;
 }
 
 .task-item {
@@ -19,4 +20,9 @@
     font-size: 3em;
     width: 100%;
 }
+
+.hidden {
+    display: none;
+}
+
 

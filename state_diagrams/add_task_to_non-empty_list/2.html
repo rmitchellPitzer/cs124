@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/global.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../css/task.css"/>
+    <link rel="stylesheet" href="../../css/bar.css"/>
+    <link rel="stylesheet" href="../../css/banner.css"/>
+    <link rel="stylesheet" href="../../css/action_button.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/todo.css"/>
+    <link rel="stylesheet" href="../../css/completed.css"/>
+    <link rel="stylesheet" href="../../css/container.css"/>
+    <link rel="stylesheet" href="../../css/action-list.css"/>
+    <script src="https://kit.fontawesome.com/3b7db4f790.js" crossorigin="anonymous"></script>
+    <title>Todoiz.IO</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner -->
+        <div class="banner">
+            <h1 class="title"> Todoiz.IO</h1>
+        </div>
+        <!-- ToDo Section -->
+        <div class="bar todo-bar">
+            <button class="drop-down ">
+                <i class="fas  fa-angle-down"></i>
+            </button>
+            <h1 class="bar-title"> To Do </h1>
+        </div>
+        <div class="todo-container">
+            <div class="task-item">
+                <input alt='task completion status' class='checkbox' type="checkbox">
+                <input class='task-text' type="text" alt="task text" value="Buy new John Grisham book"/>
+            </div>
+        </div>
+        <!-- Completed Section -->
+        <div class="bar completed-bar">
+            <button class="drop-down">
+                <i class="collapse  fas fa-angle-down"></i>
+            </button>
+            <h1 class="bar-title"> Completed </h1>
+        </div>
+        <div class="completed-container empty">
+            <div class="task-item completed">
+                <input alt='task completion status' class='checkbox' type="checkbox" checked/>
+                <input class='task-text' type="text" alt="task text" value="Task"/>
+            </div>
+        </div>
+        <!-- Action Button -->
+        <div class="action-container show">
+                <button class="action-item">
+                    <i class="fas fa-plus"></i>
+                    <div class="action-text">
+                        <p>New Task</p>
+                    </div>
+
+                </button>
+            <button class="action-item">
+                    <i class="fas fa-minus"></i>
+                    <div class="action-text">
+                        <p>Clear completed tasks</p>
+                    </div>
+                </button>
+        </div>
+        <button class="action-button">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+</body>
+</html>

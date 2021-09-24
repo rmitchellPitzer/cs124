@@ -16,6 +16,14 @@
 }
 
 
+.selected {
+    width: 80px;
+    height: 80px;
+    background: #8b000042;
+;
+}
+
+
 .bar-title {
     margin-left: auto;
     margin-right: auto;
@@ -24,6 +32,8 @@
 
 .drop-down i {
     font-size: 4vh;
+    margin-top: 10px;
+    margin-left: -5px;
 }
 
 .collapse {

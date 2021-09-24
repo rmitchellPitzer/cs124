@@ -12,8 +12,8 @@ html, body {
 }
 
 body,.task-text {
- background: #f7ecea;
-
+    background: #f7ecea;
+}
 .container {
     width: 100%;
     height: 100%;
