@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_TASK_COMPLETION, UPDATE_TASK_TEXT } from './actions';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 }
 
 function createTask(state) {
-    const id = uuid()
+    const id = uuidv4()
     const task = {text:"",isCompleted:false,id}
     const newState = state.tasks.map()
     newState.push(task)
