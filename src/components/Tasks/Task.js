@@ -17,6 +17,7 @@ export default function Task(props) {
                 type="checkbox"
                 value={ props.isCompleted}
                 onChange= {(e) => handleCheckBoxEvent(props.id)}
+                checked= {props.isCompleted}
             />
             <input 
                 class='task-text' 
