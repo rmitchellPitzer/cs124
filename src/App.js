@@ -10,11 +10,8 @@ import { connect } from "react-redux";
 
 function App({menuIsActive}) {
 
-  TaskDataController.createTask()
-
-
   return (
-    <div class='container' onClick= {AppDataController.closeMenu}>
+    <div class='container'>
       <Header/>
       <SectionContainer 
         className='todo-bar' 
@@ -24,9 +21,7 @@ function App({menuIsActive}) {
         className='completed-bar' 
         sectionTitle="Completed"
       />
-      {
-      menuIsActive && <ActionMenu/>
-      }
+      { menuIsActive && <ActionMenu/> }
       <ActionButton/>
     </div>
   );
