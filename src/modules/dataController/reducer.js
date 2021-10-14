@@ -30,12 +30,12 @@ function deleteTask(state,id) {
 }
 
 function updateTaskText(state,{id,text}) {
-    const task = state.tasks.find(task => task.id === id)
+    const newTasks = state.tasks.map(x => x)
+    const task = newTasks.find(task => task.id === id)
     if (!task) return state
 
     task.text = text 
-    const newTasks = state.tasks.filter(task => task.id !== id)
-    newTasks.push(task)
+
 
     return {
         ...state,

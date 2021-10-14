@@ -1,3 +1,6 @@
+import { connect } from "react-redux"
+import AppDataController from "../../modules/dataController/AppDataController.js"
+import TaskDataController from "../../modules/dataController/TaskDataController.js"
 import TaskList from "../Tasks/TaskList.js"
 import SectionBar from "./SectionBar.js"
 
@@ -9,7 +12,7 @@ import SectionBar from "./SectionBar.js"
     showContainer: boolean
 }
 */
-export default function SectionContainer(props) {
+function SectionContainer(props) {
  
     return (
     <div>
@@ -18,3 +21,20 @@ export default function SectionContainer(props) {
     </div>
     )
 }
+
+
+function mapStateToProps(state,ownProps) {
+    const isToDo = ownProps.sectionTitle === "To Do"
+    if (isToDo) return { 
+        tasks: TaskDataController.todo(),
+        showContainer: AppDataController.showToDo()
+    }
+    return {
+        tasks: TaskDataController.completed(),
+        showContainer: AppDataController.showCompleted()
+    }
+}
+
+export default connect(
+    mapStateToProps,
+)(SectionContainer)

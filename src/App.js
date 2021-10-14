@@ -14,8 +14,6 @@ function App() {
     <div class='container'>
       <Header/>
       <SectionContainer 
-        tasks = {TaskDataController.todo()} 
-        showContainer={AppDataController.showToDo()} 
         className='todo-bar' 
         sectionTitle="To Do"
       />
