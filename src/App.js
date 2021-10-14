@@ -14,7 +14,7 @@ function App({menuIsActive}) {
 
 
   return (
-    <div class='container'>
+    <div class='container' onClick= {AppDataController.closeMenu}>
       <Header/>
       <SectionContainer 
         className='todo-bar' 
@@ -25,7 +25,7 @@ function App({menuIsActive}) {
         sectionTitle="Completed"
       />
       {
-        menuIsActive && <ActionMenu/>
+      menuIsActive && <ActionMenu/>
       }
       <ActionButton/>
     </div>

@@ -1,7 +1,6 @@
 .action-container {
     position: fixed;
     width: 400px;
-    display: none;
     height: fit-content;
     top: 65%;
     left: 50%;
