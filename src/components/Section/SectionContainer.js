@@ -13,12 +13,11 @@ import SectionBar from "./SectionBar.js"
 }
 */
 function SectionContainer(props) {
- 
     return (
-    <div>
-        <SectionBar sectionTitle = {props.sectionTitle} className={props.className}/>
-        { props.showContainer && <TaskList tasks={props.tasks} />}
-    </div>
+        <div>
+            <SectionBar sectionTitle = {props.sectionTitle} className={props.className}/>
+            { props.showContainer && <TaskList tasks={props.tasks} />}
+        </div>
     )
 }
 

@@ -7,7 +7,7 @@ export default function SectionBar(props) {
     const classes = `bar ${props.className}`
     return (
         <div class={classes}>
-        <SectionButton/>
+        <SectionButton isToDo = { props.className === "todo-bar" }/>
         <h1 class="bar-title"> {props.sectionTitle} </h1>
     </div>  
     )
