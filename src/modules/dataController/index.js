@@ -1,5 +1,5 @@
 import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, updateTaskTextAction } from "./actions"
-import store from "./store"
+import store from "./store.js"
 class DataController {
     static updateTaskText(id,text) {
             const action = updateTaskTextAction(id,text)
@@ -22,6 +22,7 @@ class DataController {
     }
 
     static todo() {
+        console.log(store.getState())
         return store.getState()
         .tasks.filter(task => task.isCompleted === false)
     }

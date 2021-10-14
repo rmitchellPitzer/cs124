@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
 import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_TASK_COMPLETION, UPDATE_TASK_TEXT } from './actions';
 
@@ -9,7 +10,6 @@ const initialState = {
 function createTask(state) {
     const id = uuidv4()
     const task = {text:"",isCompleted:false,id}
-    console.log(task)
     const newState = state.tasks.map(x => x)
     newState.push(task)
 
@@ -67,11 +67,11 @@ function deleteAllCompletedTasks(state) {
 
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
-        case CREATE_TASK:createTask(state); break;
-        case DELETE_TASK: deleteTask(state,action.payload.id); break;
-        case UPDATE_TASK_TEXT: updateTaskText(state,action.payload); break;
-        case TOGGLE_TASK_COMPLETION: toggleTaskCompletion(state,action.payload.id); break;
-        case DELETE_ALL_COMPLETED_TASK: deleteAllCompletedTasks(state); break;
+        case CREATE_TASK: return createTask(state)
+        case DELETE_TASK: return deleteTask(state,action.payload.id)
+        case UPDATE_TASK_TEXT: return updateTaskText(state,action.payload)
+        case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
+        case DELETE_ALL_COMPLETED_TASK:return  deleteAllCompletedTasks(state)
         default:
             return state 
     }
