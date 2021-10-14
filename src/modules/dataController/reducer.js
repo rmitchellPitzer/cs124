@@ -44,9 +44,9 @@ function updateTaskText(state,{id,text}) {
 }
 
 function toggleTaskCompletion(state,id) {
-    const task = state.tasks.find(task => task.id == id)
+    const task = state.tasks.find(task => task.id === id)
     task.isCompleted = !task.isCompleted
-    const newTasks = state.tasks.filter(task => task.id != id)
+    const newTasks = state.tasks.filter(task => task.id !== id)
     newTasks.push(task)
 
     return {

@@ -1,9 +1,14 @@
-import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, updateTaskTextAction } from "./actions"
+import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, toggleTaskCompletionAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
 class TaskDataController {
     static updateTaskText(id,text) {
             const action = updateTaskTextAction(id,text)
             store.dispatch(action)
+    }
+
+    static toggleTaskCompletion(id) {
+        const action = toggleTaskCompletionAction(id)
+        store.dispatch(action)
     }
 
     static createTask() {
