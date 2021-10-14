@@ -1,11 +1,12 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
-import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST, UPDATE_TASK_TEXT } from './actions';
+import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, HIDE_MENU, SHOW_MENU, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST, UPDATE_TASK_TEXT } from './actions';
 
 const initialState = {
     tasks: [],
     showCompleted: false,
-    showTodo: true 
+    showTodo: true,
+    showMenu: false 
 }
 
 function createTask(state) {
@@ -44,10 +45,9 @@ function updateTaskText(state,{id,text}) {
 }
 
 function toggleTaskCompletion(state,id) {
-    const task = state.tasks.find(task => task.id === id)
+    const newTasks = state.tasks.map(x => x)
+    const task = newTasks.find(task => task.id === id)
     task.isCompleted = !task.isCompleted
-    const newTasks = state.tasks.filter(task => task.id !== id)
-    newTasks.push(task)
 
     return {
         ...state,
@@ -78,6 +78,20 @@ function toggleToDoList(state) {
     }
 }
 
+function showMenu(state) {
+    return {
+        ...state,
+        showMenu: true 
+        }
+}
+
+function hideMenu(state) {
+    return {
+        ...state,
+        showMenu:false 
+    }
+}
+
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case CREATE_TASK: return createTask(state)
@@ -87,6 +101,8 @@ export default function toDoReducer(state = initialState, action){
         case DELETE_ALL_COMPLETED_TASK: return deleteAllCompletedTasks(state)
         case TOGGLE_TODO_LIST: return toggleToDoList(state)
         case TOGGLE_COMPLETED_LIST: return toggleCompletedList(state)
+        case SHOW_MENU: return showMenu(state)
+        case HIDE_MENU: return hideMenu(state)
         default:
             return state 
     }

@@ -24,10 +24,12 @@ function SectionContainer(props) {
 
 function mapStateToProps(state,ownProps) {
     const isToDo = ownProps.sectionTitle === "To Do"
+
     if (isToDo) return { 
         tasks: TaskDataController.todo(),
         showContainer: AppDataController.showToDo()
     }
+    
     return {
         tasks: TaskDataController.completed(),
         showContainer: AppDataController.showCompleted()

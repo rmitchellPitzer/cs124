@@ -1,6 +1,4 @@
-import { connect } from "react-redux"
 import AppDataController from "../../modules/dataController/AppDataController"
-import TaskDataController from "../../modules/dataController/TaskDataController"
 
  export default function SectionButton(props) {
     return (

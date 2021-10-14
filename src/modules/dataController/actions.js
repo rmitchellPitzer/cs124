@@ -5,7 +5,11 @@ export const TOGGLE_TASK_COMPLETION = "toggleTaskCompletion"
 export const DELETE_ALL_COMPLETED_TASK = "deleteAllCompletedTasks"
 export const TOGGLE_TODO_LIST = "toggleTodoList"
 export const TOGGLE_COMPLETED_LIST = "toggleCompletedList"
+export const SHOW_MENU = "showMenu"
+export const HIDE_MENU = "hideMenu"
 
+export const showMenuAction = () => ({type:SHOW_MENU})
+export const hideMenuAction = () => ({type:HIDE_MENU})
 export const createTaskAction = () => ({type:CREATE_TASK})
 export const deleteTaskAction = (id) => ({type:DELETE_TASK, payload:{id}})
 export const updateTaskTextAction = (id,text) => ({type: UPDATE_TASK_TEXT,payload: {id,text}})

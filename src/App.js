@@ -17,6 +17,10 @@ function App() {
         className='todo-bar' 
         sectionTitle="To Do"
       />
+      <SectionContainer 
+        className='completed-bar' 
+        sectionTitle="Completed"
+      />
     </div>
   );
 }
