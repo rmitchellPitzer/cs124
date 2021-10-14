@@ -1,4 +1,5 @@
 import { uuid } from 'uuidv4';
+import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_TASK_COMPLETION, UPDATE_TASK_TEXT } from './actions';
 
 const initialState = {
     tasks: []
@@ -65,10 +66,10 @@ function deleteAllCompletedTasks(state) {
 
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
-        case 'createTask':createTask(state)
-        case 'deleteTask': deleteTask(state,action.payload.id)
-        case 'updateTaskText': updateTaskText(state,action.payload)
-        case 'toggleTaskCompletion': toggleTaskCompletion(state,action.payload.id)
-        case 'deleteAllCompletedTasks': deleteAllCompletedTasks(state)
+        case CREATE_TASK:createTask(state)
+        case DELETE_TASK: deleteTask(state,action.payload.id)
+        case UPDATE_TASK_TEXT: updateTaskText(state,action.payload)
+        case TOGGLE_TASK_COMPLETION: toggleTaskCompletion(state,action.payload.id)
+        case DELETE_ALL_COMPLETED_TASK: deleteAllCompletedTasks(state)
     }
 }

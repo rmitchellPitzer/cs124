@@ -1,21 +1,39 @@
-class index {
-    updateTask() {
-
-    }
-    createTask() {
-        // ...
-    }
-    deleteTask(id) {
-
+import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, updateTaskTextAction } from "./actions"
+import store from "./store"
+class DataController {
+    static updateTaskText(id,text) {
+            const action = updateTaskTextAction(id,text)
+            store.dispatch(action)
     }
 
-    deleteAllCompleted() {
+    static createTask() {
+        const action = createTaskAction()
+        store.dispatch(action)
+    }
+
+    static deleteTask(id) {
+        const action = deleteTaskAction(id)
+        store.dispatch(action)
+    }
+
+    static deleteAllCompleted() {
+        const action = deleteAllCompletedTasksAction()
+        store.dispatch(action)
+    }
+
+    static todo() {
+        return store.getState()
+        .tasks.filter(task => task.isCompleted === false)
 
     }
 
-    get todo() {}
-
-    get completed() {}
+    static completed() {
+        return store.getState()
+        .tasks.filter(task => task.isCompleted === true)
+    }
 
 
 };
+
+
+export default DataController

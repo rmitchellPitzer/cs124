@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import DataController from './modules/dataController/index.js';
 
 function App() {
+
+  console.log(DataController.todo() )
   return (
     <div className="App">
       <header className="App-header">
