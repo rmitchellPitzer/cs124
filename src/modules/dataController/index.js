@@ -24,7 +24,6 @@ class DataController {
     static todo() {
         return store.getState()
         .tasks.filter(task => task.isCompleted === false)
-
     }
 
     static completed() {

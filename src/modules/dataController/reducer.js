@@ -9,7 +9,8 @@ const initialState = {
 function createTask(state) {
     const id = uuidv4()
     const task = {text:"",isCompleted:false,id}
-    const newState = state.tasks.map()
+    console.log(task)
+    const newState = state.tasks.map(x => x)
     newState.push(task)
 
     return {
@@ -26,7 +27,7 @@ function deleteTask(state,id) {
 }
 
 function updateTaskText(state,{id,text}) {
-    const task = state.tasks.find(task => task.id == id)
+    const task = state.tasks.find(task => task.id === id)
     if (!task) return state
 
     task.text = text 
@@ -66,10 +67,14 @@ function deleteAllCompletedTasks(state) {
 
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
-        case CREATE_TASK:createTask(state)
-        case DELETE_TASK: deleteTask(state,action.payload.id)
-        case UPDATE_TASK_TEXT: updateTaskText(state,action.payload)
-        case TOGGLE_TASK_COMPLETION: toggleTaskCompletion(state,action.payload.id)
-        case DELETE_ALL_COMPLETED_TASK: deleteAllCompletedTasks(state)
+        case CREATE_TASK:createTask(state); break;
+        case DELETE_TASK: deleteTask(state,action.payload.id); break;
+        case UPDATE_TASK_TEXT: updateTaskText(state,action.payload); break;
+        case TOGGLE_TASK_COMPLETION: toggleTaskCompletion(state,action.payload.id); break;
+        case DELETE_ALL_COMPLETED_TASK: deleteAllCompletedTasks(state); break;
+        default:
+            return state 
     }
+
+
 }

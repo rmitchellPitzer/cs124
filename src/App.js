@@ -4,7 +4,9 @@ import DataController from './modules/dataController/index.js';
 
 function App() {
 
-  console.log(DataController.todo() )
+  DataController.createTask()
+  DataController.todo()
+  console.log(DataController.todo())
   return (
     <div className="App">
       <header className="App-header">
