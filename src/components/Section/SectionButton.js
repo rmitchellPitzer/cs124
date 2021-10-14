@@ -12,7 +12,6 @@ function handleOnClick(isToDo) {
     if (isToDo) {
         AppDataController.toggleTodoList()
     }
-
     else AppDataController.toggleCompletedList()
 }
 

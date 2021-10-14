@@ -7,17 +7,21 @@
 props: {
     text: string;
     command: Function 
+    icon: FontAwesomeIcon
 }
 */
 
-function ActionMenuItem(props) {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export default function ActionMenuItem(props) {
 
     return (
         <button onClick={props.command} class="action-item">
-            <i class="fas fa-plus"></i>
+            { props.icon && <FontAwesomeIcon icon= {props.icon}/> }
             <div class="action-text">
                 <p> {props.text} </p>
             </div>
         </button>
     )
 }
+

@@ -8,8 +8,6 @@ props: {
 }
 */
 export default function Task(props) {
-
-
     const classes = `task-item ${props.isCompleted ? 'completed' : ''}`
     return (
         <div class={classes}>
@@ -34,9 +32,9 @@ export default function Task(props) {
 
 function handleTextEvent(id,event) {
     const text = event.currentTarget.value
-    console.log(text)
     TaskDataController.updateTaskText(id,text)
 }
+
 function handleCheckBoxEvent(id) {
     TaskDataController.toggleTaskCompletion(id)
 }
