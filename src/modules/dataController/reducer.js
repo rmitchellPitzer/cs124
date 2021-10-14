@@ -37,11 +37,6 @@ function updateTaskText(state,{id,text}) {
     return {
         tasks: newTasks
     }
-
-
-
-
-
 }
 
 function toggleTaskCompletion(state,id) {
@@ -57,12 +52,10 @@ function toggleTaskCompletion(state,id) {
 }
 
 function deleteAllCompletedTasks(state) {
-   const newTasks = state.tasks.filter(task => task.isCompleted != true)
-
+   const newTasks = state.tasks.filter(task => task.isCompleted !== true)
    return {
        tasks:newTasks 
    }
-
 }
 
 export default function toDoReducer(state = initialState, action){
@@ -71,7 +64,7 @@ export default function toDoReducer(state = initialState, action){
         case DELETE_TASK: return deleteTask(state,action.payload.id)
         case UPDATE_TASK_TEXT: return updateTaskText(state,action.payload)
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
-        case DELETE_ALL_COMPLETED_TASK:return  deleteAllCompletedTasks(state)
+        case DELETE_ALL_COMPLETED_TASK: return deleteAllCompletedTasks(state)
         default:
             return state 
     }

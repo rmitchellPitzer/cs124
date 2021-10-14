@@ -1,0 +1,17 @@
+
+.banner {
+    display: flex;
+    justify-content: center;
+    background: #D8E2DC;
+    width: 100%;
+    height: 10vh;
+    color: lightblue;
+}
+
+.title {
+    text-align: center;
+    font-size: 5vh;
+    font-weight: 400;
+    padding-top: 15px;
+    color: #555957;
+}

@@ -22,7 +22,6 @@ class DataController {
     }
 
     static todo() {
-        console.log(store.getState())
         return store.getState()
         .tasks.filter(task => task.isCompleted === false)
     }
