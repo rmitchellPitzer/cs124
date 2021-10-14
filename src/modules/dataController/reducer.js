@@ -1,10 +1,11 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
-import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_TASK_COMPLETION, UPDATE_TASK_TEXT } from './actions';
+import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST, UPDATE_TASK_TEXT } from './actions';
 
 const initialState = {
-    tasks: []
-
+    tasks: [],
+    showCompleted: false,
+    showTodo: true 
 }
 
 function createTask(state) {
@@ -14,7 +15,8 @@ function createTask(state) {
     newState.push(task)
 
     return {
-        tasks:newState 
+        ...state,
+        tasks:newState
     }
  
 }
@@ -22,6 +24,7 @@ function createTask(state) {
 function deleteTask(state,id) {
     const tasks = state.tasks.filter(task => task.id !== id)
     return {
+        ...state,
         tasks 
     }
 }
@@ -35,6 +38,7 @@ function updateTaskText(state,{id,text}) {
     newTasks.push(task)
 
     return {
+        ...state,
         tasks: newTasks
     }
 }
@@ -46,6 +50,7 @@ function toggleTaskCompletion(state,id) {
     newTasks.push(task)
 
     return {
+        ...state,
         tasks:newTasks 
     }
 
@@ -54,8 +59,23 @@ function toggleTaskCompletion(state,id) {
 function deleteAllCompletedTasks(state) {
    const newTasks = state.tasks.filter(task => task.isCompleted !== true)
    return {
+       ...state,
        tasks:newTasks 
    }
+}
+
+function toggleCompletedList(state) {
+    return {
+        ...state,
+        showCompleted: !state.showCompleted
+    }
+}
+
+function toggleToDoList(state) {
+    return {
+        ...state,
+        showTodo: !state.showTodo 
+    }
 }
 
 export default function toDoReducer(state = initialState, action){
@@ -65,6 +85,8 @@ export default function toDoReducer(state = initialState, action){
         case UPDATE_TASK_TEXT: return updateTaskText(state,action.payload)
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
         case DELETE_ALL_COMPLETED_TASK: return deleteAllCompletedTasks(state)
+        case TOGGLE_TODO_LIST: return toggleToDoList(state)
+        case TOGGLE_COMPLETED_LIST: return toggleCompletedList(state)
         default:
             return state 
     }

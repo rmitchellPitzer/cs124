@@ -1,6 +1,6 @@
 import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
-class DataController {
+class TaskDataController {
     static updateTaskText(id,text) {
             const action = updateTaskTextAction(id,text)
             store.dispatch(action)
@@ -35,4 +35,4 @@ class DataController {
 };
 
 
-export default DataController
+export default TaskDataController

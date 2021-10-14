@@ -1,20 +1,23 @@
 import "./css/global.css"
 import "typeface-roboto"
-import DataController from './modules/dataController/index.js';
+import TaskDataController from './modules/dataController/TaskDataController.js';
 import Header from './components/Header';
 import SectionContainer from "./components/Section/SectionContainer.js"
 
 function App() {
 
-  DataController.createTask()
-  DataController.todo()
+  TaskDataController.createTask()
+
 
   return (
     <div class='container'>
       <Header/>
-      <SectionContainer className='todo-bar' sectionTitle="To Do">
-        
-      </SectionContainer>
+      <SectionContainer 
+        tasks = {TaskDataController.todo()} 
+        showContainer={true} 
+        className='todo-bar' 
+        sectionTitle="To Do"
+      />
     </div>
   );
 }
