@@ -14,7 +14,7 @@ function createTask(state) {
     newState.push(task)
 
     return {
-        task:newState 
+        tasks:newState 
     }
  
 }
