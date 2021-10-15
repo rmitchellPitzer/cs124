@@ -6,8 +6,9 @@ import Header from './components/Header';
 import SectionContainer from "./components/Section/SectionContainer.js"
 import ActionMenu from "./components/Action Commands/ActionMenu";
 import { connect } from "react-redux";
+import UndoButton from "./components/Undo/UndoButton";
 
-function App({menuIsActive}) {
+function App({menuIsActive,showUndo}) {
 
   return (
     <div class='container'>
@@ -22,6 +23,7 @@ function App({menuIsActive}) {
       />
       { menuIsActive && <ActionMenu/> }
       <ActionButton/>
+      { showUndo && <UndoButton/> }
     </div>
   );
 }
@@ -29,7 +31,8 @@ function App({menuIsActive}) {
 
 function mapToState(state) {
   return {
-    menuIsActive: AppDataController.menuIsActive()
+    menuIsActive: AppDataController.menuIsActive(),
+    showUndo: AppDataController.undoIsActive()
   }
 }
 

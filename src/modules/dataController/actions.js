@@ -7,7 +7,11 @@ export const TOGGLE_TODO_LIST = "toggleTodoList"
 export const TOGGLE_COMPLETED_LIST = "toggleCompletedList"
 export const SHOW_MENU = "showMenu"
 export const HIDE_MENU = "hideMenu"
+export const UNDO_TASK = "undoTask"
+export const TOGGLE_UNDO = "showUndo"
 
+export const toggleUndoAction = () => ({type:TOGGLE_UNDO})
+export const undoTaskAction = () => ({type:UNDO_TASK})
 export const showMenuAction = () => ({type:SHOW_MENU})
 export const hideMenuAction = () => ({type:HIDE_MENU})
 export const createTaskAction = () => ({type:CREATE_TASK})

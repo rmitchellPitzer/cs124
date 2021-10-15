@@ -14,9 +14,19 @@ menuItem {
     command: Function
 }
 */
+
+
+function deleteAll() {
+    TaskDataController.deleteAllCompleted()
+
+    AppDataController.toggleUndo()
+    setTimeout( () => {
+        AppDataController.toggleUndo()
+    },3000)
+}
 const menuItems = [
     {text:"Add Task", command: TaskDataController.createTask, icon: faPlus},
-    {text: "Clear Completed Tasks", command: TaskDataController.deleteAllCompleted, icon: faMinus},
+    {text: "Clear Completed Tasks", command:deleteAll, icon: faMinus},
 ]
 
 export default function ActionMenu(props) {
