@@ -1,3 +1,6 @@
+
+
+
 .action-container {
     position: fixed;
     width: 400px;
@@ -8,6 +11,16 @@
     padding: 20px;
     z-index: 20;
     border-radius: 20px;
+}
+
+@media (max-width:400px) {
+
+    .action-container {
+        top: 60%;
+        left: 45%;
+        width: 150px;
+    }
+    
 }
 
 
@@ -24,15 +37,21 @@
     display: initial;
 }
 
+
+.action-item:hover {
+    background: grey;
+    color: white;
+}
+
 .action-item {
-    font-size: 3em;
+    font-size: 1.5em;
     display: flex;
     color: #7a7a7a;
     outline: none;
     border: none;
     background: transparent;
     width: 100%;
-    padding: 0 30px 0 30px;
+    padding: 10px;
     border-radius: 10px;
     font-family: "Roboto";
     margin-bottom: 20px;

@@ -1,8 +1,13 @@
+.action-button:hover{
+    background:grey;
+    color:white;
+}
+
 .action-button {
     position: fixed;
     width: 100px;
     top: 80%;
-    left: 90%;
+    right: 20px;
     height: 100px;
     max-width: 200px;
     max-height: 200px;
