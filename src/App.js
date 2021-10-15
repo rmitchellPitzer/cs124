@@ -1,6 +1,5 @@
 import "./css/global.css"
 import "typeface-roboto"
-import TaskDataController from './modules/dataController/TaskDataController.js';
 import ActionButton from "./components/Action Commands/ActionButton";
 import AppDataController from "./modules/dataController/AppDataController";
 import Header from './components/Header';

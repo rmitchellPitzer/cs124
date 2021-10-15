@@ -12,6 +12,7 @@ import SectionBar from "./SectionBar.js"
     showContainer: boolean
 }
 */
+
 function SectionContainer(props) {
     return (
         <div>
@@ -20,7 +21,6 @@ function SectionContainer(props) {
         </div>
     )
 }
-
 
 function mapStateToProps(state,ownProps) {
     const isToDo = ownProps.sectionTitle === "To Do"
@@ -36,6 +36,4 @@ function mapStateToProps(state,ownProps) {
     }
 }
 
-export default connect(
-    mapStateToProps,
-)(SectionContainer)
+export default connect(mapStateToProps)(SectionContainer)
