@@ -18,11 +18,11 @@ menuItem {
 
 function deleteAll() {
     TaskDataController.deleteAllCompleted()
-
-    AppDataController.toggleUndo()
+    AppDataController.showUndo()
     setTimeout( () => {
-        AppDataController.toggleUndo()
+        AppDataController.hideUndo()
     },3000)
+    
 }
 const menuItems = [
     {text:"Add Task", command: TaskDataController.createTask, icon: faPlus},

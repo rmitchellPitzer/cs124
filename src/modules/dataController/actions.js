@@ -8,9 +8,11 @@ export const TOGGLE_COMPLETED_LIST = "toggleCompletedList"
 export const SHOW_MENU = "showMenu"
 export const HIDE_MENU = "hideMenu"
 export const UNDO_TASK = "undoTask"
-export const TOGGLE_UNDO = "showUndo"
+export const SHOW_UNDO = "showUndo"
+export const HIDE_UNDO = "hideUndo"
 
-export const toggleUndoAction = () => ({type:TOGGLE_UNDO})
+export const showUndoAction = () => ({type:SHOW_UNDO})
+export const hideUndoAction = () => ({type:HIDE_UNDO})
 export const undoTaskAction = () => ({type:UNDO_TASK})
 export const showMenuAction = () => ({type:SHOW_MENU})
 export const hideMenuAction = () => ({type:HIDE_MENU})

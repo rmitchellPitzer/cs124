@@ -1,4 +1,4 @@
-import { hideMenuAction, showMenuAction, toggleCompletedListAction, toggleToDoListAction, toggleUndoAction, undoTaskAction } from "./actions.js"
+import { hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, toggleUndoAction, undoTaskAction } from "./actions.js"
 import store from "./store.js"
 
 export default class AppDataController {
@@ -35,8 +35,13 @@ export default class AppDataController {
         store.dispatch(action)
     }
 
-    static toggleUndo() {
-        const action = toggleUndoAction()
+    static showUndo() {
+        const action = showUndoAction()
+        store.dispatch(action)
+    }
+
+    static hideUndo() {
+        const action = hideUndoAction()
         store.dispatch(action)
     }
 
