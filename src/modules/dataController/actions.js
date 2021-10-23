@@ -10,6 +10,7 @@ export const HIDE_MENU = "hideMenu"
 export const UNDO_TASK = "undoTask"
 export const SHOW_UNDO = "showUndo"
 export const HIDE_UNDO = "hideUndo"
+export const UPDATE_TASKS = "updateTasks"
 
 export const showUndoAction = () => ({type:SHOW_UNDO})
 export const hideUndoAction = () => ({type:HIDE_UNDO})
@@ -23,3 +24,4 @@ export const toggleTaskCompletionAction = (id) => ({type: TOGGLE_TASK_COMPLETION
 export const deleteAllCompletedTasksAction = () => ({type: DELETE_ALL_COMPLETED_TASK})
 export const toggleCompletedListAction = () => ({type:TOGGLE_COMPLETED_LIST})
 export const toggleToDoListAction = () => ({type:TOGGLE_TODO_LIST})
+export const updateTasksAction = (tasks) => ({type:UPDATE_TASKS,payload:{tasks}})

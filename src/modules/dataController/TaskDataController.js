@@ -1,27 +1,65 @@
 import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, toggleTaskCompletionAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
-class TaskDataController {
-    static updateTaskText(id,text) {
-            const action = updateTaskTextAction(id,text)
-            store.dispatch(action)
-    }
+import db from "../db/index"
+import { v4 as uuidv4 } from 'uuid';
+import TaskList from "../../components/Tasks/TaskList"
 
-    static toggleTaskCompletion(id) {
-        const action = toggleTaskCompletionAction(id)
-        store.dispatch(action)
+const COLLECTION_NAME = "todoiz.io"
+const DEFAULT_DOC_ID = "default"
+const TASK_SUBCOLLECTION = "tasks"
+const collectionRef = db.collection(COLLECTION_NAME)
+
+async function getTask(id) {
+    return await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
+}
+
+
+/*
+Task {
+
+    isCompleted: boolean;
+    text: string;
+    
+
+}
+*/
+class TaskDataController {
+    static async updateTaskText(id,text) {
+        // DOC
+        const task = await getTask(id)
+        await task.update({
+                text
+            })
+    } 
+
+    static async toggleTaskCompletion(id) {
+        const task = await getTask(id)
+        if (!task) return 
+        const {isCompleted} = task 
+
+        task.update({
+            isCompleted:!isCompleted
+        })
     }
 
     static createTask() {
-        const action = createTaskAction()
-        store.dispatch(action)
+        const id = uuidv4()
+        collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id).set({
+            isCompleted: false,
+            text: "",
+            id
+        })
+
     }
 
-    static deleteTask(id) {
-        const action = deleteTaskAction(id)
-        store.dispatch(action)
+    static async deleteTask(id) {
+        const task = await getTask(id)
+        if (!task) return
+        await task.delete() 
     }
 
     static deleteAllCompleted() {
+        //@todo 
         const action = deleteAllCompletedTasksAction()
         store.dispatch(action)
     }
@@ -35,8 +73,6 @@ class TaskDataController {
         return store.getState()
         .tasks.filter(task => task.isCompleted === true)
     }
-
-
 };
 
 

@@ -1,6 +1,9 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
-import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, HIDE_MENU, HIDE_UNDO, SHOW_MENU, SHOW_UNDO, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST, TOGGLE_UNDO, UNDO_TASK, UPDATE_TASK_TEXT } from './actions';
+import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, 
+    DELETE_TASK, HIDE_MENU, HIDE_UNDO, SHOW_MENU, 
+    SHOW_UNDO, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, 
+    TOGGLE_TODO_LIST, UNDO_TASK, UPDATE_TASKS, UPDATE_TASK_TEXT } from './actions';
 
 const initialState = {
     tasks: [],
@@ -70,7 +73,6 @@ function deleteAllCompletedTasks(state) {
    }
 }
 
-
 function undoTask(state) {
     const stack = state.stack.map(x => x)
 
@@ -123,6 +125,13 @@ function hideUndo(state) {
     }
 }
 
+function updateTasks(state,tasks) {
+    return {
+        ...state,
+        tasks
+    }
+}
+
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case CREATE_TASK: return createTask(state)
@@ -137,6 +146,7 @@ export default function toDoReducer(state = initialState, action){
         case UNDO_TASK: return undoTask(state)
         case SHOW_UNDO: return showUndo(state)
         case HIDE_UNDO: return hideUndo(state)
+        case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
         default:
             return state 
     }

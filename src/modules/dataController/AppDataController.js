@@ -1,4 +1,6 @@
-import { hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, toggleUndoAction, undoTaskAction } from "./actions.js"
+import { 
+    hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, 
+    undoTaskAction } from "./actions.js"
 import store from "./store.js"
 
 export default class AppDataController {

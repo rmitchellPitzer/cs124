@@ -1,3 +1,5 @@
 import firebaseConfig from "./firebaseConfig"
+import firebase from "firebase/compat";
+
 firebase.initializeApp(firebaseConfig)
-firebase.firestore()
+export default firebase.firestore()
