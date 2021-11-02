@@ -8,7 +8,7 @@
     isCompleted:Boolean;
     text:String;
     creationDate:Number (Unix);
-    
+    priority: Number;
 }
 ```
 
