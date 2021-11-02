@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import UndoButton from "./components/Undo/UndoButton";
 
 function App({menuIsActive,showUndo}) {
-
   return (
     <div class='container'>
       <Header/>
@@ -25,15 +24,12 @@ function App({menuIsActive,showUndo}) {
       <ActionButton/>
       { showUndo && <UndoButton/> }
     </div>
-  );
+  )
 }
-
-
 function mapToState(state) {
   return {
     menuIsActive: AppDataController.menuIsActive(),
     showUndo: AppDataController.undoIsActive()
   }
 }
-
 export default connect(mapToState)(App)
