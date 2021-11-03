@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ec43724-934e-4318-ba59-150075756910" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/Sorting Design Doc.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/dataController/TaskOrderController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/sorting/sortingAlgorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/DataModel.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/DataModel.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,6 +41,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -46,7 +58,9 @@
       <option name="presentableId" value="Default" />
       <updated>1635452487586</updated>
       <workItem from="1635452488751" duration="808000" />
-      <workItem from="1635892840908" duration="1562000" />
+      <workItem from="1635892840908" duration="5766000" />
+      <workItem from="1635903614268" duration="613000" />
+      <workItem from="1635982204938" duration="1358000" />
     </task>
     <servers />
   </component>
@@ -63,5 +77,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
