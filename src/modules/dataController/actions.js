@@ -23,3 +23,17 @@ export const toggleTaskCompletionAction = (id) => ({type: TOGGLE_TASK_COMPLETION
 export const deleteAllCompletedTasksAction = () => ({type: DELETE_ALL_COMPLETED_TASK})
 export const toggleCompletedListAction = () => ({type:TOGGLE_COMPLETED_LIST})
 export const toggleToDoListAction = () => ({type:TOGGLE_TODO_LIST})
+
+// new actions
+
+
+// for opening the priority menu
+export const SHOW_PRIORITY_MENU = "showPriority"
+export const showPriorityAction = () => ({type:SHOW_PRIORITY_MENU})
+
+export const HIDE_PRIORITY_MENU = "hidePriority"
+export const hidePriorityAction = () => ({type:HIDE_PRIORITY_MENU})
+
+// for updating the priority menu
+
+export const

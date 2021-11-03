@@ -1,0 +1,17 @@
+
+
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export default function PriorityMenuItem(props) {
+
+    return (
+        <button onClick={() => props.command()} class="action-item">
+            { props.icon && <FontAwesomeIcon icon= {props.icon}/> }
+            <div class="action-text">
+                <p> {props.text} </p>
+            </div>
+        </button>
+    )
+}
+

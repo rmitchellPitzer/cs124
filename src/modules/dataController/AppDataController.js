@@ -1,4 +1,4 @@
-import { hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, toggleUndoAction, undoTaskAction } from "./actions.js"
+import { hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, toggleUndoAction, undoTaskAction, showPriorityAction, hidePriorityAction} from "./actions.js"
 import store from "./store.js"
 
 export default class AppDataController {
@@ -52,6 +52,16 @@ export default class AppDataController {
 
     static undoIsActive() {
         return store.getState().showUndo 
+    }
+
+    static showPriorityMenu() {
+        const action = showPriorityAction()
+        store.dispatch(action)
+    }
+
+    static hidePriorityMenu() {
+        const action = hidePriorityAction()
+        store.dispatch(action)
     }
 
 }

@@ -36,6 +36,11 @@ class TaskDataController {
         .tasks.filter(task => task.isCompleted === true)
     }
 
+    static togglePriority(id, value) {
+        const action = updateTaskTextAction(id,text)
+        store.dispatch(action)
+    }
+
 
 };
 

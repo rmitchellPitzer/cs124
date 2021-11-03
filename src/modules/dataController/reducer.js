@@ -123,6 +123,23 @@ function hideUndo(state) {
     }
 }
 
+// new for priority:
+
+function showPriority(state) {
+    return {
+        ...state,
+        showPriority: true
+    }
+}
+
+function hidePriority(state) {
+    return {
+        ...state,
+        showPriority: false
+    }
+}
+
+
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case CREATE_TASK: return createTask(state)
@@ -137,6 +154,9 @@ export default function toDoReducer(state = initialState, action){
         case UNDO_TASK: return undoTask(state)
         case SHOW_UNDO: return showUndo(state)
         case HIDE_UNDO: return hideUndo(state)
+        // new for priority
+        case SHOW_PRIORITY_MENU: return showPriority(state)
+        case HIDE_PRIORITY_MENU: return hidePriority(state)
         default:
             return state 
     }
