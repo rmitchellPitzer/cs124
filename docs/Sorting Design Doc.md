@@ -10,7 +10,8 @@ We have available to us a variety of fields,
 specifically text which is a string, priority which is a number,
 and creation date which is a unix time number.
 
-## Approach
+##Sequence Diagram
+
 
 ### Example 
 
@@ -87,4 +88,3 @@ isAscending:Boolean
 }
 ```
 
-### 

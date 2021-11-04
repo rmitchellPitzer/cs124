@@ -1,6 +1,21 @@
 # Data Models
 
-## Task Properties 
+
+## Sorting Filters
+```js
+sortingFilters:ISortData[]
+```
+
+### ISortData 
+```js
+@ISortData: {
+field:"name"|"time"|"priority",
+isAscending:Boolean
+}
+
+```
+
+## Task SubCollection
 
 ```js 
 {
@@ -11,6 +26,8 @@
     priority: Number;
 }
 ```
+
+##
 
 
 
