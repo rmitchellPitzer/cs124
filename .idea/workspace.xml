@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ec43724-934e-4318-ba59-150075756910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Sorting Design Doc.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/dataController/TaskOrderController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/sorting/sortingAlgorithm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/example.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/sortingAlgorithm.spec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/DataModel.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/DataModel.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/sorting/sortingAlgorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/sorting/sortingAlgorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
       <workItem from="1635452488751" duration="808000" />
       <workItem from="1635892840908" duration="5766000" />
       <workItem from="1635903614268" duration="613000" />
-      <workItem from="1635982204938" duration="1358000" />
+      <workItem from="1635982204938" duration="3677000" />
     </task>
     <servers />
   </component>

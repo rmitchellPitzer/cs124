@@ -18,7 +18,7 @@ export const NAME = "name"
 export const TIME = "time"
 export const PRIORITY = "priority"
 
-function applySorting(sortDataList,tasks) {
+export default function applySorting(sortDataList,tasks) {
     for (let i = 0; i < sortDataList.length; i++) {
         const sortData = sortDataList[i]
         const sortFunction = getSortFunction(sortData)
@@ -36,7 +36,7 @@ function applySorting(sortDataList,tasks) {
 }
 
 function isFirstSortField(index) {
-    return i == 0
+    return index == 0
 }
 
 function sortTasks(tasks,sortFunction,sortData) {
@@ -51,10 +51,8 @@ function sortBySecondaryKey(prevSortData,prevSortFunction,sortData,tasks,sortFun
     })
 }
 
-
-
 function valuesAreEqual(sortData,sortFunction,a,b) {
-    return sortFunction(a,b,sortData.isAscending)
+    return sortFunction(a,b,sortData.isAscending) == 0
 }
 
 function getSortFunction({field,isAscending}) {
@@ -63,12 +61,6 @@ function getSortFunction({field,isAscending}) {
         case TIME: return sortByTime;
         case PRIORITY: return sortByPriority;
         default: return
-    }
-}
-
-function isFirstSortCriteria({field,isAscending}) {
-    switch (field) {
-        case "name": return sortByName
     }
 }
 
