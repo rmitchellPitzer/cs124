@@ -11,6 +11,39 @@ export default class TaskOrderController {
         else enableFilter(sortFilters,field,isAscending)
     }
 
+    static async changeSortField(old,newField) {
+        const sortFilters = await getSortFields()
+        const prevField = sortFilters.find(f => f.field == old)
+        if (!prevField) return
+        prevField.field = newField
+        await updateSortFields(sortFilters)
+    }
+
+    static async changeAscending(field,isAscending) {
+        const sortFilters = await getSortFields()
+        const prevField = sortFilters.find(f => f.field == field)
+        if (!prevField) return
+        prevField.isAscending = isAscending
+        await updateSortFields(sortFilters)
+
+
+    }
+
+    static async addRandomField() {
+        const sortFilters = await getSortFields()
+        if (!sortFilters) return
+
+        const hasName = !!sortFilters.find(f => f.field == "name")
+        const hasTime = !!sortFilters.find(f => f.field == "time")
+        const hasPriority = !!sortFilters.find(f => f.field == "priority")
+
+        if (!hasName) TaskOrderController.addSortField("name",true)
+        else if (!hasTime) TaskOrderController.addSortField("time",true)
+        else if (!hasPriority) TaskOrderController.addSortField("priority",true)
+
+
+    }
+
     static async removeSortField(field) {
         const sortFields = await getSortFields()
         const doc = getDoc()

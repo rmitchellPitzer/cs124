@@ -7,8 +7,9 @@ import SectionContainer from "./components/Section/SectionContainer.js"
 import ActionMenu from "./components/Action Commands/ActionMenu";
 import { connect } from "react-redux";
 import UndoButton from "./components/Undo/UndoButton";
+import SortMenuContainer from "./components/SortMenu/SortMenuContainer";
 
-function App({menuIsActive,showUndo}) {
+function App({menuIsActive,showUndo,showSortMenu}) {
   return (
     <div class='container'>
       <Header/>
@@ -23,6 +24,9 @@ function App({menuIsActive,showUndo}) {
       { menuIsActive && <ActionMenu/> }
       <ActionButton/>
       { showUndo && <UndoButton/> }
+    {showSortMenu && <SortMenuContainer/>}
+
+
     </div>
   )
 }
@@ -30,7 +34,8 @@ function App({menuIsActive,showUndo}) {
 function mapToState(state) {
   return {
     menuIsActive: AppDataController.menuIsActive(),
-    showUndo: AppDataController.undoIsActive()
+    showUndo: AppDataController.undoIsActive(),
+      showSortMenu: AppDataController.showSortMenu()
   }
 }
 export default connect(mapToState)(App)

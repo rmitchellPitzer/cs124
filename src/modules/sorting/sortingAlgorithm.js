@@ -56,6 +56,7 @@ function valuesAreEqual(sortData,sortFunction,a,b) {
 }
 
 function getSortFunction({field,isAscending}) {
+    console.log(field)
     switch (field) {
         case NAME : return sortByName;
         case TIME: return sortByTime;

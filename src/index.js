@@ -8,7 +8,7 @@ import TaskOrderController from "./modules/dataController/TaskOrderController"
 import initSubscription from "./modules/setup/initSubscriptions"
 async function update() {
     await TaskOrderController.addSortField("name",true)
-    await TaskOrderController.removeSortField("priority")
+    await TaskOrderController.removeSortField("proximity")
     await TaskOrderController.removeSortField("time")
 
 }
