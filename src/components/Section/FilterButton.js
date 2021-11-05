@@ -8,7 +8,8 @@ function toggleButton() {
 }
 
 export default function FilterButton(props) {
-   return  <button className="sort-button" onClick={toggleButton}> <FontAwesomeIcon icon={faFilter}/> </button>
+   const classes = !props.isToDo ? "sort-button hide" : "sort-button"
+   return  <button className={classes} onClick={toggleButton}> <FontAwesomeIcon icon={faFilter}/> </button>
 }
 
 

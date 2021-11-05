@@ -8,8 +8,8 @@ function deleteSort(fieldName) {
 export default function DeleteButton(props) {
 
     return (
-        <button onClick={() => deleteSort(props.field)} >
-            <span> X </span>
+        <button className="delete-button" onClick={() => deleteSort(props.field)} >
+            <span> x </span>
         </button>
     )
 }

@@ -10,7 +10,7 @@ export default function SectionBar(props) {
         <div class={classes}>
             <SectionButton isToDo = { props.className === "todo-bar" }/>
             <h1 class="bar-title"> {props.sectionTitle} </h1>
-            <FilterButton/>
+             <FilterButton isToDo={props.isToDo}/>
         </div>  
     )
 }

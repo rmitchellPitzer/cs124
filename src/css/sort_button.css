@@ -1,7 +1,9 @@
 
 
 
-
+.hide {
+    visibility: hidden;
+}
 
 .sort-button {
     outline:none;

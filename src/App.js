@@ -17,10 +17,13 @@ function App({menuIsActive,showUndo,showSortMenu}) {
         className='todo-bar' 
         sectionTitle="To Do"
       />
-      <SectionContainer 
-        className='completed-bar' 
-        sectionTitle="Completed"
-      />
+        {
+            !showSortMenu && <SectionContainer
+                className='completed-bar'
+                sectionTitle="Completed"
+            />
+        }
+
       { menuIsActive && <ActionMenu/> }
       <ActionButton/>
       { showUndo && <UndoButton/> }

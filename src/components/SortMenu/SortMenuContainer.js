@@ -10,9 +10,9 @@ function SortMenuContainer(props) {
     return (
         <div className="sort-container">
             <div className="sort-bar">
-                <h2> Filter</h2>
+                <h2 className="sort-title"> Sort </h2>
                 <div className='sort-section'>
-                    <AddFilterButton/>
+                    <AddFilterButton sortingFields={props.sortingFields}/>
                     <CloseMenuButton/>
                 </div>
 

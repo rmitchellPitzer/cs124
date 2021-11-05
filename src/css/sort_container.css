@@ -3,27 +3,39 @@
 
 .sort-container {
     position: fixed;
-    top: 0;
+    top: 50vh;
     width: 100vw;
-    height: 100vh;
-    background: white;
+    height: 50vh;
+    background: #FFD8B6;
 }
 
+
+.sort-title {
+   color: #796555;
+}
 .sort-bar {
     display: flex;
     justify-content: space-between;
     width: 95%;
     padding-top: 20px;
     padding-left: 5px;
+    padding-bottom: 20px;
 
 }
 
 .sort-section {
     display: flex;
+    width: 100px;
+    justify-content: space-between;
 
 }
-.sort-button {
-    background: orange;
-    border: none;
 
+
+.sort-button-color {
+    background: #EEB580;
+    border: none;
+    border-radius: 5px;
+}
+.sort-close-button {
+    width: 30px;
 }

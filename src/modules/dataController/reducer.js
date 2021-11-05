@@ -147,7 +147,6 @@ function hideUndo(state) {
 }
 
 function updateTasks(state,oldTasks) {
-    console.log(oldTasks)
     const tasks = sortingAlgorithm(state.sortingFields,oldTasks)
     return {
         ...state,
@@ -157,8 +156,6 @@ function updateTasks(state,oldTasks) {
 
 function updateSortingFields(state,{sortingFields}) {
     const tasks = sortingAlgorithm(sortingFields,state.tasks)
-    console.log("I am updating",sortingFields)
-
     return {
         ...state,
         tasks,

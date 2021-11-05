@@ -5,4 +5,27 @@
 .entry-container {
     display: flex;
     padding: 10px;
+    justify-content: space-between;
+    background: #F9DDDD;
+}
+
+.sort-order {
+    background: none;
+    border: none;
+}
+
+.direction-button {
+    background: none;
+    border: none;
+}
+.sort-type {
+    padding: 5px;
+    border-radius: 10px;
+}
+.delete-button {
+    border-radius: 2.5px;
+    border: none;
+    background: pink;
+    padding: 8px;
+    color: #522648;
 }
