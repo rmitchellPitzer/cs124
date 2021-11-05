@@ -8,8 +8,8 @@ import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
 
 const collectionRef = db.collection(COLLECTION_NAME)
 
-async function getTask(id) {
-    return await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
+ function getTask(id) {
+    return collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
 }
 
 
@@ -32,11 +32,11 @@ class TaskDataController {
     } 
 
     static async toggleTaskCompletion(id) {
-        const task = await getTask(id)
+        const doc = getTask(id)
+        const task = await doc.get()
         if (!task) return 
-        const {isCompleted} = task 
-
-        task.update({
+        const {isCompleted} = task.data()
+        await doc.update({
             isCompleted:!isCompleted
         })
     }
