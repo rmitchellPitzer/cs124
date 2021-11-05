@@ -4,15 +4,23 @@ import store from "./store"
 
 class DataSyncController {
     _db = db
-    _subscription = null 
+    _taskSubscription = null
+    _sortSubscrption = null
 
-    setSubscription(query) {
-        this._subscription = query.onSnapshot( snapshot => {
+    setTaskSubscription(query) {
+        this._taskSubscription = query.onSnapshot( snapshot => {
             console.log(snapshot)
             const tasks = snapshot.docs.map(task => task.data())
             const action = updateTasksAction(tasks)
             store.dispatch(action)
         })
+    }
+
+    setSortSubscription(query) {
+        this._sortSubscrption = query.onSnapshot(snapshot => {
+            const sortFields = snapshot
+        })
+
     }
 }
 
