@@ -32,7 +32,7 @@ export default function applySorting(sortDataList,tasks) {
         }
 
     }
-    return tasks
+    return tasks.map(x => x)
 }
 
 function isFirstSortField(index) {

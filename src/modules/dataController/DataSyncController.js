@@ -1,5 +1,5 @@
 import db from "../db/index"
-import { updateTasksAction } from "./actions"
+import {updateSortingFieldsAction, updateTasksAction} from "./actions"
 import store from "./store"
 
 class DataSyncController {
@@ -19,7 +19,8 @@ class DataSyncController {
     setSortSubscription(query) {
         this._sortSubscrption = query.onSnapshot(snapshot => {
             const {sortingFields} = snapshot.data()
-            console.log(sortingFields)
+            const action = updateSortingFieldsAction(sortingFields)
+            store.dispatch(action)
         })
 
     }

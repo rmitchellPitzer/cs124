@@ -46,7 +46,9 @@ class TaskDataController {
         collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id).set({
             isCompleted: false,
             text: "",
-            id
+            id,
+            priority: -1,
+            creationDate: Date.now()
         })
 
     }
@@ -57,10 +59,16 @@ class TaskDataController {
         await task.delete() 
     }
 
-    static deleteAllCompleted() {
-        //@todo 
-        const action = deleteAllCompletedTasksAction()
-        store.dispatch(action)
+    static async deleteAllCompleted() {
+        const tasks = await collectionRef
+            .doc(DEFAULT_DOC_ID)
+            .collection(TASK_SUBCOLLECTION)
+            .where("isCompleted","==",true)
+            .get()
+
+        for (const task of tasks.docs) {
+            await task.ref.delete()
+        }
     }
 
     static todo() {
