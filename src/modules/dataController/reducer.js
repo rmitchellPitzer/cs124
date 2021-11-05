@@ -138,7 +138,6 @@ function hideUndo(state) {
 
 function updateTasks(state,oldTasks) {
     const tasks = sortingAlgorithm(state.sortingFields,oldTasks)
-    console.log(tasks)
     return {
         ...state,
         tasks
@@ -159,7 +158,6 @@ function updateSortingFields(state,{sortingFields}) {
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
-        case DELETE_ALL_COMPLETED_TASK: return deleteAllCompletedTasks(state)
         case TOGGLE_TODO_LIST: return toggleToDoList(state)
         case TOGGLE_COMPLETED_LIST: return toggleCompletedList(state)
         case SHOW_MENU: return showMenu(state)
