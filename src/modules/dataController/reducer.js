@@ -147,6 +147,7 @@ export default function toDoReducer(state = initialState, action){
         case SHOW_UNDO: return showUndo(state)
         case HIDE_UNDO: return hideUndo(state)
         case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
+        case
         default:
             return state 
     }

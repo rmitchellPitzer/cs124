@@ -18,7 +18,8 @@ class DataSyncController {
 
     setSortSubscription(query) {
         this._sortSubscrption = query.onSnapshot(snapshot => {
-            const sortFields = snapshot
+            const {sortingFields} = snapshot.data()
+            console.log(sortingFields)
         })
 
     }

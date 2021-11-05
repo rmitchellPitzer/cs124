@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ec43724-934e-4318-ba59-150075756910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/setup/initSubscriptions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/dataController/DataSyncController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/DataSyncController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/dataController/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/dataController/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,8 @@
       <workItem from="1635982204938" duration="7072000" />
       <workItem from="1636050445776" duration="353000" />
       <workItem from="1636074593930" duration="928000" />
-      <workItem from="1636075543288" duration="3085000" />
+      <workItem from="1636075543288" duration="3425000" />
+      <workItem from="1636079094096" duration="22000" />
     </task>
     <servers />
   </component>
