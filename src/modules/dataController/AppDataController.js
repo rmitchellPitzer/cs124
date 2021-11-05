@@ -1,7 +1,7 @@
 import {
-    hideMenuAction, hideSortFieldAction,
+    hideMenuAction, hidePriorityMenuAction, hideSortFieldAction,
     hideUndoAction,
-    showMenuAction,
+    showMenuAction, showPriorityMenuAction,
     showUndoAction,
     toggleCompletedListAction,
     toggleSortFieldAction,
@@ -74,6 +74,16 @@ export default class AppDataController {
 
     static undoIsActive() {
         return store.getState().showUndo 
+    }
+
+    static showPriorityMenu(id) {
+        const action = showPriorityMenuAction(id)
+        store.dispatch(action)
+    }
+
+    static hidePriorityMenu() {
+        const action = hidePriorityMenuAction()
+        store.dispatch(action)
     }
 
 }
