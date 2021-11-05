@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ec43724-934e-4318-ba59-150075756910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/dataController/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/DataModel.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/DataModel.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/dataController/TaskDataController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/TaskDataController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/dataController/DataSyncController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/DataSyncController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/dataController/TaskOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/dataController/TaskOrderController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +73,7 @@
       <workItem from="1635982204938" duration="7072000" />
       <workItem from="1636050445776" duration="353000" />
       <workItem from="1636074593930" duration="928000" />
-      <workItem from="1636075543288" duration="807000" />
+      <workItem from="1636075543288" duration="2351000" />
     </task>
     <servers />
   </component>

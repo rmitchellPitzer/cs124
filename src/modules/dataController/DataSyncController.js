@@ -8,6 +8,7 @@ class DataSyncController {
 
     setSubscription(query) {
         this._subscription = query.onSnapshot( snapshot => {
+            console.log(snapshot)
             const tasks = snapshot.docs.map(task => task.data())
             const action = updateTasksAction(tasks)
             store.dispatch(action)
