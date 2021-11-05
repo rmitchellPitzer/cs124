@@ -26,6 +26,7 @@ function App({menuIsActive,showUndo}) {
     </div>
   )
 }
+
 function mapToState(state) {
   return {
     menuIsActive: AppDataController.menuIsActive(),

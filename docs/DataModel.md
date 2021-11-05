@@ -3,7 +3,7 @@
 
 ## Sorting Filters
 ```js
-sortingFilters:ISortData[]
+sortingFields:ISortData[]
 ```
 
 ### ISortData 
@@ -19,7 +19,7 @@ isAscending:Boolean
 
 ```js 
 {
-    _id:String (UUIDV4);
+    id:String (UUIDV4);
     isCompleted:Boolean;
     text:String;
     creationDate:Number (Unix);

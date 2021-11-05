@@ -3,10 +3,9 @@ import store from "./store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
 import TaskList from "../../components/Tasks/TaskList"
+import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
 
-const COLLECTION_NAME = "todoiz.io"
-const DEFAULT_DOC_ID = "default"
-const TASK_SUBCOLLECTION = "tasks"
+
 const collectionRef = db.collection(COLLECTION_NAME)
 
 async function getTask(id) {
