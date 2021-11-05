@@ -10,6 +10,10 @@ export default class AppDataController {
         store.dispatch(action)
     }
 
+    static toggleSortFieldMenu() {
+        const action =
+    }
+
     static showToDo() {
         return store.getState().showTodo 
     }
