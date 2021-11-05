@@ -4,7 +4,6 @@
 .sort-container {
     position: fixed;
     top: 0;
-    padding: 20px;
     width: 100vw;
     height: 100vh;
     background: white;
@@ -14,12 +13,17 @@
     display: flex;
     justify-content: space-between;
     width: 95%;
+    padding-top: 20px;
+    padding-left: 5px;
 
 }
 
+.sort-section {
+    display: flex;
+
+}
 .sort-button {
     background: orange;
     border: none;
-    padding: 20px;
 
 }

@@ -4,18 +4,14 @@ import './index.css';
 import App from './App';
 import { Provider } from "react-redux"
 import store from "./modules/dataController/store.js"
-import TaskOrderController from "./modules/dataController/TaskOrderController"
 import initSubscription from "./modules/setup/initSubscriptions"
-async function update() {
-    await TaskOrderController.addSortField("name",true)
-    await TaskOrderController.removeSortField("proximity")
-    await TaskOrderController.removeSortField("time")
+import TaskDataController from "./modules/dataController/TaskDataController";
 
+async function update() {
+   await TaskDataController.deleteAllCompleted()
 }
 
-update()
 initSubscription()
-
 ReactDOM.render(
   <Provider store={store}>
     <App/>

@@ -1,5 +1,5 @@
 import {
-    hideMenuAction,
+    hideMenuAction, hideSortFieldAction,
     hideUndoAction,
     showMenuAction,
     showUndoAction,
@@ -18,6 +18,11 @@ export default class AppDataController {
     }
     static showSortMenu() {
         return store.getState().showSortMenu
+    }
+
+    static hideSortMenu() {
+        const action = hideSortFieldAction()
+        store.dispatch(action)
     }
 
     static toggleSortFieldMenu() {

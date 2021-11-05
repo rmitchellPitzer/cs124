@@ -11,7 +11,7 @@ function SortMenuContainer(props) {
         <div className="sort-container">
             <div className="sort-bar">
                 <h2> Filter</h2>
-                <div>
+                <div className='sort-section'>
                     <AddFilterButton/>
                     <CloseMenuButton/>
                 </div>
@@ -22,7 +22,7 @@ function SortMenuContainer(props) {
             <div class='field-container'>
                 {
                     props.sortingFields.map((data,index) => {
-                        return <SortEntryContainer index={index} {...data} />
+                        return <SortEntryContainer key={index} index={index} {...data} />
                     })
                 }
             </div>

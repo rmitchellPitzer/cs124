@@ -13,7 +13,7 @@ export default function IsAscendingButton(props) {
                 type='checkbox'
                 value={props.isAscending}
                 checked= {props.isAscending}
-                onChange= {(e) => change(props.default,e.currentTarget.value)}
+                onChange= {() => change(props.field,props.isAscending)}
             />
         </div>
 

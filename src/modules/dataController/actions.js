@@ -13,6 +13,7 @@ export const HIDE_UNDO = "hideUndo"
 export const UPDATE_TASKS = "updateTasks"
 export const UPDATE_SORTING_FIELDS = "updateSortingFields"
 export const TOGGLE_SORT_FIELD_MENU = "toggleSortFieldMenu"
+export const HIDE_SORT_FIELD_MENU = "hideSortFieldMenu"
 
 export const showUndoAction = () => ({type:SHOW_UNDO})
 export const hideUndoAction = () => ({type:HIDE_UNDO})
@@ -29,3 +30,4 @@ export const toggleToDoListAction = () => ({type:TOGGLE_TODO_LIST})
 export const updateTasksAction = (tasks) => ({type:UPDATE_TASKS,payload:{tasks}})
 export const updateSortingFieldsAction = (sortingFields) => ({type:UPDATE_SORTING_FIELDS, payload: {sortingFields}})
 export const toggleSortFieldAction = () => ({type:TOGGLE_SORT_FIELD_MENU})
+export const hideSortFieldAction = () => ({type:HIDE_SORT_FIELD_MENU})

@@ -14,6 +14,7 @@ index
  */
 
 export default function SortEntryContainer(props) {
+    console.log(props)
     return (
         <div className="entry-container">
             <EntryOrderButton
@@ -25,6 +26,7 @@ export default function SortEntryContainer(props) {
             />
             <IsAscendingButton
                 isAscending={props.isAscending}
+                field={props.field}
             />
             <DeleteButton field={props.field}/>
         </div>

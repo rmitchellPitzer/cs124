@@ -7,12 +7,12 @@ function EntryOrderButton(props) {
         <div>
             <label> Order </label>
             <select
-                onChange={ (result) => onOrderChange(props.field,result.currentTarget.value)}
+                onChange={ (result) => onOrderChange(props.field,parseInt(result.currentTarget.value))}
                 value={props.index}
             >
                 {
                     props.sortingFields.map((_,i) => {
-                        return <option value={i}> {i + 1} </option>
+                        return <option key={i} value={i}> {i + 1} </option>
                     })
                 }
             </select>
@@ -22,7 +22,8 @@ function EntryOrderButton(props) {
 }
 
 async function onOrderChange(field,newOrder) {
-    await TaskOrderController.changeSortFieldOrder(field,newOrder - 1)
+    console.log(newOrder)
+    await TaskOrderController.changeSortFieldOrder(field,newOrder)
 }
 
 function mapState(state) {

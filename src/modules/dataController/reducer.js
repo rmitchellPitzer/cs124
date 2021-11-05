@@ -1,9 +1,19 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
 import {
-    HIDE_MENU, HIDE_UNDO, SHOW_MENU,
-    SHOW_UNDO, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION,
-    TOGGLE_TODO_LIST, UNDO_TASK, UPDATE_TASKS, UPDATE_TASK_TEXT, UPDATE_SORTING_FIELDS, TOGGLE_SORT_FIELD_MENU
+    HIDE_MENU,
+    HIDE_UNDO,
+    SHOW_MENU,
+    SHOW_UNDO,
+    TOGGLE_COMPLETED_LIST,
+    TOGGLE_TASK_COMPLETION,
+    TOGGLE_TODO_LIST,
+    UNDO_TASK,
+    UPDATE_TASKS,
+    UPDATE_TASK_TEXT,
+    UPDATE_SORTING_FIELDS,
+    TOGGLE_SORT_FIELD_MENU,
+    HIDE_SORT_FIELD_MENU
 } from './actions';
 
 import sortingAlgorithm from "../sorting/sortingAlgorithm"
@@ -137,6 +147,7 @@ function hideUndo(state) {
 }
 
 function updateTasks(state,oldTasks) {
+    console.log(oldTasks)
     const tasks = sortingAlgorithm(state.sortingFields,oldTasks)
     return {
         ...state,
@@ -190,6 +201,7 @@ export default function toDoReducer(state = initialState, action){
         case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
         case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
         case TOGGLE_SORT_FIELD_MENU: return toggleSortFieldMenu(state)
+        case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
         default:
             return state 
     }
