@@ -1,4 +1,4 @@
-# Lab 2 Project
+# Lab 3 Project
 
 
 Welcome to our React app called Todoiz.IO!
