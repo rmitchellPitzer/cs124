@@ -3,7 +3,7 @@ import { faPlus} from "@fortawesome/free-solid-svg-icons"
 import TaskOrderController from "../../modules/dataController/TaskOrderController";
 
 async function addFilterSection() {
-  await   TaskOrderController.addRandomField()
+  await TaskOrderController.addRandomField()
 }
 
 export default function AddFilterButton(props) {

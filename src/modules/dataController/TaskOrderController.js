@@ -38,6 +38,8 @@ export default class TaskOrderController {
         const hasTime = !!sortFilters.find(f => f.field == "time")
         const hasPriority = !!sortFilters.find(f => f.field == "priority")
 
+        console.log(sortFilters)
+
         if (!hasName) await TaskOrderController.addSortField("name",true)
         else if (!hasTime) await TaskOrderController.addSortField("time",true)
         else if (!hasPriority) await TaskOrderController.addSortField("priority",true)

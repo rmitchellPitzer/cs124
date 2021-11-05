@@ -7,9 +7,7 @@ import store from "./modules/dataController/store.js"
 import initSubscription from "./modules/setup/initSubscriptions"
 import TaskDataController from "./modules/dataController/TaskDataController";
 
-async function update() {
-   await TaskDataController.deleteAllCompleted()
-}
+
 
 initSubscription()
 ReactDOM.render(

@@ -10,7 +10,7 @@ import {
     TOGGLE_TODO_LIST,
     UNDO_TASK,
     UPDATE_TASKS,
-    UPDATE_TASK_TEXT,
+
     UPDATE_SORTING_FIELDS,
     TOGGLE_SORT_FIELD_MENU,
     HIDE_SORT_FIELD_MENU
@@ -156,8 +156,8 @@ function updateTasks(state,oldTasks) {
 }
 
 function updateSortingFields(state,{sortingFields}) {
-    console.log("update")
     const tasks = sortingAlgorithm(sortingFields,state.tasks)
+    console.log("I am updating",sortingFields)
 
     return {
         ...state,

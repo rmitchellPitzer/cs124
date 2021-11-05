@@ -14,7 +14,6 @@ index
  */
 
 export default function SortEntryContainer(props) {
-    console.log(props)
     return (
         <div className="entry-container">
             <EntryOrderButton
