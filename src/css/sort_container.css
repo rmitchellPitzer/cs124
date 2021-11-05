@@ -1,0 +1,29 @@
+
+
+
+.sort-container {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+}
+
+.sort-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding-top: 20px;
+    padding-left: 5px;
+
+}
+
+.sort-section {
+    display: flex;
+
+}
+.sort-button {
+    background: orange;
+    border: none;
+
+}

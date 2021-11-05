@@ -1,3 +1,8 @@
 .empty {
     display: none;
 }
+
+.scroll-container {
+    max-height: 40vh;
+    overflow-y: scroll;
+}

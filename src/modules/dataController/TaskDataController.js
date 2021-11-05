@@ -2,15 +2,13 @@ import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, togg
 import store from "./store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
-import TaskList from "../../components/Tasks/TaskList"
+import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
 
-const COLLECTION_NAME = "todoiz.io"
-const DEFAULT_DOC_ID = "default"
-const TASK_SUBCOLLECTION = "tasks"
+
 const collectionRef = db.collection(COLLECTION_NAME)
 
-async function getTask(id) {
-    return await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
+ function getTask(id) {
+    return collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
 }
 
 
@@ -33,11 +31,11 @@ class TaskDataController {
     } 
 
     static async toggleTaskCompletion(id) {
-        const task = await getTask(id)
+        const doc = getTask(id)
+        const task = await doc.get()
         if (!task) return 
-        const {isCompleted} = task 
-
-        task.update({
+        const {isCompleted} = task.data()
+        await doc.update({
             isCompleted:!isCompleted
         })
     }
@@ -47,7 +45,9 @@ class TaskDataController {
         collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id).set({
             isCompleted: false,
             text: "",
-            id
+            id,
+            priority: -1,
+            creationDate: Date.now()
         })
 
     }
@@ -58,10 +58,16 @@ class TaskDataController {
         await task.delete() 
     }
 
-    static deleteAllCompleted() {
-        //@todo 
-        const action = deleteAllCompletedTasksAction()
-        store.dispatch(action)
+    static async deleteAllCompleted() {
+        const tasks = await collectionRef
+            .doc(DEFAULT_DOC_ID)
+            .collection(TASK_SUBCOLLECTION)
+            .where("isCompleted","==",true)
+            .get()
+
+        for (const task of tasks.docs) {
+            await task.ref.delete()
+        }
     }
 
     static todo() {
@@ -73,7 +79,7 @@ class TaskDataController {
         return store.getState()
         .tasks.filter(task => task.isCompleted === true)
     }
-};
+}
 
 
 export default TaskDataController

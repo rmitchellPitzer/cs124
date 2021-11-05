@@ -1,12 +1,32 @@
-import { 
-    hideMenuAction, hideUndoAction, showMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, 
-    undoTaskAction } from "./actions.js"
+import {
+    hideMenuAction, hideSortFieldAction,
+    hideUndoAction,
+    showMenuAction,
+    showUndoAction,
+    toggleCompletedListAction,
+    toggleSortFieldAction,
+    toggleToDoListAction,
+    undoTaskAction
+} from "./actions.js"
 import store from "./store.js"
 
 export default class AppDataController {
 
     static toggleTodoList() {
         const action = toggleToDoListAction()
+        store.dispatch(action)
+    }
+    static showSortMenu() {
+        return store.getState().showSortMenu
+    }
+
+    static hideSortMenu() {
+        const action = hideSortFieldAction()
+        store.dispatch(action)
+    }
+
+    static toggleSortFieldMenu() {
+        const action = toggleSortFieldAction()
         store.dispatch(action)
     }
 
