@@ -8,8 +8,9 @@ import ActionMenu from "./components/Action Commands/ActionMenu";
 import { connect } from "react-redux";
 import UndoButton from "./components/Undo/UndoButton";
 import SortMenuContainer from "./components/SortMenu/SortMenuContainer";
+import PriorityMenu from "./components/Priority/PriorityMenu/PriorityMenuContainer"
 
-function App({menuIsActive,showUndo,showSortMenu}) {
+function App({menuIsActive,showUndo,showSortMenu,showPriorityMenu}) {
   return (
     <div class='container'>
       <Header/>
@@ -18,16 +19,17 @@ function App({menuIsActive,showUndo,showSortMenu}) {
         sectionTitle="To Do"
       />
         {
-            !showSortMenu && <SectionContainer
+            !showSortMenu && !showPriorityMenu && <SectionContainer
                 className='completed-bar'
                 sectionTitle="Completed"
             />
         }
 
       { menuIsActive && <ActionMenu/> }
-      <ActionButton/>
+            <ActionButton/>
       { showUndo && <UndoButton/> }
     {showSortMenu && <SortMenuContainer/>}
+    {showPriorityMenu && <PriorityMenu/>}
 
 
     </div>
@@ -38,7 +40,8 @@ function mapToState(state) {
   return {
     menuIsActive: AppDataController.menuIsActive(),
     showUndo: AppDataController.undoIsActive(),
-      showSortMenu: AppDataController.showSortMenu()
+    showSortMenu: AppDataController.showSortMenu(),
+      showPriorityMenu: state.showPriorityMenu
   }
 }
 export default connect(mapToState)(App)

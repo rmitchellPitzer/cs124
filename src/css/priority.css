@@ -1,0 +1,67 @@
+
+
+.priority-title {
+    color: #570024;
+}
+
+
+.priority-menu-container {
+    position: fixed;
+    top: 50vh;
+    width: 100vw;
+    height: 50vh;
+    background: #FFD8B6;
+}
+.priority-menu-bar {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.priority-close-button {
+    border-radius: 5px;
+    color: #66503E;
+    background: #E5BCCD;
+    border: none;
+    width: 30px;
+
+}
+
+.priority-icon {
+    border-radius: 100%;
+    width: 1.5em;
+    height: 1.5em;
+    border-color: #080707a1;
+    border-style: solid;
+    margin: 0 10px 0 10px;
+
+}
+
+.priority-item-container {
+    padding: 10px;
+}
+.priority-item {
+    display: flex;
+    justify-content: space-between;
+    background: #FBEAEA;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.priority-item:hover {
+    background: #E5BCCD;
+}
+
+.no-priority {
+    background: white;
+}
+.low-priority {
+    background: #DDFFCD;
+}
+.medium-priority {
+    background: #FFFACD;
+}
+.high-priority {
+    background: #FFCDCD;
+}

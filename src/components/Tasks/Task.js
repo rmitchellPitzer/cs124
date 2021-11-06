@@ -1,5 +1,6 @@
 import "../../css/task.css"
 import TaskDataController from "../../modules/dataController/TaskDataController"
+import PriorityButton from "../Priority/PriorityButton/PriorityButton";
 /*
 props: {
     text:string;
@@ -26,6 +27,7 @@ export default function Task(props) {
                 onChange= { (e) => handleTextEvent(props.id,e)}
                 value={props.text}
             />
+            <PriorityButton id={props.id} priority={props.priority}/>
         </div>
     )
 

@@ -168,7 +168,8 @@ function updateSortingFields(state,{sortingFields}) {
 function openSortFieldMenu(state) {
     return {
         ...state,
-        showSortMenu: true
+        showSortMenu: true,
+        showPriorityMenu:false,
 
     }
 }
@@ -197,7 +198,10 @@ function showPriorityMenu(state,payload) {
 }
 
 function hidePriorityMenu(state) {
-
+        return {
+            ...state,
+            showPriorityMenu:false,
+        }
 }
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
