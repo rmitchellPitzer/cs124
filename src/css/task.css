@@ -6,9 +6,6 @@
 
 
 
-.task-item:hover{
-    background: #f7f0ef;
-}
 
 .task-item {
     display: flex;
@@ -16,10 +13,13 @@
     justify-content: left;
 }
 
+.selected-task {
+    background: #eed8e1;
+}
+
 
 .checkbox {
-    width: 2em;
-    height: 2em;
+
 }
 
 .task-item input[type="text"] {

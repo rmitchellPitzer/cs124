@@ -1,0 +1,12 @@
+.hide {
+    visibility: hidden;
+}
+
+.sort-button {
+    outline:none;
+    border:none;
+    background:transparent;
+    margin-right: 10px;
+    color: #796555;
+    font-size: 1.1em;
+}

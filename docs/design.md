@@ -124,3 +124,19 @@ In terms of design decisions in our React webapp, we opted to use React Redux to
     
 -   The plus button I think was a great way to chunk together the actions the user can take as well as preventing the user from accidentally making incorrect decisions.
 - **Lab 2 update** I think the parts of the design we're most proud of is the undo button we implemented. While  we didn't necessarily need an undo button and the app worked fine without it, it does add user forgiveness. This meant implementing a stack to keep track of our cleared tasks which could be re added to our taskList. I'm also very happy it just works, and I think I'm most proud of that as well. 
+
+
+
+
+**Lab 3 Update**
+
+Lab 3 had many challenges. One of the challenges was creating architectural diagrams for the interactions between different components. It was hard to conceptualize
+how to interface between the firebase, redux, and other components in a way that was efficient and extensible. After several design iterations, we decided
+to not add order fields to the tasks but instead sort tasks locally which saves database read/writes. This is done by saving the filters to firebase instead
+and applying those filters when the data is loaded within redux. This has numerous efficiency and logical benefits.
+
+Another Design challenge was designing mobile friendly menus for the sort and priority fields. 
+![Fields](./diagrams/img.png).
+We went through numerous design iterations but finally settle on a design that stays true to the app theme
+but also is accessible. User testing was performed in order to ensure the features were user-friendly and intuitive.
+

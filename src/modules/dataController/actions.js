@@ -10,6 +10,12 @@ export const HIDE_MENU = "hideMenu"
 export const UNDO_TASK = "undoTask"
 export const SHOW_UNDO = "showUndo"
 export const HIDE_UNDO = "hideUndo"
+export const UPDATE_TASKS = "updateTasks"
+export const UPDATE_SORTING_FIELDS = "updateSortingFields"
+export const SHOW_SORT_FIELD_MENU = "showSortFieldMenu"
+export const HIDE_SORT_FIELD_MENU = "hideSortFieldMenu"
+export const SHOW_PRIORITY_MENU = "showPriorityMenu"
+export const HIDE_PRIORITY_MENU = "hidePriorityMenu"
 
 export const showUndoAction = () => ({type:SHOW_UNDO})
 export const hideUndoAction = () => ({type:HIDE_UNDO})
@@ -23,3 +29,9 @@ export const toggleTaskCompletionAction = (id) => ({type: TOGGLE_TASK_COMPLETION
 export const deleteAllCompletedTasksAction = () => ({type: DELETE_ALL_COMPLETED_TASK})
 export const toggleCompletedListAction = () => ({type:TOGGLE_COMPLETED_LIST})
 export const toggleToDoListAction = () => ({type:TOGGLE_TODO_LIST})
+export const updateTasksAction = (tasks) => ({type:UPDATE_TASKS,payload:{tasks}})
+export const updateSortingFieldsAction = (sortingFields) => ({type:UPDATE_SORTING_FIELDS, payload: {sortingFields}})
+export const showSortFieldAction = () => ({type:SHOW_SORT_FIELD_MENU})
+export const hideSortFieldAction = () => ({type:HIDE_SORT_FIELD_MENU})
+export const showPriorityMenuAction = (id) => ({type:SHOW_PRIORITY_MENU, payload: {id}})
+export const hidePriorityMenuAction = () => ({type:HIDE_PRIORITY_MENU})

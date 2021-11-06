@@ -1,29 +1,73 @@
 import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, toggleTaskCompletionAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
-class TaskDataController {
-    static updateTaskText(id,text) {
-            const action = updateTaskTextAction(id,text)
-            store.dispatch(action)
-    }
+import db from "../db/index"
+import { v4 as uuidv4 } from 'uuid';
+import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
 
-    static toggleTaskCompletion(id) {
-        const action = toggleTaskCompletionAction(id)
-        store.dispatch(action)
+
+const collectionRef = db.collection(COLLECTION_NAME)
+
+ function getTask(id) {
+    return collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
+}
+
+
+/*
+Task {
+
+    isCompleted: boolean;
+    text: string;
+    
+
+}
+*/
+class TaskDataController {
+    static async updateTaskText(id,text) {
+        // DOC
+        const task = await getTask(id)
+        await task.update({
+                text
+            })
+    } 
+
+    static async toggleTaskCompletion(id) {
+        const doc = getTask(id)
+        const task = await doc.get()
+        if (!task) return 
+        const {isCompleted} = task.data()
+        await doc.update({
+            isCompleted:!isCompleted
+        })
     }
 
     static createTask() {
-        const action = createTaskAction()
-        store.dispatch(action)
+        const id = uuidv4()
+        collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id).set({
+            isCompleted: false,
+            text: "",
+            id,
+            priority: -1,
+            creationDate: Date.now()
+        })
+
     }
 
-    static deleteTask(id) {
-        const action = deleteTaskAction(id)
-        store.dispatch(action)
+    static async deleteTask(id) {
+        const task = await getTask(id)
+        if (!task) return
+        await task.delete() 
     }
 
-    static deleteAllCompleted() {
-        const action = deleteAllCompletedTasksAction()
-        store.dispatch(action)
+    static async deleteAllCompleted() {
+        const tasks = await collectionRef
+            .doc(DEFAULT_DOC_ID)
+            .collection(TASK_SUBCOLLECTION)
+            .where("isCompleted","==",true)
+            .get()
+
+        for (const task of tasks.docs) {
+            await task.ref.delete()
+        }
     }
 
     static todo() {
@@ -36,8 +80,13 @@ class TaskDataController {
         .tasks.filter(task => task.isCompleted === true)
     }
 
-
-};
+    static async updateTaskPriority(id,priority) {
+        const task = await  getTask(id)
+        await task.update({
+            priority
+        })
+    }
+}
 
 
 export default TaskDataController

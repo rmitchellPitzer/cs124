@@ -1,27 +1,52 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
-import { CREATE_TASK, DELETE_ALL_COMPLETED_TASK, DELETE_TASK, HIDE_MENU, HIDE_UNDO, SHOW_MENU, SHOW_UNDO, TOGGLE_COMPLETED_LIST, TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST, TOGGLE_UNDO, UNDO_TASK, UPDATE_TASK_TEXT } from './actions';
+import {
+    HIDE_MENU,
+    HIDE_UNDO,
+    SHOW_MENU,
+    SHOW_UNDO,
+    TOGGLE_COMPLETED_LIST,
+    TOGGLE_TASK_COMPLETION,
+    TOGGLE_TODO_LIST,
+    UNDO_TASK,
+    UPDATE_TASKS,
+
+    UPDATE_SORTING_FIELDS,
+    SHOW_SORT_FIELD_MENU,
+    HIDE_SORT_FIELD_MENU, SHOW_PRIORITY_MENU, HIDE_PRIORITY_MENU
+} from './actions';
+
+import sortingAlgorithm from "../sorting/sortingAlgorithm"
 
 const initialState = {
     tasks: [],
     stack:[],
+    sortingFields:[],
     showUndo: false,
     showCompleted: false,
     showTodo: true,
-    showMenu: false 
+    showMenu: false,
+    showSortMenu: false,
+    showPriorityMenu: false ,
+    priorityMenuActiveID: null,
 }
 
 function createTask(state) {
     const id = uuidv4()
-    const task = {text:"",isCompleted:false,id}
+    const task = {
+        text:"",
+        isCompleted:false,
+        id,
+        priority: -1,
+        creationDate: Date.now()
+    }
     const newState = state.tasks.map(x => x)
     newState.push(task)
-
+    const tasks = sortingAlgorithm(state.sortingFields,newState)
     return {
         ...state,
-        tasks:newState
+        tasks
     }
- 
 }
 
 function deleteTask(state,id) {
@@ -36,13 +61,14 @@ function updateTaskText(state,{id,text}) {
     const newTasks = state.tasks.map(x => x)
     const task = newTasks.find(task => task.id === id)
     if (!task) return state
+    task.text = text
 
-    task.text = text 
+    const tasks = sortingAlgorithm(state.sortingFields,newTasks)
 
 
     return {
         ...state,
-        tasks: newTasks
+        tasks
     }
 }
 
@@ -69,7 +95,6 @@ function deleteAllCompletedTasks(state) {
        tasks:newTasks 
    }
 }
-
 
 function undoTask(state) {
     const stack = state.stack.map(x => x)
@@ -123,13 +148,65 @@ function hideUndo(state) {
     }
 }
 
+function updateTasks(state,oldTasks) {
+    const tasks = sortingAlgorithm(state.sortingFields,oldTasks)
+    return {
+        ...state,
+        tasks
+    }
+}
+
+function updateSortingFields(state,{sortingFields}) {
+    const tasks = sortingAlgorithm(sortingFields,state.tasks)
+    return {
+        ...state,
+        tasks,
+        sortingFields
+    }
+}
+
+function openSortFieldMenu(state) {
+    return {
+        ...state,
+        showSortMenu: true,
+        showPriorityMenu:false,
+
+    }
+}
+
+function hideSortFieldMenu(state) {
+    return {
+        ...state,
+        showSortMenu: false
+    }
+}
+
+function showSortFieldMenu(state) {
+    return {
+        ...state,
+        showSortMenu: true,
+        showPriorityMenu:false,
+    }
+}
+
+function showPriorityMenu(state,payload) {
+    return {
+        ...state,
+       priorityMenuActiveID: payload.id,
+       showPriorityMenu:true,
+       showSortMenu: false
+    }
+}
+
+function hidePriorityMenu(state) {
+        return {
+            ...state,
+            showPriorityMenu:false,
+        }
+}
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
-        case CREATE_TASK: return createTask(state)
-        case DELETE_TASK: return deleteTask(state,action.payload.id)
-        case UPDATE_TASK_TEXT: return updateTaskText(state,action.payload)
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
-        case DELETE_ALL_COMPLETED_TASK: return deleteAllCompletedTasks(state)
         case TOGGLE_TODO_LIST: return toggleToDoList(state)
         case TOGGLE_COMPLETED_LIST: return toggleCompletedList(state)
         case SHOW_MENU: return showMenu(state)
@@ -137,6 +214,12 @@ export default function toDoReducer(state = initialState, action){
         case UNDO_TASK: return undoTask(state)
         case SHOW_UNDO: return showUndo(state)
         case HIDE_UNDO: return hideUndo(state)
+        case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
+        case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
+        case SHOW_SORT_FIELD_MENU: return showSortFieldMenu(state)
+        case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
+        case SHOW_PRIORITY_MENU: return showPriorityMenu(state,action.payload)
+        case HIDE_PRIORITY_MENU: return hidePriorityMenu(state)
         default:
             return state 
     }

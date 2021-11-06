@@ -1,5 +1,5 @@
 import Task from "./Task";
-
+import "../../css/container.css"
 
 
 
@@ -13,7 +13,7 @@ props:{
 export default function TaskList(props) {
 
     return (
-        <div class='container'>
+        <div class='container scroll-container'>
             {
             props.tasks.map(task => {
             return <Task 
