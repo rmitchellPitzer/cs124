@@ -79,6 +79,13 @@ class TaskDataController {
         return store.getState()
         .tasks.filter(task => task.isCompleted === true)
     }
+
+    static async updateTaskPriority(id,priority) {
+        const task = await  getTask(id)
+        await task.update({
+            priority
+        })
+    }
 }
 
 

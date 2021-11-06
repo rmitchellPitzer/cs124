@@ -1,7 +1,7 @@
 import PriorityIcon from "../PriorityIcon";
 import AppDataController from "../../../modules/dataController/AppDataController";
 
-const classes = {
+const classList = {
     0: "high-priority",
     1: "medium-priority",
     2: "low-priority",
@@ -12,7 +12,7 @@ function openPriorityMenu(id) {
 }
 
 export default function PriorityButton({id,priority}) {
-    const classes = priority == -1 ? "no-priority" : classes[priority]
+    const classes = priority == -1 ? "no-priority" : classList[priority]
 
     return <button
             className={classes + " priority-icon"}
