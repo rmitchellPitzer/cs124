@@ -1,12 +1,13 @@
 import TaskOrderController from "../../../modules/dataController/TaskOrderController";
+import "../../../css/sort_entry.css"
 import {connect} from "react-redux"
 
 function EntryOrderButton(props) {
 
     return (
         <div>
-            <label> Order </label>
             <select
+                className="sort-order"
                 onChange={ (result) => onOrderChange(props.field,parseInt(result.currentTarget.value))}
                 value={props.index}
             >

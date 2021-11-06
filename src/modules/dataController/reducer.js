@@ -12,8 +12,8 @@ import {
     UPDATE_TASKS,
 
     UPDATE_SORTING_FIELDS,
-    TOGGLE_SORT_FIELD_MENU,
-    HIDE_SORT_FIELD_MENU
+    SHOW_SORT_FIELD_MENU,
+    HIDE_SORT_FIELD_MENU, SHOW_PRIORITY_MENU, HIDE_PRIORITY_MENU
 } from './actions';
 
 import sortingAlgorithm from "../sorting/sortingAlgorithm"
@@ -26,7 +26,9 @@ const initialState = {
     showCompleted: false,
     showTodo: true,
     showMenu: false,
-    showSortMenu: false
+    showSortMenu: false,
+    showPriorityMenu: false ,
+    priorityMenuActiveID: null,
 }
 
 function createTask(state) {
@@ -147,7 +149,6 @@ function hideUndo(state) {
 }
 
 function updateTasks(state,oldTasks) {
-    console.log(oldTasks)
     const tasks = sortingAlgorithm(state.sortingFields,oldTasks)
     return {
         ...state,
@@ -157,8 +158,6 @@ function updateTasks(state,oldTasks) {
 
 function updateSortingFields(state,{sortingFields}) {
     const tasks = sortingAlgorithm(sortingFields,state.tasks)
-    console.log("I am updating",sortingFields)
-
     return {
         ...state,
         tasks,
@@ -169,7 +168,8 @@ function updateSortingFields(state,{sortingFields}) {
 function openSortFieldMenu(state) {
     return {
         ...state,
-        showSortMenu: true
+        showSortMenu: true,
+        showPriorityMenu:false,
 
     }
 }
@@ -181,13 +181,29 @@ function hideSortFieldMenu(state) {
     }
 }
 
-function toggleSortFieldMenu(state) {
+function showSortFieldMenu(state) {
     return {
         ...state,
-        showSortMenu: !state.showSortMenu
+        showSortMenu: true,
+        showPriorityMenu:false,
     }
 }
 
+function showPriorityMenu(state,payload) {
+    return {
+        ...state,
+       priorityMenuActiveID: payload.id,
+       showPriorityMenu:true,
+       showSortMenu: false
+    }
+}
+
+function hidePriorityMenu(state) {
+        return {
+            ...state,
+            showPriorityMenu:false,
+        }
+}
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
@@ -200,8 +216,10 @@ export default function toDoReducer(state = initialState, action){
         case HIDE_UNDO: return hideUndo(state)
         case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
         case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
-        case TOGGLE_SORT_FIELD_MENU: return toggleSortFieldMenu(state)
+        case SHOW_SORT_FIELD_MENU: return showSortFieldMenu(state)
         case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
+        case SHOW_PRIORITY_MENU: return showPriorityMenu(state,action.payload)
+        case HIDE_PRIORITY_MENU: return hidePriorityMenu(state)
         default:
             return state 
     }

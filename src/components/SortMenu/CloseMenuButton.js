@@ -7,8 +7,8 @@ function closeMenu() {
 }
 export default function CloseMenuButton(props) {
     return (
-        <button className="sort-button"  onClick={closeMenu}>
-            <h3> x </h3>
+        <button className="sort-close-button sort-button-color"  onClick={closeMenu}>
+           <span> x </span>
         </button>
     )
 

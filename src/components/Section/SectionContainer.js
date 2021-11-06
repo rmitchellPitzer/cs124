@@ -15,10 +15,13 @@ import SectionBar from "./SectionBar.js"
 
 function SectionContainer(props) {
     return (
-        <div>
-            <SectionBar sectionTitle = {props.sectionTitle} className={props.className}/>
-            { props.showContainer && <TaskList tasks={props.tasks} />}
-        </div>
+
+
+    <div>
+        <SectionBar isToDo = {props.isToDo} sectionTitle = {props.sectionTitle} className={props.className}/>
+        { props.showContainer && <TaskList tasks={props.tasks} />}
+    </div>
+
     )
 }
 
@@ -27,12 +30,16 @@ function mapStateToProps(state,ownProps) {
 
     if (isToDo) return { 
         tasks: TaskDataController.todo(),
-        showContainer: AppDataController.showToDo()
+        showContainer: AppDataController.showToDo(),
+        isToDo: true,
+        showSortMenu: state.showSortMenu
     }
     
     return {
         tasks: TaskDataController.completed(),
-        showContainer: AppDataController.showCompleted()
+        showContainer: AppDataController.showCompleted(),
+        isToDo: false,
+        showSortMenu: state.showSortMenu
     }
 }
 

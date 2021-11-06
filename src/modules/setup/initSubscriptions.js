@@ -7,13 +7,6 @@ const tasks = collectionRef.doc(DEFAULT_DOC_ID).collection("tasks")
 const sortFilters = collectionRef.doc(DEFAULT_DOC_ID)
 
 export default function () {
-     sortFilters.update({
-        sortingFields:[]
-    })
-
-
-
-
     DataSyncController.setTaskSubscription(tasks)
     DataSyncController.setSortSubscription(sortFilters)
 }
