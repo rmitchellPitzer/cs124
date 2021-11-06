@@ -14,8 +14,9 @@ export default class TaskOrderController {
     static async changeSortField(old,newField) {
         const sortFilters = await getSortFields()
         const prevField = sortFilters.find(f => f.field == old)
+        const hasFieldAlready = sortFilters.find(f => f.field == newField)
         if (!prevField) return
-        prevField.field = newField
+        prevField.field = hasFieldAlready ? old : newField
         await updateSortFields(sortFilters)
     }
 
