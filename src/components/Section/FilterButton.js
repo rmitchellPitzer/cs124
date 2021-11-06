@@ -4,7 +4,7 @@ import AppDataController from "../../modules/dataController/AppDataController";
 import "../../css/sort_button.css"
 
 function toggleButton() {
-   AppDataController.toggleSortFieldMenu()
+   AppDataController.openSortFieldMenu()
 }
 
 export default function FilterButton(props) {

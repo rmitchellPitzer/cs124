@@ -15,8 +15,8 @@ export default function PriorityMenuContainer(props) {
             <PriorityMenuBar/>
             <div className="priority-item-container">
                 {
-                    priorityData.map(data => {
-                        return <PriorityItem {...data}/>
+                    priorityData.map((data,index)=> {
+                        return <PriorityItem key ={index} {...data}/>
                     })
                 }
             </div>

@@ -6,14 +6,15 @@
 
 
 
-.task-item:hover{
-    background: #f7f0ef;
-}
 
 .task-item {
     display: flex;
     padding: 10px;
     justify-content: left;
+}
+
+.selected-task {
+    background: #eed8e1;
 }
 
 

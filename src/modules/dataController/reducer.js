@@ -12,7 +12,7 @@ import {
     UPDATE_TASKS,
 
     UPDATE_SORTING_FIELDS,
-    TOGGLE_SORT_FIELD_MENU,
+    SHOW_SORT_FIELD_MENU,
     HIDE_SORT_FIELD_MENU, SHOW_PRIORITY_MENU, HIDE_PRIORITY_MENU
 } from './actions';
 
@@ -181,10 +181,11 @@ function hideSortFieldMenu(state) {
     }
 }
 
-function toggleSortFieldMenu(state) {
+function showSortFieldMenu(state) {
     return {
         ...state,
-        showSortMenu: !state.showSortMenu
+        showSortMenu: true,
+        showPriorityMenu:false,
     }
 }
 
@@ -215,7 +216,7 @@ export default function toDoReducer(state = initialState, action){
         case HIDE_UNDO: return hideUndo(state)
         case UPDATE_TASKS: return updateTasks(state,action.payload.tasks)
         case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
-        case TOGGLE_SORT_FIELD_MENU: return toggleSortFieldMenu(state)
+        case SHOW_SORT_FIELD_MENU: return showSortFieldMenu(state)
         case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
         case SHOW_PRIORITY_MENU: return showPriorityMenu(state,action.payload)
         case HIDE_PRIORITY_MENU: return hidePriorityMenu(state)

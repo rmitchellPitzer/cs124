@@ -4,7 +4,7 @@ import {
     showMenuAction, showPriorityMenuAction,
     showUndoAction,
     toggleCompletedListAction,
-    toggleSortFieldAction,
+    showSortFieldAction,
     toggleToDoListAction,
     undoTaskAction
 } from "./actions.js"
@@ -25,8 +25,8 @@ export default class AppDataController {
         store.dispatch(action)
     }
 
-    static toggleSortFieldMenu() {
-        const action = toggleSortFieldAction()
+    static openSortFieldMenu() {
+        const action = showSortFieldAction()
         store.dispatch(action)
     }
 

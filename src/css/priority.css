@@ -46,10 +46,11 @@
     background: #FBEAEA;
     padding: 10px;
     margin-bottom: 10px;
+    color: #570024;
     border-radius: 10px;
 }
 
-.priority-item:hover {
+.priority-selection {
     background: #E5BCCD;
 }
 

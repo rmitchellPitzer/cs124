@@ -1,6 +1,7 @@
 import "../../css/task.css"
 import TaskDataController from "../../modules/dataController/TaskDataController"
 import PriorityButton from "../Priority/PriorityButton/PriorityButton";
+import {connect} from "react-redux"
 /*
 props: {
     text:string;
@@ -8,8 +9,10 @@ props: {
     id:string 
 }
 */
-export default function Task(props) {
-    const classes = `task-item ${props.isCompleted ? 'completed' : ''}`
+ function Task(props) {
+
+     const classes = `task-item ${props.isCompleted ? 'completed' : ''} ${props.isSelected ? 'selected-task' : ''}`
+
     return (
         <div class={classes}>
             <input 
@@ -41,3 +44,12 @@ function handleTextEvent(id,event) {
 function handleCheckBoxEvent(id) {
     TaskDataController.toggleTaskCompletion(id)
 }
+
+function mapToState(state,ownProps) {
+    const isSelected = ownProps.id == state.priorityMenuActiveID && state.showPriorityMenu
+     return {
+         isSelected
+     }
+}
+
+export default connect(mapToState)(Task)

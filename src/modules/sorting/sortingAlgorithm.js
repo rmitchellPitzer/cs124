@@ -70,6 +70,9 @@ function sortByName(taskA,taskB,isAscending) {
 }
 
 function sortByPriority(taskA,taskB,isAscending) {
+    if (taskA.priority == -1) return 1
+    if (taskB.priority == -1) return -1
+
     const comparison = taskA.priority - taskB.priority
     return isAscending ? -1 * comparison : comparison
 }
