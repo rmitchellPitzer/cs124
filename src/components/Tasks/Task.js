@@ -9,12 +9,54 @@ props: {
     id:string 
 }
 */
- function Task(props) {
+
+async function shouldDeleteTaskEvent(event,id) {
+    const isDelete = event.key === "Delete"
+    if (isDelete)  {
+        const sibling = getSibling(id)
+        await TaskDataController.deleteTask(id)
+        if (sibling) sibling.focus()
+    }
+
+
+
+
+}
+
+function getSibling(id) {
+    const task = document.getElementById(id)
+    if (!task) return null
+    return task.previousElementSibling
+}
+
+async function shouldCreateNewTaskEvent(event) {
+    const isEnter = event.key === "Enter"
+    if (isEnter) await TaskDataController.createTask()
+    focusNewTask()
+}
+
+function focusTask(id) {
+    const task = document.getElementById(id)
+    if (!task) return
+    task.focus()
+}
+
+function focusNewTask() {
+    const tasks = document.getElementsByClassName("task-text")
+    const lastTask = tasks.length - 1
+    tasks[lastTask].focus()
+}
+
+function Task(props) {
 
      const classes = `task-item ${props.isCompleted ? 'completed' : ''} ${props.isSelected ? 'selected-task' : ''}`
 
     return (
-        <div class={classes}>
+        <div
+            id={props.id}
+            class={classes}
+            onKeyDown={(e) => shouldDeleteTaskEvent(e,props.id)}
+        >
             <input 
                 alt='task completion status' 
                 class='checkbox' 
@@ -28,6 +70,7 @@ props: {
                 type='text' 
                 alt='task text' 
                 onChange= { (e) => handleTextEvent(props.id,e)}
+                onKeyPress={ (e) => shouldCreateNewTaskEvent(e) }
                 value={props.text}
             />
             <PriorityButton id={props.id} priority={props.priority}/>

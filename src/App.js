@@ -2,7 +2,7 @@ import "./css/global.css"
 import "typeface-roboto"
 import ActionButton from "./components/Action Commands/ActionButton";
 import AppDataController from "./modules/dataController/AppDataController";
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import SectionContainer from "./components/Section/SectionContainer.js"
 import ActionMenu from "./components/Action Commands/ActionMenu";
 import { connect } from "react-redux";
@@ -25,7 +25,7 @@ function App({menuIsActive,showUndo,showSortMenu,showPriorityMenu}) {
             />
         }
 
-      { menuIsActive && <ActionMenu/> }
+
             <ActionButton/>
       { showUndo && <UndoButton/> }
     {showSortMenu && <SortMenuContainer/>}
@@ -41,7 +41,7 @@ function mapToState(state) {
     menuIsActive: AppDataController.menuIsActive(),
     showUndo: AppDataController.undoIsActive(),
     showSortMenu: AppDataController.showSortMenu(),
-      showPriorityMenu: state.showPriorityMenu
+    showPriorityMenu: state.showPriorityMenu
   }
 }
 export default connect(mapToState)(App)

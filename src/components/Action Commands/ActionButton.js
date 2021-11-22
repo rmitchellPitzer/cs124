@@ -2,9 +2,10 @@ import AppDataController from "../../modules/dataController/AppDataController"
 import "../../css/action_button.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import TaskDataController from "../../modules/dataController/TaskDataController";
 
 function handleOnClick() {
-    AppDataController.showMenu()
+    TaskDataController.createTask()
 }
 
 export default function ActionButton() {

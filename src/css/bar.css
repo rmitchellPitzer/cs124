@@ -7,8 +7,9 @@
 }
 
 .drop-down {
-    height: 2em;
+    height: 100%;
     width: 2em;
+
     font-size: 1.5em;
     background: transparent;
     border-radius: 100%;
@@ -32,6 +33,7 @@
 }
 
 .drop-down i {
+    padding-top: 7.5px;
     font-size: 4vh;
     margin-top: 10px;
     margin-left: -5px;

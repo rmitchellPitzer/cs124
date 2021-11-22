@@ -9,6 +9,9 @@ const classList = {
 
 function openPriorityMenu(id) {
         AppDataController.showPriorityMenu(id)
+        const element = document.getElementsByClassName("priority-item")
+        if (element[0]) element[0].focus()
+
 }
 
 export default function PriorityButton({id,priority}) {
@@ -18,5 +21,5 @@ export default function PriorityButton({id,priority}) {
             className={classes + " priority-icon"}
             onClick={() => openPriorityMenu(id)}
             >
-    </button>
+            </button>
 }

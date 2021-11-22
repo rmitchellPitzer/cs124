@@ -34,7 +34,10 @@
     border-color: #080707a1;
     border-style: solid;
     margin: 0 10px 0 10px;
+}
 
+.priority-icon:focus {
+    background: lightblue;
 }
 
 .priority-item-container {
@@ -44,10 +47,16 @@
     display: flex;
     justify-content: space-between;
     background: #FBEAEA;
+    width: 100%;
+    border:none;
     padding: 10px;
     margin-bottom: 10px;
     color: #570024;
     border-radius: 10px;
+}
+
+.priority-item:focus-visible {
+    border: green;
 }
 
 .priority-selection {

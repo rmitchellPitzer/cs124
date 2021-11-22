@@ -18,6 +18,7 @@ menuItem {
 
 function deleteAll() {
     TaskDataController.deleteAllCompleted()
+    AppDataController.closeMenu()
     AppDataController.showUndo()
     setTimeout( () => {
         AppDataController.hideUndo()
@@ -25,19 +26,18 @@ function deleteAll() {
     
 }
 const menuItems = [
-    {text:"Add Task", command: TaskDataController.createTask, icon: faPlus},
     {text: "Clear Completed Tasks", command:deleteAll, icon: faMinus},
 ]
 
 export default function ActionMenu(props) {
     return (
-        <div class='overlay'onClick= {AppDataController.closeMenu}>
-            <div class='action-container'>
-                { menuItems.map(menuItem => {
+        <div>
+            <div className='action-container'>
+                {menuItems.map(menuItem => {
                     return <ActionMenuItem {...menuItem} key={menuItem.text}/>
                 })}
             </div>
+            <div className='overlay' onClick={AppDataController.closeMenu}/>
         </div>
-     
     )
 }

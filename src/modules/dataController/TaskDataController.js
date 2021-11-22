@@ -1,10 +1,7 @@
-import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, toggleTaskCompletionAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
 import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
-
-
 const collectionRef = db.collection(COLLECTION_NAME)
 
  function getTask(id) {
@@ -22,6 +19,7 @@ Task {
 }
 */
 class TaskDataController {
+
     static async updateTaskText(id,text) {
         // DOC
         const task = await getTask(id)
@@ -49,7 +47,6 @@ class TaskDataController {
             priority: -1,
             creationDate: Date.now()
         })
-
     }
 
     static async deleteTask(id) {
@@ -86,6 +83,7 @@ class TaskDataController {
             priority
         })
     }
+
 }
 
 

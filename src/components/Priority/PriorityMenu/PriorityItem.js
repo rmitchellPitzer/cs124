@@ -4,6 +4,7 @@ import TaskDataController from "../../../modules/dataController/TaskDataControll
 
 function changePriority(id,priority) {
     TaskDataController.updateTaskPriority(id,priority)
+
 }
 
 function PriorityItem(props) {
@@ -12,13 +13,14 @@ function PriorityItem(props) {
         : "priority-item"
 
     return (
-        <div
+        <button
             className={classes}
+            tabIndex={0}
             onClick={() => changePriority(props.id,props.priority)}
         >
             <span> {props.priorityText}</span>
             <PriorityIcon priority={props.priority}/>
-        </div>
+        </button>
     )
 }
 

@@ -2,6 +2,8 @@ import AppDataController from "../../../modules/dataController/AppDataController
 
 function closePriorityMenu() {
     AppDataController.hidePriorityMenu()
+
+
 }
 
 
