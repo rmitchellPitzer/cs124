@@ -2,6 +2,7 @@ import "../../css/task.css"
 import TaskDataController from "../../modules/dataController/TaskDataController"
 import PriorityButton from "../Priority/PriorityButton/PriorityButton";
 import {connect} from "react-redux"
+import AppDataController from "../../modules/dataController/AppDataController";
 /*
 props: {
     text:string;
@@ -47,6 +48,10 @@ function focusNewTask() {
     tasks[lastTask].focus()
 }
 
+function openTaskMenu(id) {
+    AppDataController.showTaskMenu(id)
+}
+
 function Task(props) {
 
      const classes = `task-item ${props.isCompleted ? 'completed' : ''} ${props.isSelected ? 'selected-task' : ''}`
@@ -65,12 +70,14 @@ function Task(props) {
                 onChange= {(e) => handleCheckBoxEvent(props.id)}
                 checked= {props.isCompleted}
             />
+
             <input 
-                class='task-text' 
+                class='task-text'
+                disabled={true}
                 type='text' 
-                alt='task text' 
-                onChange= { (e) => handleTextEvent(props.id,e)}
-                onKeyPress={ (e) => shouldCreateNewTaskEvent(e) }
+                alt='task text'
+                onClick=
+
                 value={props.text}
             />
             <PriorityButton id={props.id} priority={props.priority}/>
