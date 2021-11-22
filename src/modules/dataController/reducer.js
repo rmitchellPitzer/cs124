@@ -26,6 +26,7 @@ const initialState = {
     showCompleted: false,
     showTodo: true,
     showMenu: false,
+    showTaskMenu:false,
     showSortMenu: false,
     showPriorityMenu: false ,
     priorityMenuActiveID: null,
@@ -170,6 +171,7 @@ function openSortFieldMenu(state) {
         ...state,
         showSortMenu: true,
         showPriorityMenu:false,
+        showTaskMenu: false,
 
     }
 }
@@ -185,7 +187,8 @@ function showSortFieldMenu(state) {
     return {
         ...state,
         showSortMenu: true,
-        showPriorityMenu:false,
+        showPriorityMenu: false,
+        showTaskMenu: false,
     }
 }
 
@@ -194,7 +197,8 @@ function showPriorityMenu(state,payload) {
         ...state,
        priorityMenuActiveID: payload.id,
        showPriorityMenu:true,
-       showSortMenu: false
+       showSortMenu: false,
+       showTaskMenu: false,
     }
 }
 
@@ -203,6 +207,22 @@ function hidePriorityMenu(state) {
             ...state,
             showPriorityMenu:false,
         }
+}
+
+function showTaskMenu(state) {
+    return {
+        ...state,
+        showMenu: false,
+        showPriorityMenu: false,
+        showTaskMenu: true
+    }
+}
+
+function hideTaskMenu(state) {
+    return {
+        ...state,
+        showTaskMenu: false
+    }
 }
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
