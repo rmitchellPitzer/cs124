@@ -14,7 +14,8 @@ we need to record a video which showcases two things:
 2. The application running using a screen-reader
 
 ---------------------------------------------------------
-
+# Video
+The video can be found [here](https://www.youtube.com/watch?v=jf4MoXNucXs)
 # Changes
 
 1. Rework of how tasks are edited to make it more accessible and stable when filters are applied
