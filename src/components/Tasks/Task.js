@@ -53,13 +53,14 @@ function Task(props) {
                 checked= {props.isCompleted}
             />
 
-            <p
+            <button
+
                 class='task-text'
                 alt='task text'
                 onClick={() => openTaskMenu(props.id)}
             >
                 {props.text}
-            </p>
+            </button>
             <PriorityButton id={props.id} priority={props.priority}/>
         </div>
     )
@@ -75,8 +76,13 @@ function handleCheckBoxEvent(id) {
     TaskDataController.toggleTaskCompletion(id)
 }
 
+
+function menuIsOpen(state) {
+    return state.showTaskMenu || state.showSortMenu || state.showPriorityMenu
+}
+
 function mapToState(state,ownProps) {
-    const isSelected = ownProps.id == state.priorityMenuActiveID && state.showPriorityMenu
+    const isSelected = ownProps.id == state.activeTask && menuIsOpen(state)
      return {
          isSelected
      }

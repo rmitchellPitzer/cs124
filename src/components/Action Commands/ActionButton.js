@@ -12,7 +12,8 @@ function handleOnClick() {
 
 export default function ActionButton() {
     return (
-        <button 
+        <button
+            id="action-button"
             class="action-button"
             onClick={handleOnClick}
             autoFocus

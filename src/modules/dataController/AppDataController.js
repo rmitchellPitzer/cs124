@@ -17,6 +17,10 @@ export default class AppDataController {
         store.dispatch(action)
     }
 
+    static activeTask() {
+        return store.getState().activeTask
+    }
+
     static showSortMenu() {
         return store.getState().showSortMenu
     }
@@ -100,6 +104,13 @@ export default class AppDataController {
     static setActiveTask(id) {
         const action = setActiveTaskAction(id)
         store.dispatch(action)
+    }
+
+    static getLastTask() {
+       const {tasks} = store.getState()
+        const {length} = tasks
+        if (length == 0) return null
+        return tasks[length - 1]
     }
 
 }
