@@ -2,6 +2,7 @@ import store from "./store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
 import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
+import {popStackAction, pushTasksToStackAction} from "./actions";
 const collectionRef = db.collection(COLLECTION_NAME)
 
  function getTask(id) {
@@ -9,6 +10,9 @@ const collectionRef = db.collection(COLLECTION_NAME)
 }
 
 
+async function updateTask(task) {
+    await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(task.id).set(task)
+}
 /*
 Task {
 
@@ -57,6 +61,9 @@ class TaskDataController {
     }
 
     static async deleteAllCompleted() {
+        const action = pushTasksToStackAction()
+        store.dispatch(action)
+
         const tasks = await collectionRef
             .doc(DEFAULT_DOC_ID)
             .collection(TASK_SUBCOLLECTION)
@@ -87,6 +94,21 @@ class TaskDataController {
 
     static getTask(id) {
         return store.getState().tasks.find(task => task.id == id)
+    }
+
+    static async undoTaskDelete() {
+        const stack = store.getState().stack
+        const restoredState = stack.pop()
+
+        for (const task of restoredState) {
+            if (!getTask(task.id).exists) {
+                await updateTask(task)
+            }
+        }
+
+        const action = popStackAction()
+        store.dispatch(action)
+
     }
 
 }

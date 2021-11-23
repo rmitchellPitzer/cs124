@@ -15,6 +15,7 @@ export default function ActionButton() {
         <button 
             class="action-button"
             onClick={handleOnClick}
+            autoFocus
         >
         <FontAwesomeIcon icon={faPlus} />
         </button>

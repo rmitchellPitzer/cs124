@@ -17,6 +17,7 @@ function PriorityItem(props) {
             className={classes}
             tabIndex={0}
             onClick={() => changePriority(props.id,props.priority)}
+            autoFocus={isSelection}
         >
             <span> {props.priorityText}</span>
             <PriorityIcon priority={props.priority}/>
