@@ -3,6 +3,7 @@ import TaskDataController from "../../modules/dataController/TaskDataController"
 import PriorityButton from "../Priority/PriorityButton/PriorityButton";
 import {connect} from "react-redux"
 import AppDataController from "../../modules/dataController/AppDataController";
+import focusRecentTaskOrLast from "../../modules/focusRecentTaskOrLast";
 /*
 props: {
     text:string;
@@ -72,8 +73,9 @@ function handleTextEvent(id,event) {
     TaskDataController.updateTaskText(id,text)
 }
 
-function handleCheckBoxEvent(id) {
-    TaskDataController.toggleTaskCompletion(id)
+async function handleCheckBoxEvent(id) {
+    await TaskDataController.toggleTaskCompletion(id)
+    focusRecentTaskOrLast()
 }
 
 

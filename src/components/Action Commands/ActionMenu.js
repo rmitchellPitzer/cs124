@@ -29,12 +29,13 @@ const menuItems = [
     {text: "Clear Completed Tasks", command:deleteAll, icon: faMinus},
 ]
 
+
 export default function ActionMenu(props) {
     return (
-        <div>
-            <div className='action-container'>
+        <div >
+            <div className='action-container' >
                 {menuItems.map(menuItem => {
-                    return <ActionMenuItem {...menuItem} key={menuItem.text}/>
+                    return <ActionMenuItem  {...menuItem} key={menuItem.text}/>
                 })}
             </div>
             <div className='overlay' onClick={AppDataController.closeMenu}/>

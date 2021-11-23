@@ -1,9 +1,9 @@
 import AppDataController from "../../../modules/dataController/AppDataController";
+import focusRecentTaskOrLast from "../../../modules/focusRecentTaskOrLast";
 
 function closePriorityMenu() {
     AppDataController.hidePriorityMenu()
-
-
+    focusRecentTaskOrLast()
 }
 
 
