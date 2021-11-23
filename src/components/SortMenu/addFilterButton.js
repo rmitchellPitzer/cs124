@@ -12,7 +12,11 @@ export default function AddFilterButton(props) {
         : "hide"
 
     return (
-        <button onClick={addFilterSection} className={classes}>
+        <button
+            onClick={addFilterSection}
+            className={classes}
+            autoFocus
+        >
             <span> + Field </span>
         </button>
     )

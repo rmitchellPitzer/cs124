@@ -6,7 +6,6 @@ import SortEntryContainer from "./SortEntry/SortEntryContainer"
 
 
 function SortMenuContainer(props) {
-
     return (
         <div className="sort-container">
             <div className="sort-bar">
@@ -15,9 +14,6 @@ function SortMenuContainer(props) {
                     <AddFilterButton sortingFields={props.sortingFields}/>
                     <CloseMenuButton/>
                 </div>
-
-
-
             </div>
             <div class='field-container'>
                 {
@@ -26,7 +22,6 @@ function SortMenuContainer(props) {
                     })
                 }
             </div>
-
         </div>
     )
 }

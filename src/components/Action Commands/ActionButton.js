@@ -5,7 +5,9 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import TaskDataController from "../../modules/dataController/TaskDataController";
 
 function handleOnClick() {
-    TaskDataController.createTask()
+    const taskID = TaskDataController.createTask()
+    AppDataController.setActiveTask(taskID)
+    AppDataController.showTaskMenu()
 }
 
 export default function ActionButton() {
