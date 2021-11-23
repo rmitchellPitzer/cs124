@@ -1,8 +1,9 @@
 
 import "../../../css/task_menu.css"
+import AppDataController from "../../../modules/dataController/AppDataController";
 
 function closeMenu() {
-
+    AppDataController.hideTaskMenu()
 }
 
 

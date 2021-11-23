@@ -2,7 +2,11 @@
 
 
 .task-menu-container {
-
+    position: fixed;
+    top: 50vh;
+    width: 100vw;
+    height: 50vh;
+    background: #FFD8B6;
 }
 
 
@@ -11,6 +15,11 @@
 }
 
 
+.task-menu-bar {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
 .task-menu-close-button {
 
 }

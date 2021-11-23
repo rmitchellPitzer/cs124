@@ -4,10 +4,13 @@ import "../../../css/task_menu.css"
 
 export default function TaskMenuBar(props) {
     return (
-        <div className="task-menu">
-            <h1> Task </h1>
-            <TaskMenuDeleteButton/>
-            <TaskMenuCloseButton/>
+        <div className="task-menu-bar">
+            <h2> Task </h2>
+            <div>
+                <TaskMenuDeleteButton/>
+                <TaskMenuCloseButton/>
+            </div>
+
         </div>
     )
 }

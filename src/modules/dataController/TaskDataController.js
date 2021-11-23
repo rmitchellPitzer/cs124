@@ -47,6 +47,7 @@ class TaskDataController {
             priority: -1,
             creationDate: Date.now()
         })
+        return id
     }
 
     static async deleteTask(id) {
@@ -82,6 +83,10 @@ class TaskDataController {
         await task.update({
             priority
         })
+    }
+
+    static getTask(id) {
+        return store.getState().tasks.find(task => task.id == id)
     }
 
 }

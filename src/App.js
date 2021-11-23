@@ -43,7 +43,7 @@ function mapToState(state) {
     showUndo: AppDataController.undoIsActive(),
     showSortMenu: AppDataController.showSortMenu(),
     showPriorityMenu: state.showPriorityMenu,
-    showTaskMenu: AppDataController.showTaskMenu()
+    showTaskMenu: state.showTaskMenu
   }
 }
 export default connect(mapToState)(App)

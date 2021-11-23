@@ -6,7 +6,7 @@ import {
     toggleCompletedListAction,
     showSortFieldAction,
     toggleToDoListAction,
-    undoTaskAction, showTaskMenuAction, hideTaskMenuAction
+    undoTaskAction, showTaskMenuAction, hideTaskMenuAction, setActiveTaskAction
 } from "./actions.js"
 import store from "./store.js"
 
@@ -94,6 +94,11 @@ export default class AppDataController {
 
     static hideTaskMenu() {
         const action = hideTaskMenuAction()
+        store.dispatch(action)
+    }
+
+    static setActiveTask(id) {
+        const action = setActiveTaskAction(id)
         store.dispatch(action)
     }
 

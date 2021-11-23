@@ -30,32 +30,14 @@ function getSibling(id) {
     return task.previousElementSibling
 }
 
-async function shouldCreateNewTaskEvent(event) {
-    const isEnter = event.key === "Enter"
-    if (isEnter) await TaskDataController.createTask()
-    focusNewTask()
-}
-
-function focusTask(id) {
-    const task = document.getElementById(id)
-    if (!task) return
-    task.focus()
-}
-
-function focusNewTask() {
-    const tasks = document.getElementsByClassName("task-text")
-    const lastTask = tasks.length - 1
-    tasks[lastTask].focus()
-}
-
 function openTaskMenu(id) {
-    AppDataController.showTaskMenu(id)
+    console.log("clicked")
+    AppDataController.showTaskMenu()
+    AppDataController.setActiveTask(id)
 }
 
 function Task(props) {
-
      const classes = `task-item ${props.isCompleted ? 'completed' : ''} ${props.isSelected ? 'selected-task' : ''}`
-
     return (
         <div
             id={props.id}
@@ -71,15 +53,13 @@ function Task(props) {
                 checked= {props.isCompleted}
             />
 
-            <input 
+            <p
                 class='task-text'
-                disabled={true}
-                type='text' 
                 alt='task text'
-                onClick=
-
-                value={props.text}
-            />
+                onClick={() => openTaskMenu(props.id)}
+            >
+                {props.text}
+            </p>
             <PriorityButton id={props.id} priority={props.priority}/>
         </div>
     )
