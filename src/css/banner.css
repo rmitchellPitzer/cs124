@@ -17,6 +17,10 @@
     color: #555957;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .banner-drop-down {
     position: absolute;
     color: #654e4a;

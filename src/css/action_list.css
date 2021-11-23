@@ -36,11 +36,14 @@
     color: white;
 }
 
+
+.hidden {
+    visibility: hidden;
+}
 .action-item {
     font-size: 1.5em;
     display: flex;
     color: #7a7a7a;
-    outline: none;
     border: none;
     background: transparent;
     width: 100%;

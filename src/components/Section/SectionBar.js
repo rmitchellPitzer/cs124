@@ -8,13 +8,14 @@ import ActionMenu from "../Action Commands/ActionMenu";
 
 export default function SectionBar(props) {
     const classes = `bar ${props.className}`
+    console.log(props.hasCompletedTask)
     return (
         <div class={classes}>
             <SectionButton isToDo = { props.className === "todo-bar" }/>
             <h1 class="bar-title"> {props.sectionTitle} </h1>
              <FilterButton isToDo={props.isToDo}/>
-            {!props.isToDo && <DropDownButton/>}
-             { !props.isToDo && props.menuIsActive && <ActionMenu/> }
+            {!props.isToDo && <DropDownButton hasCompletedTasks={props.hasCompletedTask} />}
+             { !props.isToDo  &&  props.menuIsActive && <ActionMenu /> }
         </div>  
     )
 }

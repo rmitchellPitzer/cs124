@@ -99,6 +99,7 @@ class TaskDataController {
     static async undoTaskDelete() {
         const stack = store.getState().stack
         const restoredState = stack.pop()
+        if (!restoredState) return
 
         for (const task of restoredState) {
             if (!getTask(task.id).exists) {

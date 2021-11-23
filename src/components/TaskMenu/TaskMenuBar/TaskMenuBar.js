@@ -5,7 +5,7 @@ import "../../../css/task_menu.css"
 export default function TaskMenuBar(props) {
     return (
         <div className="task-menu-bar">
-            <h2> Task </h2>
+            <h2 className="task-menu-title"> Task </h2>
             <div>
                 <TaskMenuDeleteButton/>
                 <TaskMenuCloseButton/>

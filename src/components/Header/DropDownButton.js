@@ -7,10 +7,11 @@ function handleOnClick() {
     AppDataController.showMenu()
 }
 
-export default function DropDownButton(props) {
+export default function DropDownButton({hasCompletedTasks}) {
+    const classNames = !hasCompletedTasks ? "banner-drop-down hidden" : "banner-drop-down"
     return (
         <button
-            className="banner-drop-down"
+            className={classNames}
             onClick={handleOnClick}
         >
                 <FontAwesomeIcon icon={ faEllipsisV}/>

@@ -18,7 +18,7 @@ function SectionContainer(props) {
 
 
     <div>
-        <SectionBar isToDo = {props.isToDo}  menuIsActive = {props.menuIsActive} sectionTitle = {props.sectionTitle} className={props.className}/>
+        <SectionBar isToDo = {props.isToDo} hasCompletedTask = {props.hasCompletedTasks} menuIsActive = {props.menuIsActive} sectionTitle = {props.sectionTitle} className={props.className}/>
         { props.showContainer && <TaskList tasks={props.tasks} />}
     </div>
 
@@ -34,11 +34,14 @@ function mapStateToProps(state,ownProps) {
         isToDo: true,
         showSortMenu: state.showSortMenu
     }
-    
+
+    const hasCompletedTask = TaskDataController.completed().length > 0
+    console.log(hasCompletedTask)
     return {
         tasks: TaskDataController.completed(),
         menuIsActive: AppDataController.menuIsActive(),
         showContainer: AppDataController.showCompleted(),
+        hasCompletedTasks:hasCompletedTask,
         isToDo: false,
         showSortMenu: state.showSortMenu
     }

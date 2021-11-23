@@ -26,7 +26,9 @@ async function shouldCreateNewTask(event) {
 function TaskEditor({activeTask,task}) {
 
     return (
-        <div>
+        <div
+            className="task-editor-container"
+        >
           <input
               id="task-editor"
               value={task ? task.text : ""}
