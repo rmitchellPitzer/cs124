@@ -14,6 +14,7 @@ export default function TaskMenuCloseButton(props) {
         <button
             className="task-menu-close-button"
             onClick={closeMenu}
+            aria-label="Close Task Menu"
         >
             Close
         </button>

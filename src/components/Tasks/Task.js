@@ -37,32 +37,44 @@ function openTaskMenu(id) {
     AppDataController.setActiveTask(id)
 }
 
+function ariaLabel({priority,isCompleted,text}) {
+    const priorityLevels = new Map()
+        .set(0,"High Priorty")
+        .set(-1,"No Priority")
+        .set(1,"Medium Priority")
+        .set(2,"Low Priority")
+
+    return `Task with text ${text} has priority level ${priorityLevels.get(priority)} and is ${isCompleted ? "completed": "not completed "}`
+}
+
 function Task(props) {
      const classes = `task-item ${props.isCompleted ? 'completed' : ''} ${props.isSelected ? 'selected-task' : ''}`
     return (
         <div
+            aria-label={ariaLabel(props)}
             id={props.id}
             class={classes}
             onKeyDown={(e) => shouldDeleteTaskEvent(e,props.id)}
         >
             <input 
                 alt='task completion status' 
-                class='checkbox' 
+                class='checkbox'
                 type="checkbox"
+                aria-label={props.isCompleted ? `Mark task with text ${props.text} as to do`: `Mark task with text ${props.text} as completed `}
                 value={ props.isCompleted}
                 onChange= {(e) => handleCheckBoxEvent(props.id)}
                 checked= {props.isCompleted}
             />
 
             <button
-
+                aria-label={`To do item with text: ${props.text}`}
                 class='task-text'
                 alt='task text'
                 onClick={() => openTaskMenu(props.id)}
             >
                 {props.text}
             </button>
-            <PriorityButton id={props.id} priority={props.priority}/>
+            <PriorityButton text={props.text} id={props.id} priority={props.priority}/>
         </div>
     )
 

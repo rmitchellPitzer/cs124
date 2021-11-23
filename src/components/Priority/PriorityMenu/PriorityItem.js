@@ -14,6 +14,7 @@ function PriorityItem(props) {
 
     return (
         <button
+            aria-label={`Set Task Priority to ${props.priorityText}`}
             className={classes}
             tabIndex={0}
             onClick={() => changePriority(props.id,props.priority)}

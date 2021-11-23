@@ -14,6 +14,7 @@ export default function CloseMenuButton(props) {
         <button
             id="sort-close-button"
             className="sort-close-button sort-button-color"
+            aria-label="Close Sort Filter"
             onClick={closeMenu}
         >
            <span> x </span>

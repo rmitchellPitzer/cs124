@@ -15,6 +15,7 @@ export default function AddFilterButton(props) {
         <button
             onClick={addFilterSection}
             className={classes}
+            aria-label="Add a Sort Field"
             autoFocus
         >
             <span> + Field </span>

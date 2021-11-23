@@ -12,6 +12,7 @@ export default function UndoButton() {
         <div class="undo">
             <p> Completed tasks cleared</p>
             <button
+                aria-label="Undo Cleared Tasks"
                 alt="undo task clear"
                 onClick={undoTask}
                 autoFocus

@@ -31,6 +31,7 @@ function TaskEditor({activeTask,task}) {
         >
           <input
               id="task-editor"
+              aria-label="Set Task Text"
               value={task ? task.text : ""}
               autoFocus
               onKeyPress={(e) => shouldCreateNewTask(e)}

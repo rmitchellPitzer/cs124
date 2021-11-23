@@ -20,6 +20,7 @@ function TaskMenuDeleteButton({activeTask}) {
         <button
             className="task-menu-delete-button"
             onClick={() => deleteTask(activeTask)}
+            aria-label="Delete Selected Task"
         >
             Delete
         </button>

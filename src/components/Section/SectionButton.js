@@ -3,10 +3,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { connect } from "react-redux"
 import AppDataController from "../../modules/dataController/AppDataController"
 
+
+function arialLabel({isToDo,isOpen}) {
+    if (isToDo) {
+        if (isOpen) return "Close To Do Section"
+        return "Open To Do Section "
+    }
+    else {
+        if (isOpen) return "Close Completed Section"
+        return "Open Completed Section "
+    }
+}
 function SectionButton(props) {
     const icon = props.isOpen ? faAngleDown : faAngleRight
     return (
-        <button class="drop-down" onClick={(e) => handleOnClick(props.isToDo)}>
+        <button
+            class="drop-down"
+            onClick={(e) => handleOnClick(props.isToDo)}
+            aria-label={arialLabel(props)}
+        >
             <FontAwesomeIcon icon={icon} />
         </button>
     )

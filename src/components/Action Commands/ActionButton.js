@@ -14,6 +14,7 @@ export default function ActionButton() {
     return (
         <button
             id="action-button"
+            aria-label="Add new Task"
             class="action-button"
             onClick={handleOnClick}
             autoFocus

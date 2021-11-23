@@ -11,6 +11,7 @@ export default function DropDownButton({hasCompletedTasks}) {
     const classNames = !hasCompletedTasks ? "banner-drop-down hidden" : "banner-drop-down"
     return (
         <button
+            aria-label="Clear Task Drop Down"
             className={classNames}
             onClick={handleOnClick}
         >
