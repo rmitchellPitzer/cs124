@@ -16,3 +16,20 @@
     padding-top: 15px;
     color: #555957;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.banner-drop-down {
+    position: absolute;
+    color: #654e4a;
+    right: 0px;
+    height: 25px;
+    margin: 10px;
+    width: 30px;
+    font-size: 1.25em;
+    background: transparent;
+    border: none;
+
+}

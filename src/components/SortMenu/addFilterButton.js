@@ -12,7 +12,12 @@ export default function AddFilterButton(props) {
         : "hide"
 
     return (
-        <button onClick={addFilterSection} className={classes}>
+        <button
+            onClick={addFilterSection}
+            className={classes}
+            aria-label="Add a Sort Field"
+            autoFocus
+        >
             <span> + Field </span>
         </button>
     )

@@ -6,7 +6,7 @@ import {
     toggleCompletedListAction,
     showSortFieldAction,
     toggleToDoListAction,
-    undoTaskAction
+    undoTaskAction, showTaskMenuAction, hideTaskMenuAction, setActiveTaskAction
 } from "./actions.js"
 import store from "./store.js"
 
@@ -16,6 +16,11 @@ export default class AppDataController {
         const action = toggleToDoListAction()
         store.dispatch(action)
     }
+
+    static activeTask() {
+        return store.getState().activeTask
+    }
+
     static showSortMenu() {
         return store.getState().showSortMenu
     }
@@ -84,6 +89,28 @@ export default class AppDataController {
     static hidePriorityMenu() {
         const action = hidePriorityMenuAction()
         store.dispatch(action)
+    }
+
+    static showTaskMenu() {
+        const action = showTaskMenuAction()
+        store.dispatch(action)
+    }
+
+    static hideTaskMenu() {
+        const action = hideTaskMenuAction()
+        store.dispatch(action)
+    }
+
+    static setActiveTask(id) {
+        const action = setActiveTaskAction(id)
+        store.dispatch(action)
+    }
+
+    static getLastTask() {
+       const {tasks} = store.getState()
+        const {length} = tasks
+        if (length == 0) return null
+        return tasks[length - 1]
     }
 
 }

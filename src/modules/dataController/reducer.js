@@ -10,10 +10,15 @@ import {
     TOGGLE_TODO_LIST,
     UNDO_TASK,
     UPDATE_TASKS,
-
     UPDATE_SORTING_FIELDS,
     SHOW_SORT_FIELD_MENU,
-    HIDE_SORT_FIELD_MENU, SHOW_PRIORITY_MENU, HIDE_PRIORITY_MENU
+    HIDE_SORT_FIELD_MENU,
+    SHOW_PRIORITY_MENU,
+    HIDE_PRIORITY_MENU,
+    SHOW_TASK_MENU,
+    HIDE_TASK_MENU,
+    SET_ACTIVE_TASK,
+    PUSH_TASKS_TO_STACK, POP_STACK
 } from './actions';
 
 import sortingAlgorithm from "../sorting/sortingAlgorithm"
@@ -26,9 +31,11 @@ const initialState = {
     showCompleted: false,
     showTodo: true,
     showMenu: false,
+    showTaskMenu:false,
     showSortMenu: false,
     showPriorityMenu: false ,
     priorityMenuActiveID: null,
+    activeTask: null
 }
 
 function createTask(state) {
@@ -84,15 +91,13 @@ function toggleTaskCompletion(state,id) {
 
 }
 
-function deleteAllCompletedTasks(state) {
-    const stack = state.stack.map(x => x)
+function pushTasksToStack(state) {
+    const stack = [...state.stack]
     stack.push(state.tasks)
 
-   const newTasks = state.tasks.filter(task => task.isCompleted !== true)
    return {
        ...state,
        stack,
-       tasks:newTasks 
    }
 }
 
@@ -170,6 +175,7 @@ function openSortFieldMenu(state) {
         ...state,
         showSortMenu: true,
         showPriorityMenu:false,
+        showTaskMenu: false,
 
     }
 }
@@ -185,7 +191,8 @@ function showSortFieldMenu(state) {
     return {
         ...state,
         showSortMenu: true,
-        showPriorityMenu:false,
+        showPriorityMenu: false,
+        showTaskMenu: false,
     }
 }
 
@@ -194,7 +201,8 @@ function showPriorityMenu(state,payload) {
         ...state,
        priorityMenuActiveID: payload.id,
        showPriorityMenu:true,
-       showSortMenu: false
+       showSortMenu: false,
+       showTaskMenu: false,
     }
 }
 
@@ -204,6 +212,40 @@ function hidePriorityMenu(state) {
             showPriorityMenu:false,
         }
 }
+
+function showTaskMenu(state) {
+    return {
+        ...state,
+        showMenu: false,
+        showPriorityMenu: false,
+        showTaskMenu: true
+    }
+}
+
+function hideTaskMenu(state) {
+    return {
+        ...state,
+        showTaskMenu: false
+    }
+}
+
+function setActiveTask(state,activeTask) {
+    return {
+        ...state,
+        activeTask
+    }
+}
+
+function popStack(state) {
+    const stack = [...state.stack]
+    stack.pop()
+
+    return {
+        ...state,
+        stack
+    }
+}
+
 export default function toDoReducer(state = initialState, action){
     switch (action.type){
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
@@ -220,6 +262,12 @@ export default function toDoReducer(state = initialState, action){
         case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
         case SHOW_PRIORITY_MENU: return showPriorityMenu(state,action.payload)
         case HIDE_PRIORITY_MENU: return hidePriorityMenu(state)
+        case SHOW_TASK_MENU: return showTaskMenu(state)
+        case HIDE_TASK_MENU: return hideTaskMenu(state)
+        case SET_ACTIVE_TASK: return setActiveTask(state,action.payload.id)
+        case PUSH_TASKS_TO_STACK: return pushTasksToStack(state)
+        case POP_STACK: return popStack(state)
+
         default:
             return state 
     }

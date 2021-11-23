@@ -11,6 +11,7 @@ export default function SortCriteriaDropDown(props) {
         <div >
             <label> By </label>
             <select
+                aria-label="Sort By Dropdown"
                 className="sort-type"
                 onChange={(event) => change(props.field,event)}
                 value={props.field}

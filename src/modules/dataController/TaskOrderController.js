@@ -1,17 +1,28 @@
 import db from "../db/index"
 import {COLLECTION_NAME,DEFAULT_DOC_ID} from "./constants"
+import {NAME, PRIORITY, TIME} from "../sorting/sortingAlgorithm";
 const collectionRef = db.collection(COLLECTION_NAME)
+
 
 export default class TaskOrderController {
 
     static async addSortField(field,isAscending) {
+        if (!TaskOrderController.hasValidField(field)) return
+
         const sortFilters = await getSortFields()
         if (!sortFilters) return
         if (isAlreadyEnabled(field,sortFilters)) return
-        else enableFilter(sortFilters,field,isAscending)
+        else enableFilter(sortFilters,field,!!isAscending)
+    }
+
+    static hasValidField(field) {
+        return field == NAME || field == PRIORITY || field == TIME
     }
 
     static async changeSortField(old,newField) {
+        if (!TaskOrderController.hasValidField(old)) return
+        if (!TaskOrderController.hasValidField(newField)) return
+
         const sortFilters = await getSortFields()
         const prevField = sortFilters.find(f => f.field == old)
         const hasFieldAlready = sortFilters.find(f => f.field == newField)
@@ -24,7 +35,7 @@ export default class TaskOrderController {
         const sortFilters = await getSortFields()
         const prevField = sortFilters.find(f => f.field == field)
         if (!prevField) return
-        prevField.isAscending = isAscending
+        prevField.isAscending = !!isAscending
         await updateSortFields(sortFilters)
 
 

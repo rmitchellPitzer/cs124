@@ -2,16 +2,22 @@ import AppDataController from "../../modules/dataController/AppDataController"
 import "../../css/action_button.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import TaskDataController from "../../modules/dataController/TaskDataController";
 
 function handleOnClick() {
-    AppDataController.showMenu()
+    const taskID = TaskDataController.createTask()
+    AppDataController.setActiveTask(taskID)
+    AppDataController.showTaskMenu()
 }
 
 export default function ActionButton() {
     return (
-        <button 
+        <button
+            id="action-button"
+            aria-label="Add new Task"
             class="action-button"
             onClick={handleOnClick}
+            autoFocus
         >
         <FontAwesomeIcon icon={faPlus} />
         </button>

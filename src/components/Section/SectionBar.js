@@ -3,14 +3,21 @@ import "../../css/todo.css"
 import "../../css/completed.css"
 import SectionButton from "./SectionButton"
 import FilterButton from "./FilterButton"
+import DropDownButton from "../Header/DropDownButton";
+import ActionMenu from "../Action Commands/ActionMenu";
 
 export default function SectionBar(props) {
     const classes = `bar ${props.className}`
+    console.log(props.hasCompletedTask)
     return (
         <div class={classes}>
-            <SectionButton isToDo = { props.className === "todo-bar" }/>
+            <SectionButton
+                isToDo = { props.className === "todo-bar" }
+            />
             <h1 class="bar-title"> {props.sectionTitle} </h1>
              <FilterButton isToDo={props.isToDo}/>
+            {!props.isToDo && <DropDownButton hasCompletedTasks={props.hasCompletedTask} />}
+             { !props.isToDo  &&  props.menuIsActive && <ActionMenu /> }
         </div>  
     )
 }

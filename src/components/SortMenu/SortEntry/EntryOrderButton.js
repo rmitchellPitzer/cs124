@@ -7,9 +7,11 @@ function EntryOrderButton(props) {
     return (
         <div>
             <select
+                aria-label="Change Sorting Order"
                 className="sort-order"
                 onChange={ (result) => onOrderChange(props.field,parseInt(result.currentTarget.value))}
                 value={props.index}
+                autoFocus={props.index == 0}
             >
                 {
                     props.sortingFields.map((_,i) => {

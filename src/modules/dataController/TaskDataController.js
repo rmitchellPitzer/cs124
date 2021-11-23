@@ -1,10 +1,8 @@
-import { createTaskAction, deleteAllCompletedTasksAction, deleteTaskAction, toggleTaskCompletionAction, updateTaskTextAction } from "./actions"
 import store from "./store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
 import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
-
-
+import {popStackAction, pushTasksToStackAction} from "./actions";
 const collectionRef = db.collection(COLLECTION_NAME)
 
  function getTask(id) {
@@ -12,6 +10,9 @@ const collectionRef = db.collection(COLLECTION_NAME)
 }
 
 
+async function updateTask(task) {
+    await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(task.id).set(task)
+}
 /*
 Task {
 
@@ -22,6 +23,7 @@ Task {
 }
 */
 class TaskDataController {
+
     static async updateTaskText(id,text) {
         // DOC
         const task = await getTask(id)
@@ -49,7 +51,7 @@ class TaskDataController {
             priority: -1,
             creationDate: Date.now()
         })
-
+        return id
     }
 
     static async deleteTask(id) {
@@ -59,6 +61,9 @@ class TaskDataController {
     }
 
     static async deleteAllCompleted() {
+        const action = pushTasksToStackAction()
+        store.dispatch(action)
+
         const tasks = await collectionRef
             .doc(DEFAULT_DOC_ID)
             .collection(TASK_SUBCOLLECTION)
@@ -86,6 +91,27 @@ class TaskDataController {
             priority
         })
     }
+
+    static getTask(id) {
+        return store.getState().tasks.find(task => task.id == id)
+    }
+
+    static async undoTaskDelete() {
+        const stack = store.getState().stack
+        const restoredState = stack.pop()
+        if (!restoredState) return
+
+        for (const task of restoredState) {
+            if (!getTask(task.id).exists) {
+                await updateTask(task)
+            }
+        }
+
+        const action = popStackAction()
+        store.dispatch(action)
+
+    }
+
 }
 
 

@@ -13,6 +13,7 @@ html, body {
 
 body,.task-text {
     background: #f7ecea;
+    width: 100%;
 }
 .container {
     width: 100%;

@@ -10,7 +10,13 @@ function toggleButton() {
 export default function FilterButton(props) {
    const classes = !props.isToDo ? "sort-button hide" : "sort-button"
    return  (
-       <button className={classes} onClick={toggleButton}>
+       <button
+           id="filter-button"
+           className={classes}
+           onClick={toggleButton}
+           aria-label="Open Sort Filter"
+
+       >
             <FontAwesomeIcon icon={faSort}/>
        </button>
       )
