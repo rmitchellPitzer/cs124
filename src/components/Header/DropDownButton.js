@@ -4,7 +4,7 @@ import { faEllipsisV} from "@fortawesome/free-solid-svg-icons"
 import AppDataController from "../../modules/dataController/AppDataController";
 
 function handleOnClick() {
-    AppDataController.showMenu()
+    AppDataController.showDropDownMenu()
 }
 
 export default function DropDownButton({hasCompletedTasks}) {
@@ -15,7 +15,7 @@ export default function DropDownButton({hasCompletedTasks}) {
             className={classNames}
             onClick={handleOnClick}
         >
-                <FontAwesomeIcon icon={ faEllipsisV}/>
+            <FontAwesomeIcon icon={ faEllipsisV}/>
         </button>
     )
 }

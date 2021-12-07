@@ -2,7 +2,6 @@ import "./css/global.css"
 import "typeface-roboto"
 import ActionButton from "./components/Action Commands/ActionButton";
 import AppDataController from "./modules/dataController/AppDataController";
-import Header from './components/Header/Header';
 import SectionContainer from "./components/Section/SectionContainer.js"
 import { connect } from "react-redux";
 import UndoButton from "./components/Undo/UndoButton";

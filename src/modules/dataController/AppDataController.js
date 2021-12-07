@@ -9,9 +9,9 @@ import {
 } from "../localStore/actions"
 import store from "../localStore/store.js"
 import {
-    hideMenuAction,
+    hideDropDownMenuAction,
     hidePriorityMenuAction,
-    hideTaskMenuAction, showMenuAction,
+    hideTaskMenuAction, showDropDownMenuAction,
     showPriorityMenuAction,
     showTaskMenuAction
 } from "../localStore/actions/menuActions";
@@ -49,18 +49,18 @@ export default class AppDataController {
         return store.getState().showCompleted 
     }
 
-    static showMenu() {
-        const action = showMenuAction()
+    static showDropDownMenu() {
+        const action = showDropDownMenuAction()
         store.dispatch(action)
     }
 
     static closeMenu() {
-        const action = hideMenuAction()
+        const action = hideDropDownMenuAction()
         store.dispatch(action)
     }
 
     static menuIsActive() {
-        return store.getState().showMenu 
+        return store.getState().showDropDownMenu
     }
 
     static toggleCompletedList() {

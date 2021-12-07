@@ -12,7 +12,7 @@ function App({isSignedIn}) {
         { isSignedIn && <Main/> }
         { !isSignedIn && <SignInScreen/> }
       </div>
-      )
+  )
 }
 
 function mapToState(state) {
