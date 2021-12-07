@@ -2,7 +2,7 @@ import store from "../localStore/store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
 import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "../localStore/constants"
-import {popStackAction, pushTasksToStackAction} from "../localStore/actions";
+import {popStackAction, pushTasksToStackAction} from "../localStore/actions/taskActions";
 const collectionRef = db.collection(COLLECTION_NAME)
 
  function getTask(id) {
@@ -13,19 +13,12 @@ const collectionRef = db.collection(COLLECTION_NAME)
 async function updateTask(task) {
     await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(task.id).set(task)
 }
-/*
-Task {
 
-    isCompleted: boolean;
-    text: string;
-    
 
-}
-*/
+
 class TaskDataController {
 
     static async updateTaskText(id,text) {
-        // DOC
         const task = await getTask(id)
         await task.update({
                 text

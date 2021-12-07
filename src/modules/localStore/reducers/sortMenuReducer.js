@@ -1,6 +1,6 @@
 import {HIDE_SORT_FIELD_MENU, SHOW_SORT_FIELD_MENU} from "../actions/menuActions";
-import {UPDATE_SORTING_FIELDS} from "../actions";
 import sortingAlgorithm from "../../sorting/sortingAlgorithm";
+import {UPDATE_SORTING_FIELDS} from "../actions/sortActions";
 
 const initialState = {
     sortingFields:[],

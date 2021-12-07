@@ -1,20 +1,13 @@
-import {
-    hideSortFieldAction,
-    hideUndoAction,
-    showUndoAction,
-    toggleCompletedListAction,
-    showSortFieldAction,
-    toggleToDoListAction,
-    undoTaskAction, setActiveTaskAction
-} from "../localStore/actions"
 import store from "../localStore/store.js"
 import {
     hideDropDownMenuAction,
     hidePriorityMenuAction,
-    hideTaskMenuAction, showDropDownMenuAction,
+    hideTaskMenuAction, hideUndoAction, showDropDownMenuAction,
     showPriorityMenuAction,
-    showTaskMenuAction
+    showTaskMenuAction, showUndoAction, toggleCompletedListAction, toggleToDoListAction, undoTaskAction
 } from "../localStore/actions/menuActions";
+import {hideSortFieldAction, showSortFieldAction} from "../localStore/actions/sortActions";
+import {setActiveTaskAction} from "../localStore/actions/taskActions";
 
 export default class AppDataController {
 

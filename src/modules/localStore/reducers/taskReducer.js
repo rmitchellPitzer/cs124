@@ -1,14 +1,13 @@
+import sortingAlgorithm from "../../sorting/sortingAlgorithm";
 import {
     HIDE_UNDO,
-    POP_STACK,
-    PUSH_TASKS_TO_STACK,
-    SET_ACTIVE_TASK, SHOW_UNDO, TOGGLE_COMPLETED_LIST,
-    TOGGLE_TASK_COMPLETION, TOGGLE_TODO_LIST,
-    UNDO_TASK,
-    UPDATE_TASKS
-} from "../actions";
-
-import sortingAlgorithm from "../../sorting/sortingAlgorithm";
+    SHOW_UNDO,
+    TOGGLE_COMPLETED_LIST,
+    TOGGLE_TASK_COMPLETION,
+    TOGGLE_TODO_LIST,
+    UNDO_TASK
+} from "../actions/menuActions";
+import {POP_STACK, PUSH_TASKS_TO_STACK, SET_ACTIVE_TASK, UPDATE_TASKS} from "../actions/taskActions";
 const initialState = {
     tasks: [],
     stack: [],
