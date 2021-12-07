@@ -1,5 +1,5 @@
 import DataSyncController from "../dataController/DataSyncController"
-import {COLLECTION_NAME, DEFAULT_DOC_ID} from "../dataController/constants"
+import {COLLECTION_NAME, DEFAULT_DOC_ID} from "../localStore/constants"
 import db from "../db/index"
 
 const collectionRef = db.collection(COLLECTION_NAME)

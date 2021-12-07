@@ -1,9 +1,7 @@
 /* eslint-disable no-lone-blocks */
 import { v4 as uuidv4 } from 'uuid';
 import {
-    HIDE_MENU,
     HIDE_UNDO,
-    SHOW_MENU,
     SHOW_UNDO,
     TOGGLE_COMPLETED_LIST,
     TOGGLE_TASK_COMPLETION,
@@ -11,17 +9,19 @@ import {
     UNDO_TASK,
     UPDATE_TASKS,
     UPDATE_SORTING_FIELDS,
-    SHOW_SORT_FIELD_MENU,
-    HIDE_SORT_FIELD_MENU,
-    SHOW_PRIORITY_MENU,
-    HIDE_PRIORITY_MENU,
-    SHOW_TASK_MENU,
-    HIDE_TASK_MENU,
     SET_ACTIVE_TASK,
     PUSH_TASKS_TO_STACK, POP_STACK
-} from './actions';
+} from '../actions';
 
-import sortingAlgorithm from "../sorting/sortingAlgorithm"
+import sortingAlgorithm from "../../sorting/sortingAlgorithm"
+import {
+    HIDE_MENU,
+    HIDE_PRIORITY_MENU,
+    HIDE_SORT_FIELD_MENU,
+    HIDE_TASK_MENU, SHOW_MENU,
+    SHOW_PRIORITY_MENU, SHOW_SORT_FIELD_MENU,
+    SHOW_TASK_MENU
+} from "../actions/menuActions";
 
 const initialState = {
     tasks: [],

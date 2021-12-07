@@ -1,8 +1,8 @@
-import store from "./store.js"
+import store from "../localStore/store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
-import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "./constants"
-import {popStackAction, pushTasksToStackAction} from "./actions";
+import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "../localStore/constants"
+import {popStackAction, pushTasksToStackAction} from "../localStore/actions";
 const collectionRef = db.collection(COLLECTION_NAME)
 
  function getTask(id) {

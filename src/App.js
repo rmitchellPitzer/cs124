@@ -3,6 +3,7 @@ import "typeface-roboto"
 import Main from "./components/Main/index"
 import Header from "./components/Header/Header";
 import { connect } from "react-redux";
+import SignInScreen from "./components/SignInScreen";
 
 function App({isSignedIn}) {
   return (
@@ -16,6 +17,7 @@ function App({isSignedIn}) {
 
 function mapToState(state) {
   return {
+      isSignedIn:state.isSingedIn
   }
 }
 
