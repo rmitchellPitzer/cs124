@@ -1,33 +1,55 @@
-# Data Models
+# Data Model
 
+---
+# Firebase Collection
 
-## Sorting Filters
-```js
-sortingFields:ISortData[]
-```
+## Top Level: UserCollection
+```ts
+interface UserCollection {
+    userID: string
+    email: string
+    blockedUsers:string[]
+    lists: ListCollection
+    pendingRequests: shareRequest[]
+    sharedList: listID[]
+}
 
-### ISortData 
-```js
-@ISortData: {
-field:"name"|"time"|"priority",
-isAscending:Boolean
+interface shareRequest {
+    email:string
+    listTitle:string
+    listID:string
 }
 
 ```
 
-## Task SubCollection
+## ListCollection 
+```ts
+interface ListCollection {
+    id:string
+    tasks: TaskCollection
+    title: string
+    sortingFields: ISortData[]
+}
 
-```js 
-{
-    id:String (UUIDV4);
-    isCompleted:Boolean;
-    text:String;
-    creationDate:Number (Unix);
-    priority: Number;
+interface ISortData {
+    field: "name"|"time"|"priority"
+    isAscending: boolean
 }
 ```
 
-##
+## TaskCollection
+```ts
+interface TaskCollection {
+    id:string
+    isCompleted: boolean
+    text:string
+    creationDate: number
+    priority: number
+}
+```
+
+
+
 
 
 

@@ -1,3 +1,5 @@
+
+
 # Lab 4 - Accessibility
 
 For this lab, we need to make the to-do app
@@ -28,13 +30,6 @@ The video can be found [here](https://www.youtube.com/watch?v=jf4MoXNucXs)
 8. Added Hotkey events for all operations including task creation, deletion, etc.
 9. Wrote code that automatically focuses important elements when menus are brought into focus and defocused
 10. Added clear, descriptive aria-labels to each task so that for each component of a task a visually impaired user can tell which task it is for
-
-
-
-
-
-
-
 
 # your design decisions, including their rationale (include images)
 
