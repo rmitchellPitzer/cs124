@@ -3,6 +3,7 @@ import "firebase/compat/auth"
 import store from "../localStore/store"
 import {updateAuthStatusAction} from "../localStore/actions/authActions";
 import { USERS_COLLECTION} from "../localStore/constants";
+import initSubscriptions from "../setup/initSubscriptions";
 const db = firebase.firestore()
 
 export default class AuthListener {
@@ -10,6 +11,7 @@ export default class AuthListener {
         firebase.auth().onAuthStateChanged(async user => {
             if (!user) return
             if (!(await hasUserFile(user))) await createUser(user)
+            initSubscriptions()
             const action = updateAuthStatusAction(!!user)
             store.dispatch(action)
         })

@@ -1,4 +1,5 @@
 import {
+    NAV_TO_LIST,
     TOGGLE_OWNED_LISTS,
     TOGGLE_PENDING_LISTS,
     TOGGLE_SHARED_LISTS,
@@ -11,7 +12,9 @@ const initialState = {
     pendingLists:[],
     showOwnedLists:false,
     showSharedLists:false,
-    showPendingLists:false
+    showPendingLists:false,
+    showListSettings:false,
+    activeList: null,
 }
 
 export default function listReducer(state = initialState,action) {
@@ -22,8 +25,16 @@ export default function listReducer(state = initialState,action) {
         case UPDATE_OWNED_LISTS: return updateOwnedLists(state,action.lists)
         case UPDATE_SHARED_LISTS: return updateSharedLists(state,action.lists)
         case UPDATE_PENDING_LISTS: return updatePendingLists(state,action.lists)
+        case NAV_TO_LIST: return navToList(state,action.list)
         default:
             return state
+    }
+}
+
+function navToList(state,activeList) {
+    return {
+        ...state,
+        activeList
     }
 }
 

@@ -8,7 +8,6 @@ import ActionMenu from "../Action Commands/ActionMenu";
 
 export default function SectionBar(props) {
     const classes = `bar ${props.className}`
-    console.log(props.hasCompletedTask)
     return (
         <div class={classes}>
             <SectionButton

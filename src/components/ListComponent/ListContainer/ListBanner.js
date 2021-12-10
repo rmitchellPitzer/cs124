@@ -2,7 +2,7 @@ import  "../../../css/list.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown,faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {PENDING_LISTS, SHARED_LISTS, YOUR_LISTS} from "../index";
-
+import ListController from "../../../modules/listController";
 
 /**
  *
@@ -15,10 +15,13 @@ import {PENDING_LISTS, SHARED_LISTS, YOUR_LISTS} from "../index";
 export default function ListBanner({heading,showList}) {
     return (
         <div className="list-banner">
-            <button onClick={() => toggleList(heading)}>
+            <button
+                className="list-banner-toggle"
+                onClick={() => toggleList(heading)}
+            >
                 <FontAwesomeIcon icon={showList ? faChevronDown : faChevronRight}/>
             </button>
-            <h2> { heading }</h2>
+            <h2 className="list-banner-heading"> { heading }</h2>
         </div>
     )
 }
@@ -26,8 +29,8 @@ export default function ListBanner({heading,showList}) {
 
 function toggleList(listType) {
     switch(listType) {
-        case YOUR_LISTS:
-        case SHARED_LISTS:
-        case PENDING_LISTS:
+        case YOUR_LISTS: return ListController.toggleOwnListMenu()
+        case SHARED_LISTS: return ListController.toggleSharedListMenu()
+        case PENDING_LISTS: return ListController.togglePendingListMenu()
     }
 }

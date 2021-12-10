@@ -1,0 +1,44 @@
+.dialog-overlay {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.8;
+    background: black;
+}
+
+.dialog-menu {
+    position: absolute;
+    top: 30%;
+    background: white;
+    width: 100%;
+    min-height: 200px;
+    opacity: 1;
+}
+
+.dialog-menu-container {
+    padding:20px;
+    min-height: 200px;
+}
+
+.dialog-button {
+
+}
+
+.dialog-heading {
+    text-align: center;
+}
+
+.dialog-banner {
+    margin-bottom: 30px;
+}
+
+.dialog-item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.dialog-two-button-container {
+    display: flex;
+    justify-content: space-evenly;
+}

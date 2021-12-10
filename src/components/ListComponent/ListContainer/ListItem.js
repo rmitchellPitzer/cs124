@@ -1,22 +1,26 @@
+import ListController from "../../../modules/listController";
 
 
-
-
-
-
-
-function ListItem(props) {
+/**
+ *
+ * @param props {
+ *     list
+ *
+ *     ...;
+ * }
+ */
+export default function ListItem({list}) {
 
     return (
        <button
-           onClick={() => navToList(props.listID)}
+           onClick={() => navToList(list)}
            className="list-item"
        >
-           {props.title}
+           {list.title}
        </button>
     )
 }
 
-function navToList(listID) {
-
+function navToList(list) {
+    ListController.navToList(list)
 }

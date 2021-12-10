@@ -36,7 +36,6 @@ function mapStateToProps(state,ownProps) {
     }
 
     const hasCompletedTask = TaskDataController.completed().length > 0
-    console.log(hasCompletedTask)
     return {
         tasks: TaskDataController.completed(),
         menuIsActive: AppDataController.menuIsActive(),

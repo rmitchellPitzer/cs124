@@ -1,14 +1,44 @@
-
-
-
 .list-banner {
-
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .list-item {
 
 }
+.black {
+    color:black;
+}
+
+.menu-item {
+    margin-top: 7px;
+}
 
 .list-container {
-    
+
+}
+
+.active-list-banner {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.list-item-container {
+
+}
+
+.hide-list {
+    display: none;
+}
+
+.list-banner-toggle {
+    margin-left: 10px;
+    border: none;
+    background: none;
+}
+
+.list-banner-heading {
+    margin:auto;
 }

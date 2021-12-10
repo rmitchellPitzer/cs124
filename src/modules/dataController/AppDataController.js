@@ -17,11 +17,11 @@ export default class AppDataController {
     }
 
     static activeTask() {
-        return store.getState().activeTask
+        return store.getState().tasks.activeTask
     }
 
     static showSortMenu() {
-        return store.getState().showSortMenu
+        return store.getState().tasks.showSortMenu
     }
 
     static hideSortMenu() {
@@ -35,11 +35,11 @@ export default class AppDataController {
     }
 
     static showToDo() {
-        return store.getState().showTodo 
+        return store.getState().tasks.showTodo
     }
     
     static showCompleted() {
-        return store.getState().showCompleted 
+        return store.getState().tasks.showCompleted
     }
 
     static showDropDownMenu() {
@@ -53,7 +53,7 @@ export default class AppDataController {
     }
 
     static menuIsActive() {
-        return store.getState().showDropDownMenu
+        return store.getState().taskMenu.showDropDownMenu
     }
 
     static toggleCompletedList() {
@@ -77,7 +77,7 @@ export default class AppDataController {
     }
 
     static undoIsActive() {
-        return store.getState().showUndo 
+        return store.getState().tasks.showUndo
     }
 
     static showPriorityMenu(id) {
@@ -107,7 +107,7 @@ export default class AppDataController {
 
     static getLastTask() {
        const {tasks} = store.getState()
-        const {length} = tasks
+        const {length} = tasks.tasks
         if (length == 0) return null
         return tasks[length - 1]
     }

@@ -8,6 +8,7 @@ import {
     UNDO_TASK
 } from "../../actions/menuActions";
 import {POP_STACK, PUSH_TASKS_TO_STACK, SET_ACTIVE_TASK, UPDATE_TASKS} from "../../actions/taskActions";
+import {UPDATE_SORTING_FIELDS} from "../../actions/sortActions";
 const initialState = {
     tasks: [],
     stack: [],
@@ -15,6 +16,7 @@ const initialState = {
     showCompleted: false,
     activeTask: null,
     showUndo: false,
+    sortingFields:[],
 }
 
 function updateTasks(state,oldTasks) {
@@ -92,6 +94,14 @@ function hideUndo(state) {
         showUndo: false
     }
 }
+function updateSortingFields(state,{sortingFields}) {
+    const tasks = sortingAlgorithm(sortingFields,state.tasks)
+    return {
+        ...state,
+        tasks,
+        sortingFields
+    }
+}
 
 export default function taskReducer(state = initialState, action) {
     switch(action.type) {
@@ -104,6 +114,7 @@ export default function taskReducer(state = initialState, action) {
         case PUSH_TASKS_TO_STACK: return pushTasksToStack(state)
         case POP_STACK: return popStack(state)
         case UNDO_TASK: return undoTask(state)
+        case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
         case TOGGLE_TASK_COMPLETION: return toggleTaskCompletion(state,action.payload.id)
         default:
             return state

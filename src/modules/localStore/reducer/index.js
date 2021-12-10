@@ -5,6 +5,7 @@ import priorityMenuReducer from "./components/priorityMenuReducer";
 import sortMenuReducer from "./components/sortMenuReducer"
 import taskMenuReducer from "./components/taskMenuReducer";
 import listReducer from "./components/listReducer";
+import newListMenuReducer from "./components/newListMenuReducer";
 
 export default combineReducers(
     {
@@ -14,5 +15,6 @@ export default combineReducers(
         sortMenu:sortMenuReducer,
         taskMenu:taskMenuReducer,
         lists: listReducer,
+        newListMenu:newListMenuReducer
     }
 )

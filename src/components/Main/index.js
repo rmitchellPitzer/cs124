@@ -7,10 +7,12 @@ import SortMenuContainer from "../SortMenu/SortMenuContainer";
 import TaskMenu from "../TaskMenu/TaskMenu";
 import PriorityMenu from "../../components/Priority/PriorityMenu/PriorityMenuContainer"
 import ActionButton from "../Action Commands/ActionButton";
+import ActiveListBanner from "../ActiveListBanner";
 
 function Main({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
     return (
     <div>
+        <ActiveListBanner/>
         <SectionContainer
             className='todo-bar'
             sectionTitle="To Do"

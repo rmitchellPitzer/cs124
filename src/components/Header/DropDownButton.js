@@ -15,7 +15,7 @@ export default function DropDownButton({hasCompletedTasks}) {
             className={classNames}
             onClick={handleOnClick}
         >
-            <FontAwesomeIcon icon={ faEllipsisV}/>
+            <FontAwesomeIcon icon={ faEllipsisV }/>
         </button>
     )
 }

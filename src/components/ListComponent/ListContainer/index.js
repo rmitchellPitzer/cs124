@@ -17,6 +17,7 @@ export default function ListContainer({heading,listItems,showList}) {
                 showList={showList}
             />
             <ListItems
+                heading={heading}
                 listItems={listItems}
                 showList={showList}
             />
