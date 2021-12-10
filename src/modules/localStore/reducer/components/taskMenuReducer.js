@@ -1,4 +1,4 @@
-import {HIDE_DROPDOWN_MENU, HIDE_TASK_MENU, SHOW_DROPDOWN_MENU, SHOW_TASK_MENU} from "../actions/menuActions";
+import {HIDE_DROPDOWN_MENU, HIDE_TASK_MENU, SHOW_DROPDOWN_MENU, SHOW_TASK_MENU} from "../../actions/menuActions";
 
 function showTaskMenu(state) {
     return {
@@ -31,6 +31,7 @@ const initialState = {
     showTaskMenu: false,
     showDropDownMenu: false
 }
+
 export default function taskMenuReducer(state = initialState,action) {
     switch (action.type) {
         case SHOW_TASK_MENU: return showTaskMenu(state)

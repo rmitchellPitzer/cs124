@@ -1,6 +1,5 @@
-import {HIDE_SORT_FIELD_MENU, SHOW_SORT_FIELD_MENU} from "../actions/menuActions";
-import sortingAlgorithm from "../../sorting/sortingAlgorithm";
-import {UPDATE_SORTING_FIELDS} from "../actions/sortActions";
+import sortingAlgorithm from "../../../sorting/sortingAlgorithm";
+import {HIDE_SORT_FIELD_MENU, SHOW_SORT_FIELD_MENU, UPDATE_SORTING_FIELDS} from "../../actions/sortActions";
 
 const initialState = {
     sortingFields:[],
@@ -44,6 +43,7 @@ export default function sortingReducer(state = initialState, action) {
         case SHOW_SORT_FIELD_MENU: return showSortFieldMenu(state)
         case HIDE_SORT_FIELD_MENU: return hideSortFieldMenu(state)
         case UPDATE_SORTING_FIELDS: return updateSortingFields(state,action.payload)
-
+        default:
+            return state
     }
 }

@@ -1,4 +1,4 @@
-import {UPDATE_AUTH_STATUS} from "../actions/authActions";
+import {UPDATE_AUTH_STATUS} from "../../actions/authActions";
 
 function updateAuthStatus(state,isSignedIn) {
     return {
@@ -7,7 +7,11 @@ function updateAuthStatus(state,isSignedIn) {
     }
 }
 
-export default function authReducer(state = {isSignedIn:false},action) {
+const initialState = {
+    isSignedIn:false,
+}
+
+export default function authReducer(state = initialState ,action) {
     switch (action.type) {
         case UPDATE_AUTH_STATUS: return updateAuthStatus(state,action.isSignedIn)
         default:

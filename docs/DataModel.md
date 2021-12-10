@@ -6,12 +6,9 @@
 ## Top Level: UserCollection
 ```ts
 interface UserCollection {
-    userID: string
+    id: string
     email: string
-    blockedUsers:string[]
-    lists: ListCollection
     pendingRequests: shareRequest[]
-    sharedList: listID[]
 }
 
 interface shareRequest {
@@ -22,12 +19,14 @@ interface shareRequest {
 
 ```
 
-## ListCollection 
+## Top Level: ListCollection 
 ```ts
 interface ListCollection {
     id:string
     tasks: TaskCollection
     title: string
+    owner:string 
+    usersSharedWith:string[]
     sortingFields: ISortData[]
 }
 

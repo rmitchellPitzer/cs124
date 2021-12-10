@@ -17,8 +17,7 @@ function App({isSignedIn}) {
 
 function mapToState(state) {
   return {
-      isSignedIn:state.isSingedIn
+      isSignedIn:state.auth.isSignedIn
   }
 }
-
 export default connect(mapToState)(App)

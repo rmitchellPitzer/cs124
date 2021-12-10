@@ -1,9 +1,9 @@
 import db from "../db/index"
 import store from "../localStore/store"
-import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "../localStore/constants"
+import {USERS_COLLECTION,DEFAULT_DOC_ID} from "../localStore/constants"
 import {updateSortingFieldsAction} from "../localStore/actions/sortActions";
 import {updateTasksAction} from "../localStore/actions/taskActions";
-const collectionRef = db.collection(COLLECTION_NAME)
+const collectionRef = db.collection(USERS_COLLECTION)
 
 class DataSyncController {
     _db = db

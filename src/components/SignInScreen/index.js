@@ -1,15 +1,15 @@
 import {StyledFirebaseAuth} from "react-firebaseui";
-import firebase from "firebase/compat";
+import firebase from "../../modules/db/firebase"
 import "firebase/compat/auth"
 
 const uiConfig = {
-    signInFlow: 'popup',
-    signInSuccessUrl: "/signedIn",
+    signInSuccessUrl: "/",
+    signInFlow: "popup",
     signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ]
 }
 
 export default function SignInScreen() {
-    return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth}/>
+    return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
 }

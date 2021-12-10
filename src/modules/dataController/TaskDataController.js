@@ -1,20 +1,17 @@
 import store from "../localStore/store.js"
 import db from "../db/index"
 import { v4 as uuidv4 } from 'uuid';
-import {COLLECTION_NAME,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "../localStore/constants"
+import {USERS_COLLECTION,DEFAULT_DOC_ID,TASK_SUBCOLLECTION} from "../localStore/constants"
 import {popStackAction, pushTasksToStackAction} from "../localStore/actions/taskActions";
-const collectionRef = db.collection(COLLECTION_NAME)
+const collectionRef = db.collection(USERS_COLLECTION)
 
  function getTask(id) {
     return collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(id)
 }
 
-
 async function updateTask(task) {
     await collectionRef.doc(DEFAULT_DOC_ID).collection(TASK_SUBCOLLECTION).doc(task.id).set(task)
 }
-
-
 
 class TaskDataController {
 

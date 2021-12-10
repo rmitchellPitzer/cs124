@@ -1,4 +1,4 @@
-import {HIDE_PRIORITY_MENU, SHOW_PRIORITY_MENU} from "../actions/menuActions";
+import {HIDE_PRIORITY_MENU, SHOW_PRIORITY_MENU} from "../../actions/menuActions";
 
 function showPriorityMenu(state,payload) {
     return {

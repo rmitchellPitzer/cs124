@@ -1,7 +1,7 @@
 import db from "../db/index"
-import {COLLECTION_NAME,DEFAULT_DOC_ID} from "../localStore/constants"
+import {USERS_COLLECTION,DEFAULT_DOC_ID} from "../localStore/constants"
 import {NAME, PRIORITY, TIME} from "../sorting/sortingAlgorithm";
-const collectionRef = db.collection(COLLECTION_NAME)
+const collectionRef = db.collection(USERS_COLLECTION)
 
 
 export default class TaskOrderController {

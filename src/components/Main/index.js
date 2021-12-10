@@ -1,13 +1,12 @@
-import "./css/global.css"
+import "../../css/global.css"
 import "typeface-roboto"
-import ActionButton from "./components/Action Commands/ActionButton";
-import AppDataController from "./modules/dataController/AppDataController";
-import SectionContainer from "./components/Section/SectionContainer.js"
 import { connect } from "react-redux";
-import UndoButton from "./components/Undo/UndoButton";
-import SortMenuContainer from "./components/SortMenu/SortMenuContainer";
-import PriorityMenu from "./components/Priority/PriorityMenu/PriorityMenuContainer"
-import TaskMenu from "./components/TaskMenu/TaskMenu";
+import SectionContainer from "../Section/SectionContainer";
+import UndoButton from "../Undo/UndoButton";
+import SortMenuContainer from "../SortMenu/SortMenuContainer";
+import TaskMenu from "../TaskMenu/TaskMenu";
+import PriorityMenu from "../../components/Priority/PriorityMenu/PriorityMenuContainer"
+import ActionButton from "../Action Commands/ActionButton";
 
 function Main({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
     return (
@@ -34,11 +33,10 @@ function Main({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
 
 function mapToState(state) {
     return {
-        menuIsActive: AppDataController.menuIsActive(),
-        showUndo: AppDataController.undoIsActive(),
-        showSortMenu: AppDataController.showSortMenu(),
-        showPriorityMenu: state.showPriorityMenu,
-        showTaskMenu: state.showTaskMenu
+        showUndo: state.tasks.showUndo,
+        showSortMenu: state.sortMenu.showSortMenu,
+        showPriorityMenu: state.priority.showPriorityMenu,
+        showTaskMenu: state.taskMenu.showTaskMenu
     }
 }
 export default connect(mapToState)(Main)
