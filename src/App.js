@@ -6,15 +6,17 @@ import { connect } from "react-redux";
 import SignInScreen from "./components/SignInScreen";
 import ListComponent from "./components/ListComponent";
 import NewListMenu from "./components/ListComponent/NewListMenu";
+import ListSettings from "./components/ListSettings";
 
-function App({isSignedIn,activeList,showNewListMenu}) {
+function App({showListSettings,isSignedIn,activeList,showNewListMenu}) {
   return (
       <div className='container'>
         <Header/>
-        { (isSignedIn && activeList) && <Main/> }
+        { (isSignedIn && activeList &&!showListSettings) && <Main/> }
         { (isSignedIn && !activeList) && <ListComponent/> }
         { !isSignedIn && <SignInScreen/> }
         { showNewListMenu && <NewListMenu/> }
+        { showListSettings && <ListSettings/>}
       </div>
   )
 }
@@ -23,7 +25,8 @@ function mapToState(state) {
   return {
       isSignedIn:state.auth.isSignedIn,
       activeList: state.lists.activeList,
-      showNewListMenu: state.newListMenu.showNewListMenu
+      showNewListMenu: state.newListMenu.showNewListMenu,
+      showListSettings: state.listSettings.showListSettings,
   }
 }
 export default connect(mapToState)(App)

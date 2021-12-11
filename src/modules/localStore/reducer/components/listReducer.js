@@ -2,7 +2,7 @@ import {
     NAV_TO_LIST,
     TOGGLE_OWNED_LISTS,
     TOGGLE_PENDING_LISTS,
-    TOGGLE_SHARED_LISTS,
+    TOGGLE_SHARED_LISTS, UPDATE_ACTIVE_LIST_NAME,
     UPDATE_OWNED_LISTS, UPDATE_PENDING_LISTS, UPDATE_SHARED_LISTS
 } from "../../actions/listActions";
 
@@ -26,8 +26,17 @@ export default function listReducer(state = initialState,action) {
         case UPDATE_SHARED_LISTS: return updateSharedLists(state,action.lists)
         case UPDATE_PENDING_LISTS: return updatePendingLists(state,action.lists)
         case NAV_TO_LIST: return navToList(state,action.list)
+        case UPDATE_ACTIVE_LIST_NAME: return updateActiveListName(state,action.name)
         default:
             return state
+    }
+}
+
+function updateActiveListName(state,title) {
+    const {activeList} = state
+    return {
+        ...state,
+        activeList: {...activeList,title}
     }
 }
 

@@ -5,7 +5,10 @@ import {showNewListMenuAction} from "../../../modules/localStore/actions/newList
 export default function NewListButton(props) {
 
     return (
-        <button onClick={showMenu}>
+        <button
+            onClick={showMenu}
+            className="list-item"
+        >
             Add New List
         </button>
     )

@@ -2,7 +2,7 @@ import {
     navToListAction,
     toggleOwnedListsAction,
     togglePendingListsAction,
-    toggleSharedListsAction
+    toggleSharedListsAction, updateActiveListNameAction
 } from "../localStore/actions/listActions";
 import db from "../db/index"
 import firebase from "../db/firebase"
@@ -10,8 +10,9 @@ import {v4 as uuidv4} from "uuid"
 import store from "../localStore/store";
 import DataSyncController from "../dataController/DataSyncController";
 import {TASK_SUBCOLLECTION} from "../localStore/constants";
-
+import {getActiveListCollection} from "../dataController/TaskDataController";
 export const LIST_COLLECTION = "lists"
+
 export default class ListController {
 
     static toggleOwnListMenu() {
@@ -29,9 +30,24 @@ export default class ListController {
         store.dispatch(action)
     }
 
+    static async deleteActiveList() {
+        DataSyncController.clearTaskSub()
+        await getActiveListCollection().delete()
+        store.dispatch(navToListAction(null))
+
+    }
+    static async updateListName(title) {
+        await getActiveListCollection().update({
+            title
+        })
+
+        store.dispatch(updateActiveListNameAction(title))
+    }
+
     static navToList(list) {
         const action = navToListAction(list)
         store.dispatch(action)
+        if (!list) return
 
         DataSyncController
             .setTaskSubscription(
@@ -39,6 +55,13 @@ export default class ListController {
                 .collection(LIST_COLLECTION)
                 .doc(list.id)
                 .collection(TASK_SUBCOLLECTION)
+            )
+        DataSyncController
+            .setSortSubscription(
+                db
+                .collection(LIST_COLLECTION)
+                .doc(list.id)
+
             )
     }
 

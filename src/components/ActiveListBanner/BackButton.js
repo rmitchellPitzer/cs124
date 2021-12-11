@@ -1,8 +1,8 @@
 import ListController from "../../modules/listController";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
+import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 
-export default function BackButton(props) {
+export default function BackButton() {
 
     return <button
         onClick={goToListMenu}

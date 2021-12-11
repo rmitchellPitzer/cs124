@@ -13,16 +13,19 @@ function ListComponent(props) {
                 heading={YOUR_LISTS}
                 listItems={props.ownedLists}
                 showList={props.showOwnedLists}
+                classes="orange"
             />
             <ListContainer
                 heading={SHARED_LISTS}
                 listItems={props.sharedLists}
                 showList={props.showSharedLists}
+                classes="red"
             />
             <ListContainer
                 heading={PENDING_LISTS}
                 listItems={props.pendingLists}
                 showList={props.showPendingLists}
+                classes="grey"
             />
         </div>
     )

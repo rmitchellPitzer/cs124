@@ -18,7 +18,13 @@ function SectionContainer(props) {
 
 
     <div>
-        <SectionBar isToDo = {props.isToDo} hasCompletedTask = {props.hasCompletedTasks} menuIsActive = {props.menuIsActive} sectionTitle = {props.sectionTitle} className={props.className}/>
+        <SectionBar
+            isToDo = {props.isToDo}
+            hasCompletedTask = {props.hasCompletedTasks}
+            menuIsActive = {props.menuIsActive}
+            sectionTitle = {props.sectionTitle}
+            className={props.className}
+        />
         { props.showContainer && <TaskList tasks={props.tasks} />}
     </div>
 

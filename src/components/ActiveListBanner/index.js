@@ -2,6 +2,7 @@ import SettingsButton from "./SettingsButton";
 import {connect} from "react-redux";
 import ActiveListHeading from "./ActiveListHeading";
 import BackButton from "./BackButton";
+import firebase from "../../modules/db/firebase"
 
 /**
  * @props {
@@ -9,12 +10,13 @@ import BackButton from "./BackButton";
  * }
  */
 function ActiveListBanner({activeList}) {
+    const isOwnedList = activeList.owner == firebase.auth().currentUser.email
 
     return (
         <div className="active-list-banner">
             <BackButton/>
             <ActiveListHeading heading={activeList.title}/>
-            <SettingsButton/>
+            {isOwnedList && <SettingsButton/>}
         </div>
     )
 }

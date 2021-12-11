@@ -25,7 +25,7 @@ export default function ListItems({heading,showList,listItems}) {
                 heading === YOUR_LISTS &&  <NewListButton/>
             }
             {
-                listItems.map(list => <ListItem list={list}/>)
+                listItems.map((list,index) => <ListItem key={index} list={list}/>)
             }
         </div>
     )

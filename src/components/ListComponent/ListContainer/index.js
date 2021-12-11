@@ -7,13 +7,15 @@ import ListItems from "./ListItems"
  *     heading:string;
  *     listItems: listItem[];
  *     showList: boolean;
+ *     classes:string;
  * }
  */
-export default function ListContainer({heading,listItems,showList}) {
+export default function ListContainer({classes,heading,listItems,showList}) {
     return (
-        <div className="list-container">
+        <div className={"list-container"}>
             <ListBanner
                 heading={heading}
+                classes={classes}
                 showList={showList}
             />
             <ListItems

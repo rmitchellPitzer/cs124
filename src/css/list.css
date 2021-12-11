@@ -4,7 +4,29 @@
     padding: 10px;
 }
 
+
+
 .list-item {
+    width: 100%;
+    margin-bottom: 5px;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+
+.orange {
+    background:#FFD8B6;
+    color:#796555;
+}
+
+.grey {
+    background: #d1d1d1;
+}
+
+.red {
+    background: #FEC5BB;
+    color:#654e4a;
 
 }
 .black {
@@ -26,7 +48,8 @@
 }
 
 .list-item-container {
-
+    max-height: 25vh;
+    overflow-y: scroll;
 }
 
 .hide-list {

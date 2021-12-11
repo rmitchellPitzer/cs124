@@ -6,6 +6,7 @@ import sortMenuReducer from "./components/sortMenuReducer"
 import taskMenuReducer from "./components/taskMenuReducer";
 import listReducer from "./components/listReducer";
 import newListMenuReducer from "./components/newListMenuReducer";
+import settingsReducer from "./components/settingsReducer";
 
 export default combineReducers(
     {
@@ -15,6 +16,7 @@ export default combineReducers(
         sortMenu:sortMenuReducer,
         taskMenu:taskMenuReducer,
         lists: listReducer,
-        newListMenu:newListMenuReducer
+        newListMenu:newListMenuReducer,
+        listSettings:settingsReducer,
     }
 )

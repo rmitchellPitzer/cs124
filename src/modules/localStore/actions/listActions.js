@@ -6,6 +6,15 @@ export const UPDATE_OWNED_LISTS = "updateOwnedLists"
 export const UPDATE_SHARED_LISTS = "updateSharedLists"
 export const UPDATE_PENDING_LISTS = "updatePendingLists"
 export const NAV_TO_LIST = "navToList"
+export const UPDATE_ACTIVE_LIST_NAME = "updateActiveListName"
+
+
+export function updateActiveListNameAction(name) {
+    return {
+        type: UPDATE_ACTIVE_LIST_NAME,
+        name
+    }
+}
 
 export function toggleOwnedListsAction() {
     return {

@@ -4,7 +4,6 @@ import TaskDataController from "../../../modules/dataController/TaskDataControll
 
 function changePriority(id,priority) {
     TaskDataController.updateTaskPriority(id,priority)
-
 }
 
 function PriorityItem(props) {
@@ -27,8 +26,8 @@ function PriorityItem(props) {
 }
 
 function mapToState(state) {
-    const id = state.priorityMenuActiveID
-    const selection = state.tasks.find(task => task.id ==id).priority
+    const id = state.priority.priorityMenuActiveID
+    const selection = state.tasks.tasks.find(task => task.id ==id).priority
 
     return {
         id,

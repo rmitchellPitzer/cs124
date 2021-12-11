@@ -31,7 +31,7 @@ async function onOrderChange(field,newOrder) {
 
 function mapState(state) {
     return {
-        sortingFields:state.sortingFields
+        sortingFields:state.tasks.sortingFields
     }
 }
 

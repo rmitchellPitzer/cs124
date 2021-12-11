@@ -10,9 +10,7 @@ class TaskDataController {
 
     static async updateTaskText(id,text) {
         const task = await getTask(id)
-        await task.update({
-                text
-            })
+        await task.update({text})
     } 
 
     static async toggleTaskCompletion(id) {
@@ -28,15 +26,16 @@ class TaskDataController {
     static createTask() {
         if (!getActiveListCollection()) return
         const id = uuidv4()
-            getActiveListCollection()
+        getActiveListCollection()
             .collection(TASK_SUBCOLLECTION)
-            .doc(id).set({
-            isCompleted: false,
-            text: "",
-            id,
-            priority: -1,
-            creationDate: Date.now()
-        })
+            .doc(id)
+            .set({
+                isCompleted: false,
+                text: "",
+                id,
+                priority: -1,
+                creationDate: Date.now()
+            })
         return id
     }
 
@@ -51,7 +50,7 @@ class TaskDataController {
         const action = pushTasksToStackAction()
         store.dispatch(action)
 
-        const tasks =
+        const tasks = await
             getActiveListCollection()
             .collection(TASK_SUBCOLLECTION)
             .where("isCompleted","==",true)
@@ -101,8 +100,6 @@ class TaskDataController {
 
 }
 
-
-
 function getTask(id) {
     if (!getActiveListCollection()) return
     return getActiveListCollection().collection(TASK_SUBCOLLECTION).doc(id)
@@ -113,10 +110,10 @@ async function updateTask(task) {
     await getActiveListCollection().collection(TASK_SUBCOLLECTION).doc(task.id).set(task)
 }
 
-function getActiveListCollection() {
+export function getActiveListCollection() {
     const {activeList} = store.getState().lists
     if (!activeList) return
-    return collectionRef.doc(activeList)
+    return collectionRef.doc(activeList.id)
 }
 
 export default TaskDataController

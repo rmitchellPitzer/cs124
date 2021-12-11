@@ -12,11 +12,11 @@ import ListController from "../../../modules/listController";
  *
  * }
  */
-export default function ListBanner({heading,showList}) {
+export default function ListBanner({classes,heading,showList}) {
     return (
-        <div className="list-banner">
+        <div className={"list-banner " +classes}>
             <button
-                className="list-banner-toggle"
+                className={"list-banner-toggle " + classes}
                 onClick={() => toggleList(heading)}
             >
                 <FontAwesomeIcon icon={showList ? faChevronDown : faChevronRight}/>

@@ -32,8 +32,10 @@ function getSibling(id) {
 }
 
 function openTaskMenu(id) {
-    console.log("clicked")
+
     AppDataController.showTaskMenu()
+    AppDataController.hideSortMenu()
+    AppDataController.hidePriorityMenu()
     AppDataController.setActiveTask(id)
 }
 

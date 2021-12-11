@@ -1,0 +1,42 @@
+
+.list-settings {
+    width: 100vw;
+    height: 100vh;
+    background: white;
+}
+
+.list-settings-heading {
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.list-settings-banner {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.list-settings-banner h2 {
+    margin: auto;
+}
+
+.list-settings-button {
+    background: none;
+    border: none;
+    font-size: 1.25em;
+}
+
+.list-settings-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-content: center;
+}
+
+.list-settings-command {
+    width: 100%;
+    padding: 10px;
+}

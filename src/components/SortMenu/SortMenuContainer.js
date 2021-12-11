@@ -29,7 +29,7 @@ function SortMenuContainer(props) {
 
 function mapToState(state) {
     return {
-        sortingFields: state.sortingFields
+        sortingFields: state.tasks.sortingFields
     }
 }
 

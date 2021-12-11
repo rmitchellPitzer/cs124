@@ -7,6 +7,16 @@
     background: black;
 }
 
+.dialog-input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.dialog-input {
+    padding: 10px;
+}
+
 .dialog-menu {
     position: absolute;
     top: 30%;
@@ -21,8 +31,16 @@
     min-height: 200px;
 }
 
-.dialog-button {
+.dialog-text-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+.dialog-button {
+    border: none;
+    padding: 10px 20px 10px 20px;
 }
 
 .dialog-heading {

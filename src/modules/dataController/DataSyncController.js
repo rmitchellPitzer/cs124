@@ -31,7 +31,6 @@ class DataSyncController {
     }
 
     setSortSubscription(query) {
-        if (this._sortSubscrption) this._sortSubscription()
 
         this._sortSubscrption = query.onSnapshot(snapshot => {
             const {sortingFields} = snapshot.data()
@@ -39,6 +38,13 @@ class DataSyncController {
             store.dispatch(action)
         })
 
+    }
+
+    clearTaskSub() {
+        if (!!this._taskSubscription) this._taskSubscription()
+        if (!!this._sortSubscrption) this._sortSubscrption()
+        this._taskSubscription = null
+        this._sortSubscrption = null
     }
 
 

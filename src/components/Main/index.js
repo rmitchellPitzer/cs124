@@ -9,7 +9,9 @@ import PriorityMenu from "../../components/Priority/PriorityMenu/PriorityMenuCon
 import ActionButton from "../Action Commands/ActionButton";
 import ActiveListBanner from "../ActiveListBanner";
 
-function Main({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
+function Main(
+    {showTaskMenu,showUndo,showSortMenu,showPriorityMenu}
+) {
     return (
     <div>
         <ActiveListBanner/>
@@ -29,6 +31,7 @@ function Main({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
         { showSortMenu && <SortMenuContainer/> }
         { showPriorityMenu && <PriorityMenu/> }
         { showTaskMenu && <TaskMenu/> }
+
     </div>
     )
 }
@@ -38,7 +41,8 @@ function mapToState(state) {
         showUndo: state.tasks.showUndo,
         showSortMenu: state.sortMenu.showSortMenu,
         showPriorityMenu: state.priority.showPriorityMenu,
-        showTaskMenu: state.taskMenu.showTaskMenu
+        showTaskMenu: state.taskMenu.showTaskMenu,
+        showListSettings: state.listSettings.showListSettings
     }
 }
 export default connect(mapToState)(Main)
