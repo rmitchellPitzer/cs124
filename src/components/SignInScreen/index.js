@@ -3,7 +3,7 @@ import firebase from "../../modules/db/firebase"
 import "firebase/compat/auth"
 
 const uiConfig = {
-    signInSuccessUrl: "/",
+    signInSuccessUrl: "/cs124",
     signInFlow: "popup",
     signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,

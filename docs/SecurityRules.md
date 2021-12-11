@@ -2,6 +2,10 @@
 
 # Security Rules
 
+
+
+
+
 ```ts
 rules_version = '2';
 service cloud.firestore {
