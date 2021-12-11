@@ -7,8 +7,9 @@ import SignInScreen from "./components/SignInScreen";
 import ListComponent from "./components/ListComponent";
 import NewListMenu from "./components/ListComponent/NewListMenu";
 import ListSettings from "./components/ListSettings";
+import ShareRequest from "./components/ShareRequest";
 
-function App({showListSettings,isSignedIn,activeList,showNewListMenu}) {
+function App({ showRequestMenu,showListSettings,isSignedIn,activeList,showNewListMenu}) {
   return (
       <div className='container'>
         <Header/>
@@ -17,6 +18,7 @@ function App({showListSettings,isSignedIn,activeList,showNewListMenu}) {
         { !isSignedIn && <SignInScreen/> }
         { showNewListMenu && <NewListMenu/> }
         { showListSettings && <ListSettings/>}
+          { showRequestMenu && <ShareRequest/> }
       </div>
   )
 }
@@ -27,6 +29,7 @@ function mapToState(state) {
       activeList: state.lists.activeList,
       showNewListMenu: state.newListMenu.showNewListMenu,
       showListSettings: state.listSettings.showListSettings,
+      showRequestMenu: state.request.showRequestMenu
   }
 }
 export default connect(mapToState)(App)

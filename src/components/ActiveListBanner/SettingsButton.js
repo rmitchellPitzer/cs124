@@ -7,11 +7,11 @@ import {showListSettingsAction} from "../../modules/localStore/actions/listSetti
 
 
 export default function SettingsButton(props) {
-
+    const classes = !props.isOwnedList ? "hide" : "sort-button black"
     //@todo
     return (
         <button
-            className="sort-button black"
+            className={ classes}
             onClick={showSettings}
         >
          <FontAwesomeIcon icon={faCog}/>

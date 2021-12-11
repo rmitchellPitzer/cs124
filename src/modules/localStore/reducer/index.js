@@ -7,6 +7,7 @@ import taskMenuReducer from "./components/taskMenuReducer";
 import listReducer from "./components/listReducer";
 import newListMenuReducer from "./components/newListMenuReducer";
 import settingsReducer from "./components/settingsReducer";
+import requestReducer from "./components/requestReducer";
 
 export default combineReducers(
     {
@@ -18,5 +19,6 @@ export default combineReducers(
         lists: listReducer,
         newListMenu:newListMenuReducer,
         listSettings:settingsReducer,
+        request: requestReducer
     }
 )

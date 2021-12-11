@@ -1,6 +1,14 @@
 
+.users-container {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
 
-
+.button {
+    background: transparent;
+    border: none;
+}
 .share-banner {
     display: flex;
     padding: 10px;

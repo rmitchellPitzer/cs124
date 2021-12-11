@@ -12,6 +12,8 @@ import DataSyncController from "../dataController/DataSyncController";
 import {TASK_SUBCOLLECTION, USERS_COLLECTION} from "../localStore/constants";
 import {getActiveListCollection} from "../dataController/TaskDataController";
 export const LIST_COLLECTION = "lists"
+export const SHARE_COLLECTION = "requests"
+const {FieldValue} = firebase.firestore
 
 export default class ListController {
 
@@ -21,19 +23,36 @@ export default class ListController {
     }
 
     static async sendShareRequest(user) {
-        const target = await db.collection(USERS_COLLECTION)
-            .where("email","==",user)
-            .get()
-        if (target.empty) return
+        const doc = await getActiveListCollection().get()
+        if (doc.data().owner == user) return
 
-        const {pendingRequests} = target.docs[0].data()
-        const {activeList} = store.getState().lists
-        const email = firebase.auth().currentUser.email
-        console.log(email)
-        await target.docs[0].ref.update({
-            pendingRequests:[...pendingRequests,{email,title:activeList.title,listID:activeList.id}]
+       await getActiveListCollection().update({
+            pendingUsers: FieldValue.arrayUnion(user)
+        })
+    }
+
+    static async acceptShareRequest(list) {
+        const {email} = firebase.auth().currentUser
+
+        await db.collection(LIST_COLLECTION).doc(list.id).update({
+            pendingUsers: FieldValue.arrayRemove(email),
+            usersSharedWith: FieldValue.arrayUnion(email)
         })
 
+    }
+
+    static async rejectShareRequest(list) {
+        const {email} = firebase.auth().currentUser
+
+        await db.collection(LIST_COLLECTION).doc(list.id).update({
+            pendingUsers: FieldValue.arrayRemove(email)
+        })
+    }
+
+    static async removeAccess(user) {
+        await getActiveListCollection().update({
+            usersSharedWith: FieldValue.arrayRemove(user)
+        })
     }
 
     static toggleSharedListMenu() {
@@ -52,6 +71,7 @@ export default class ListController {
         store.dispatch(navToListAction(null))
 
     }
+
     static async updateListName(title) {
         await getActiveListCollection().update({
             title
@@ -91,6 +111,7 @@ export default class ListController {
             title,
             owner:owner.email,
             usersSharedWith:[],
+            pendingUsers:[],
             sortingFields:[]
         })
         const taskID = uuidv4()
@@ -106,7 +127,6 @@ export default class ListController {
                 id:taskID,
                 priority: -1,
                 creationDate: Date.now()
-
             })
 
     }

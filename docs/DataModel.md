@@ -9,12 +9,15 @@ interface UserCollection {
     id: string
     email: string
     pendingRequests: shareRequest[]
+    sentRequestIDs: string[]
 }
 
 interface shareRequest {
-    email:string
+    from:string
+    to:string
     listTitle:string
     listID:string
+    id:string
 }
 
 ```
@@ -25,8 +28,9 @@ interface ListCollection {
     id:string
     tasks: TaskCollection
     title: string
-    owner:string 
+    owner:string
     usersSharedWith:string[]
+    pendingUsers:string[]
     sortingFields: ISortData[]
 }
 

@@ -15,7 +15,7 @@ function ActiveListBanner({activeList}) {
         <div className="active-list-banner">
             <BackButton/>
             <ActiveListHeading heading={activeList.title}/>
-            {isOwnedList && <SettingsButton/>}
+           <SettingsButton isOwnedList={isOwnedList}/>
         </div>
     )
 }

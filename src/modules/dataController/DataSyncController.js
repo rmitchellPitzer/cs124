@@ -2,13 +2,39 @@ import db from "../db/index"
 import store from "../localStore/store"
 import {updateSortingFieldsAction} from "../localStore/actions/sortActions";
 import {updateTasksAction} from "../localStore/actions/taskActions";
-import {updateOwnedListsAction} from "../localStore/actions/listActions";
+import {
+    updateOwnedListsAction,
+    updatePendingListsAction,
+    updateSharedListsAction
+} from "../localStore/actions/listActions";
 
 class DataSyncController {
     _db = db
     _taskSubscription = null
     _sortSubscription = null
     _ownedListSubscription = null
+    _pendingListSubscription = null
+    _sharedListSubscription = null
+
+
+    setPendingSubscription(query) {
+        if (!!this._pendingListSubscription) this._pendingListSubscription()
+
+        this._pendingListSubscription = query.onSnapshot(snapshot => {
+            const list = snapshot.docs.map(doc => doc.data())
+            console.log(list)
+            store.dispatch(updatePendingListsAction(list))
+        })
+    }
+
+    setSharedSubscription(query) {
+        if (!!this._sharedListSubscription) this._sharedListSubscription()
+
+        this._sharedListSubscription = query.onSnapshot(snapshot => {
+            const shared = snapshot.docs.map(doc => doc.data())
+            store.dispatch(updateSharedListsAction(shared))
+        })
+    }
 
     setTaskSubscription(query) {
         if (!!this._taskSubscription) this._taskSubscription()
@@ -50,6 +76,10 @@ class DataSyncController {
     clearListSub() {
         if (!!this._ownedListSubscription) this._ownedListSubscription()
         this._ownedListSubscription = null
+        if (!!this._sharedListSubscription) this._sharedListSubscription()
+        this._sharedListSubscription = null
+        if (!!this._pendingListSubscription) this._pendingListSubscription()
+        this._pendingListSubscription = null
     }
 
     clearAll() {

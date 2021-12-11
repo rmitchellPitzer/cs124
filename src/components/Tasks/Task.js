@@ -19,10 +19,6 @@ async function shouldDeleteTaskEvent(event,id) {
         await TaskDataController.deleteTask(id)
         if (sibling) sibling.focus()
     }
-
-
-
-
 }
 
 function getSibling(id) {

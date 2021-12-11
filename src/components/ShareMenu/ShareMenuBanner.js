@@ -7,6 +7,7 @@ export default function ShareMenuBanner() {
     return (
         <div className=" share-banner grey">
             <button
+                className="button"
                 onClick={openShareMenu}
             >
                 <FontAwesomeIcon icon={faPlus}/>

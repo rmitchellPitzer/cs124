@@ -24,9 +24,8 @@ async function createUser({uid,email}) {
         .doc(uid).set({
             id:uid,
             email,
-            blockedUsers:[],
             pendingRequests:[],
-            sharedLists:[]
+            sentRequestIDs: [],
         })
 }
 

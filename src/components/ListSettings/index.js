@@ -18,7 +18,6 @@ function ListSettings({showChangeNameMenu,showDeleteListMenu,showShareMenu}) {
             { showShareMenu && <ShareMenu/> }
             { showChangeNameMenu && <ChangeNameMenu/>}
             { showDeleteListMenu && <DeleteListMenu/>}
-
         </div>
     )
 }

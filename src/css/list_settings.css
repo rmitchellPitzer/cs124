@@ -1,7 +1,6 @@
 
 .list-settings {
     width: 100vw;
-    height: 100vh;
     background: white;
 }
 
@@ -38,5 +37,6 @@
 
 .list-settings-command {
     width: 100%;
+    border: none;
     padding: 10px;
 }
