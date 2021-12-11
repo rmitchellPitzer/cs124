@@ -50,6 +50,11 @@
     margin: auto;
 }
 
+
+.green {
+    background: #D8E2DC;
+    color:#555957;
+}
 .list-item-container {
     max-height: 25vh;
     overflow-y: scroll;

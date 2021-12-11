@@ -15,6 +15,7 @@
     font-weight: 400;
     padding-top: 15px;
     color: #555957;
+    overflow: hidden;
 }
 
 .hidden {

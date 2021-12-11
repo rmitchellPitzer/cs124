@@ -9,7 +9,6 @@ import ListController from "../../modules/listController";
 import {navToListAction} from "../../modules/localStore/actions/listActions";
 
 export default function RemoveSharedDialog() {
-
     return (
         <Overlay>
             <Menu>
