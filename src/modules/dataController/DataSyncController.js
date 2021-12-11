@@ -47,7 +47,15 @@ class DataSyncController {
         this._sortSubscrption = null
     }
 
+    clearListSub() {
+        if (!!this._ownedListSubscription) this._ownedListSubscription()
+        this._ownedListSubscription = null
+    }
 
+    clearAll() {
+        this.clearTaskSub()
+        this.clearListSub()
+    }
 }
 
 export default new DataSyncController()

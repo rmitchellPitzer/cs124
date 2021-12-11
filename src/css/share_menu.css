@@ -1,0 +1,13 @@
+
+
+
+.share-banner {
+    display: flex;
+    padding: 10px;
+    margin-top: -10px;
+    justify-content: space-between;
+}
+
+.share-banner h2 {
+    margin: auto;
+}

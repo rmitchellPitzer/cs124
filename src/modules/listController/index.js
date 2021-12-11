@@ -9,7 +9,7 @@ import firebase from "../db/firebase"
 import {v4 as uuidv4} from "uuid"
 import store from "../localStore/store";
 import DataSyncController from "../dataController/DataSyncController";
-import {TASK_SUBCOLLECTION} from "../localStore/constants";
+import {TASK_SUBCOLLECTION, USERS_COLLECTION} from "../localStore/constants";
 import {getActiveListCollection} from "../dataController/TaskDataController";
 export const LIST_COLLECTION = "lists"
 
@@ -18,6 +18,22 @@ export default class ListController {
     static toggleOwnListMenu() {
         const action = toggleOwnedListsAction()
         store.dispatch(action)
+    }
+
+    static async sendShareRequest(user) {
+        const target = await db.collection(USERS_COLLECTION)
+            .where("email","==",user)
+            .get()
+        if (target.empty) return
+
+        const {pendingRequests} = target.docs[0].data()
+        const {activeList} = store.getState().lists
+        const email = firebase.auth().currentUser.email
+        console.log(email)
+        await target.docs[0].ref.update({
+            pendingRequests:[...pendingRequests,{email,title:activeList.title,listID:activeList.id}]
+        })
+
     }
 
     static toggleSharedListMenu() {

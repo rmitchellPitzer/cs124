@@ -11,7 +11,7 @@ import ListController from "../../../modules/listController";
 import DialogText from "../../Dialog/DialogText";
 
 
-export default function DeleteListMenu(props) {
+export default function DeleteListMenu() {
 
     return (
         <Overlay>

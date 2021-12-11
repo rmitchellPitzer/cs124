@@ -5,16 +5,20 @@ import "../../css/list_settings.css"
 import ChangeNameMenu from "./ChangeNameMenu";
 import {connect} from "react-redux";
 import DeleteListMenu from "../ListComponent/DeleteListMenu";
+import ListSettingsShareBanner from "./ListSettingsShareBanner";
+import ShareMenu from "../ShareMenu";
 
-
-function ListSettings({showChangeNameMenu,showDeleteListMenu}) {
+function ListSettings({showChangeNameMenu,showDeleteListMenu,showShareMenu}) {
     return (
         <div className="list-settings">
             <ListSettingsHeading/>
-            <ListSettingsBanner/>
-            <SettingsCommandContainer/>
+            { !showShareMenu && <ListSettingsBanner/> }
+            { showShareMenu && <ListSettingsShareBanner/> }
+            {!showShareMenu && <SettingsCommandContainer/>}
+            { showShareMenu && <ShareMenu/> }
             { showChangeNameMenu && <ChangeNameMenu/>}
             { showDeleteListMenu && <DeleteListMenu/>}
+
         </div>
     )
 }
@@ -22,12 +26,14 @@ function ListSettings({showChangeNameMenu,showDeleteListMenu}) {
 function mapToState({listSettings}) {
     const {
         showChangeNameMenu,
-        showDeleteListMenu
+        showDeleteListMenu,
+        showShareMenu
     } = listSettings
 
     return {
         showChangeNameMenu,
         showDeleteListMenu,
+        showShareMenu,
     }
 }
 

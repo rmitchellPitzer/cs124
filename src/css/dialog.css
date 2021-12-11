@@ -31,6 +31,11 @@
     min-height: 200px;
 }
 
+.dialog-button-container {
+    display: flex;
+    justify-content: center;
+}
+
 .dialog-text-container {
     display: flex;
     justify-content: center;
@@ -56,6 +61,7 @@
     justify-content: center;
     padding: 10px;
 }
+
 .dialog-two-button-container {
     display: flex;
     justify-content: space-evenly;
