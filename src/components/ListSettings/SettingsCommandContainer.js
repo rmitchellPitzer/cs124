@@ -3,17 +3,17 @@ import store from "../../modules/localStore/store";
 import {
     hideListSettingsAction,
     showChangeNameMenuAction,
-    showDeleteListMenuAction,
+    showDeleteListMenuAction, showRemoveSharedMenuAction,
     showShareMenuAction
-    } from "../../modules/localStore/actions/listSettingsActions";
+} from "../../modules/localStore/actions/listSettingsActions";
 import firebase from "../../modules/db/firebase"
 import DataSyncController from "../../modules/dataController/DataSyncController";
 import {updateAuthStatusAction} from "../../modules/localStore/actions/authActions";
 
-export default function SettingsCommandContainer() {
+export default function SettingsCommandContainer({activeList}) {
     return (
     <div className="list-settings-container">
-        {commands.map((command,index) => <SettingsCommand key={index} {...command}/>)}
+        {commands.map((command,index) => <SettingsCommand activeList={activeList} key={index} {...command}/>)}
     </div>
     )
 }
@@ -21,21 +21,35 @@ export default function SettingsCommandContainer() {
 const commands = [
     {
         name:"Change List Name",
-        command:showChangeNameMenu
+        command:showChangeNameMenu,
+        _private:true,
     },
     {
         name:"Manage Share Settings",
-        command: showShareMenu
+        command: showShareMenu,
+        _private:true,
     },
     {
         name:"Delete List",
-        command: showDeleteListMenu
+        command: showDeleteListMenu,
+        _private:true ,
+    },
+    {
+        name: "Remove From Shared",
+        command: showRemoveSharedListMenu,
+        _private: "only"
     },
     {
         name:"Log Out",
-        command: logOut
-    }
+        command: logOut,
+        _private:false,
+    },
+
 ]
+
+function showRemoveSharedListMenu() {
+ store.dispatch(showRemoveSharedMenuAction())
+}
 
 function showShareMenu() {
     store.dispatch(showShareMenuAction())

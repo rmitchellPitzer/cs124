@@ -12,6 +12,16 @@ export const HIDE_SHARE_DIALOG_ONE = "hideShareDialogOne"
 export const SHOW_SHARE_DIALOG_TWO = "showShareDialogTwo"
 export const HIDE_SHARE_DIALOG_TWO = "hideShareDialogTwo"
 export const UPDATE_SHARE_USER = "updateShareUser"
+export const SHOW_REMOVE_SHARED_MENU = "showRemoveSharedMenu"
+export const HIDE_REMOVE_SHARED_MENU = "hideRemoveSharedMenu"
+
+export function showRemoveSharedMenuAction() {
+    return {type: SHOW_REMOVE_SHARED_MENU}
+}
+
+export function hideRemoveSharedMenuAction() {
+    return {type: HIDE_REMOVE_SHARED_MENU}
+}
 
 export function updateShareUserAction(user) {
     return {type: UPDATE_SHARE_USER, user}

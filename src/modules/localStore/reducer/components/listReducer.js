@@ -5,6 +5,7 @@ import {
     TOGGLE_SHARED_LISTS, UPDATE_ACTIVE_LIST_NAME,
     UPDATE_OWNED_LISTS, UPDATE_PENDING_LISTS, UPDATE_SHARED_LISTS
 } from "../../actions/listActions";
+import {HIDE_REMOVE_SHARED_MENU, SHOW_REMOVE_SHARED_MENU} from "../../actions/listSettingsActions";
 
 const initialState = {
     ownedLists:[],
@@ -14,6 +15,7 @@ const initialState = {
     showSharedLists:false,
     showPendingLists:false,
     showListSettings:false,
+    showRemoveSharedMenu:false,
     activeList: null,
 }
 
@@ -27,11 +29,26 @@ export default function listReducer(state = initialState,action) {
         case UPDATE_PENDING_LISTS: return updatePendingLists(state,action.lists)
         case NAV_TO_LIST: return navToList(state,action.list)
         case UPDATE_ACTIVE_LIST_NAME: return updateActiveListName(state,action.name)
+        case SHOW_REMOVE_SHARED_MENU: return showRemoveSharedMenu(state)
+        case HIDE_REMOVE_SHARED_MENU: return hideRemoveSharedMenu(state)
         default:
             return state
     }
 }
 
+function showRemoveSharedMenu(state) {
+    return {
+        ...state,
+        showRemoveSharedMenu: true
+    }
+}
+
+function hideRemoveSharedMenu(state) {
+    return {
+        ...state,
+        showRemoveSharedMenu: false
+    }
+}
 function updateActiveListName(state,title) {
     const {activeList} = state
     return {

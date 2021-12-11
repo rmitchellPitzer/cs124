@@ -6,7 +6,7 @@ import store from "../../modules/localStore/store";
 import {hideRemoveMenuAction} from "../../modules/localStore/actions/requestAction";
 import {connect} from "react-redux";
 import Menu from "../Dialog/Menu";
-
+import {navToListAction} from "../../modules/localStore/actions/listActions";
 
 function RemoveDialog({selectedUser}){
     return (
@@ -40,7 +40,8 @@ function closeMenu() {
 }
 
 async function removeUser(user) {
-    await ListController.removeAccess(user)
+   const newList =  await ListController.removeAccess(user)
+    store.dispatch(navToListAction(newList.data()))
     closeMenu()
 }
 

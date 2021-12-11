@@ -6,13 +6,18 @@
  * }
  */
 
-export default function SettingsCommand({command,name}) {
+import firebase from "../../modules/db/firebase"
+export default function SettingsCommand({activeList,command,name,_private}) {
+    const isAllowed = _private == false ? true : activeList && activeList.owner == firebase.auth().currentUser.email
+
+    const classes = isAllowed && _private !== "only" || (!isAllowed && _private == "only") ? "list-settings-command" : "hidden"
+
     return (
-        <button
-            className="list-settings-command"
-            onClick={() => command()}
-        >
-            {name}
-        </button>
+            <button
+                className={classes}
+                onClick={() => command()}
+            >
+                {name}
+            </button>
     )
 }

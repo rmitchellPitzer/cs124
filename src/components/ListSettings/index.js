@@ -7,22 +7,27 @@ import {connect} from "react-redux";
 import DeleteListMenu from "../ListComponent/DeleteListMenu";
 import ListSettingsShareBanner from "./ListSettingsShareBanner";
 import ShareMenu from "../ShareMenu";
+import RemoveSharedDialog from "../RemoveSharedDialog";
 
-function ListSettings({showChangeNameMenu,showDeleteListMenu,showShareMenu}) {
+function ListSettings({showRemoveSharedMenu,activeList,showChangeNameMenu,showDeleteListMenu,showShareMenu}) {
     return (
         <div className="list-settings">
             <ListSettingsHeading/>
             { !showShareMenu && <ListSettingsBanner/> }
             { showShareMenu && <ListSettingsShareBanner/> }
-            {!showShareMenu && <SettingsCommandContainer/>}
+            {!showShareMenu && <SettingsCommandContainer activeList={activeList}/>}
+
             { showShareMenu && <ShareMenu/> }
             { showChangeNameMenu && <ChangeNameMenu/>}
             { showDeleteListMenu && <DeleteListMenu/>}
+            { showRemoveSharedMenu && <RemoveSharedDialog/>}
+
         </div>
     )
 }
 
-function mapToState({listSettings}) {
+function mapToState({listSettings,lists}) {
+    const {activeList,showRemoveSharedMenu} = lists
     const {
         showChangeNameMenu,
         showDeleteListMenu,
@@ -33,6 +38,8 @@ function mapToState({listSettings}) {
         showChangeNameMenu,
         showDeleteListMenu,
         showShareMenu,
+        activeList,
+        showRemoveSharedMenu
     }
 }
 

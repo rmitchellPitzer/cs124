@@ -7,7 +7,7 @@ import {showListSettingsAction} from "../../modules/localStore/actions/listSetti
 
 
 export default function SettingsButton(props) {
-    const classes = !props.isOwnedList ? "hide" : "sort-button black"
+    const classes = "sort-button black"
     //@todo
     return (
         <button

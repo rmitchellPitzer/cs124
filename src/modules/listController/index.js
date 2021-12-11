@@ -53,6 +53,8 @@ export default class ListController {
         await getActiveListCollection().update({
             usersSharedWith: FieldValue.arrayRemove(user)
         })
+
+        return await getActiveListCollection().get()
     }
 
     static toggleSharedListMenu() {
