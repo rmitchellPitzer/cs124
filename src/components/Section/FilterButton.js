@@ -15,7 +15,6 @@ export default function FilterButton(props) {
            className={classes}
            onClick={toggleButton}
            aria-label="Open Sort Filter"
-
        >
             <FontAwesomeIcon icon={faSort}/>
        </button>

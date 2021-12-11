@@ -1,49 +1,35 @@
 import "./css/global.css"
 import "typeface-roboto"
-import ActionButton from "./components/Action Commands/ActionButton";
-import AppDataController from "./modules/dataController/AppDataController";
-import Header from './components/Header/Header';
-import SectionContainer from "./components/Section/SectionContainer.js"
+import Main from "./components/Main/index"
+import Header from "./components/Header/Header";
 import { connect } from "react-redux";
-import UndoButton from "./components/Undo/UndoButton";
-import SortMenuContainer from "./components/SortMenu/SortMenuContainer";
-import PriorityMenu from "./components/Priority/PriorityMenu/PriorityMenuContainer"
-import TaskMenu from "./components/TaskMenu/TaskMenu";
+import SignInScreen from "./components/SignInScreen";
+import ListComponent from "./components/ListComponent";
+import NewListMenu from "./components/ListComponent/NewListMenu";
+import ListSettings from "./components/ListSettings";
+import ShareRequest from "./components/ShareRequest";
 
-function App({showTaskMenu,showUndo,showSortMenu,showPriorityMenu}) {
+function App({ showRequestMenu,showListSettings,isSignedIn,activeList,showNewListMenu}) {
   return (
-    <div class='container'>
-      <Header/>
-      <SectionContainer 
-        className='todo-bar' 
-        sectionTitle="To Do"
-      />
-        {
-            !showSortMenu && !showPriorityMenu && <SectionContainer
-                className='completed-bar'
-                sectionTitle="Completed"
-            />
-        }
-
-
-            <ActionButton/>
-      { showUndo && <UndoButton/> }
-    {showSortMenu && <SortMenuContainer/>}
-    {showPriorityMenu && <PriorityMenu/>}
-    {showTaskMenu && <TaskMenu/>}
-
-
-    </div>
+      <div className='container'>
+        <Header/>
+        { (isSignedIn && activeList &&!showListSettings) && <Main/> }
+        { (isSignedIn && !activeList) && <ListComponent/> }
+        { !isSignedIn && <SignInScreen/> }
+        { showNewListMenu && <NewListMenu/> }
+        { showListSettings && <ListSettings/>}
+          { showRequestMenu && <ShareRequest/> }
+      </div>
   )
 }
 
 function mapToState(state) {
   return {
-    menuIsActive: AppDataController.menuIsActive(),
-    showUndo: AppDataController.undoIsActive(),
-    showSortMenu: AppDataController.showSortMenu(),
-    showPriorityMenu: state.showPriorityMenu,
-    showTaskMenu: state.showTaskMenu
+      isSignedIn:state.auth.isSignedIn,
+      activeList: state.lists.activeList,
+      showNewListMenu: state.newListMenu.showNewListMenu,
+      showListSettings: state.listSettings.showListSettings,
+      showRequestMenu: state.request.showRequestMenu
   }
 }
 export default connect(mapToState)(App)

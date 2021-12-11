@@ -19,10 +19,6 @@ async function shouldDeleteTaskEvent(event,id) {
         await TaskDataController.deleteTask(id)
         if (sibling) sibling.focus()
     }
-
-
-
-
 }
 
 function getSibling(id) {
@@ -32,8 +28,10 @@ function getSibling(id) {
 }
 
 function openTaskMenu(id) {
-    console.log("clicked")
+
     AppDataController.showTaskMenu()
+    AppDataController.hideSortMenu()
+    AppDataController.hidePriorityMenu()
     AppDataController.setActiveTask(id)
 }
 

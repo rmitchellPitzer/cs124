@@ -1,4 +1,3 @@
-import PriorityIcon from "../PriorityIcon";
 import AppDataController from "../../../modules/dataController/AppDataController";
 
 const classList = {
@@ -9,6 +8,8 @@ const classList = {
 }
 
 function openPriorityMenu(id) {
+        AppDataController.hideTaskMenu()
+        AppDataController.hideSortMenu()
         AppDataController.showPriorityMenu(id)
         const element = document.getElementsByClassName("priority-item")
         if (element[0]) element[0].focus()

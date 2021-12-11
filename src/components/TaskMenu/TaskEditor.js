@@ -6,11 +6,10 @@ async function updateActiveTask(event,id) {
     const text = event.currentTarget.value
     await TaskDataController.updateTaskText(id,text)
 }
+
 async function shouldCreateNewTask(event) {
     const isEnter = event.key === "Enter"
     const inputForm = event.currentTarget
-
-
     if (isEnter) {
         const newID = await TaskDataController.createTask()
         AppDataController.setActiveTask(newID)
@@ -45,8 +44,8 @@ function TaskEditor({activeTask,task}) {
 function stateMap(state) {
 
     return {
-        activeTask:state.activeTask,
-        task: TaskDataController.getTask(state.activeTask)
+        activeTask:state.tasks.activeTask,
+        task: TaskDataController.getTask(state.tasks.activeTask)
     }
 }
 

@@ -8,7 +8,6 @@ async function deleteTask(id) {
     if (!id) return
     AppDataController.hideTaskMenu()
     await TaskDataController.deleteTask(id)
-    console.log("focusing")
     focusRecentTaskOrLast()
 
 }
@@ -30,7 +29,7 @@ function TaskMenuDeleteButton({activeTask}) {
 
 function stateProps(state) {
     return {
-        activeTask:state.activeTask
+        activeTask:state.tasks.activeTask
     }
 }
 

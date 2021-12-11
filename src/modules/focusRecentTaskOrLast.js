@@ -1,5 +1,11 @@
 import AppDataController from "./dataController/AppDataController";
 
+export default function focusRecentTaskOrLast() {
+    const task = findAppropriateTask()
+    if (!task) return focusActionButton()
+    task.getElementsByClassName("task-text")[0].focus()
+}
+
 function findAppropriateTask() {
     let taskID = AppDataController.activeTask()
     const lastTask = AppDataController.getLastTask()
@@ -21,8 +27,3 @@ function focusActionButton() {
     actionButton.focus()
 }
 
-export default function focusRecentTaskOrLast() {
-    const task = findAppropriateTask()
-    if (!task) return focusActionButton()
-    task.getElementsByClassName("task-text")[0].focus()
-}

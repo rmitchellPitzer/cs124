@@ -1,7 +1,8 @@
 import db from "../db/index"
-import {COLLECTION_NAME,DEFAULT_DOC_ID} from "./constants"
+import {USERS_COLLECTION,DEFAULT_DOC_ID} from "../localStore/constants"
 import {NAME, PRIORITY, TIME} from "../sorting/sortingAlgorithm";
-const collectionRef = db.collection(COLLECTION_NAME)
+import {getActiveListCollection} from "./TaskDataController";
+const collectionRef = db.collection(USERS_COLLECTION)
 
 
 export default class TaskOrderController {
@@ -80,7 +81,7 @@ export default class TaskOrderController {
 }
 
 function getDoc() {
-    return collectionRef.doc(DEFAULT_DOC_ID)
+    return getActiveListCollection()
 }
 
 async function getSortFields() {

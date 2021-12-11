@@ -1,12 +1,14 @@
 import DataSyncController from "../dataController/DataSyncController"
-import {COLLECTION_NAME, DEFAULT_DOC_ID} from "../dataController/constants"
+import {USERS_COLLECTION, DEFAULT_DOC_ID} from "../localStore/constants"
 import db from "../db/index"
-
-const collectionRef = db.collection(COLLECTION_NAME)
-const tasks = collectionRef.doc(DEFAULT_DOC_ID).collection("tasks")
-const sortFilters = collectionRef.doc(DEFAULT_DOC_ID)
+import {LIST_COLLECTION} from "../listController";
+import firebase from "../db/firebase"
 
 export default function () {
-    DataSyncController.setTaskSubscription(tasks)
-    DataSyncController.setSortSubscription(sortFilters)
+    const owner = firebase.auth().currentUser
+    if (!owner) return
+
+    DataSyncController.setOwnedListSubscription(db.collection(LIST_COLLECTION).where("owner","==",owner.email))
+    DataSyncController.setPendingSubscription(db.collection(LIST_COLLECTION).where("pendingUsers","array-contains",owner.email))
+    DataSyncController.setSharedSubscription(db.collection(LIST_COLLECTION).where("usersSharedWith",'array-contains',owner.email))
 }
